@@ -10,12 +10,6 @@ import HelpPage from './pages/HelpPage';
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
                 <BrowserRouter>
                 <Link to="/personalAccount">ЛК</Link>
                     <Routes>
@@ -25,16 +19,6 @@ function App() {
                         <Route path="/help" element={<HelpPage />}></Route>
                     </Routes>
                 </BrowserRouter>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
     );
 }
 

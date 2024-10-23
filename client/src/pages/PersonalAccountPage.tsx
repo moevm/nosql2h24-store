@@ -6,10 +6,12 @@ import HelpPage from './HelpPage';
 
 
 export default function PersonalAccount() {
-    return (<>
+    return (<div>
         PersonalPage
+        <nav>
         <Link to="/myCells">Мои ячейки</Link>
         <Link to="/bookCell">Арендовать ячейку</Link>
-        <Link to="/help">Темы</Link>
-    </>)
+        <Link to="/help">Поддержка</Link>
+        </nav>
+    </div>)
 }
