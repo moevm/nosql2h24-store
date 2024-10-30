@@ -97,6 +97,7 @@
         [
             "SOME_CELL_ID_1",
             "SOME_CELL_ID_2", 
+            "SOME_CELL_ID_3",
             ... ,
             "SOME_CELL_ID_N"
         ]
