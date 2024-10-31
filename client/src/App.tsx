@@ -5,8 +5,9 @@ import ShowDialog from './components/showDialog';
 import PersonalAccount from './pages/PersonalAccountPage';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MyCellsPage from './pages/MyCellsPage';
-import BookCellPage from './pages/BookCellPage';
+import RentCellPage from './pages/RentCellPage';
 import HelpPage from './pages/HelpPage';
+import PaymentPage from './pages/PaymentPage';
 
 function App() {
     return (
@@ -15,8 +16,9 @@ function App() {
                     <Routes>
                         <Route path="/personalAccount" element={<PersonalAccount />}></Route>
                         <Route path="/myCells" element={<MyCellsPage />}></Route>
-                        <Route path="/bookCell" element={<BookCellPage />}></Route>
+                        <Route path="/bookCell" element={<RentCellPage />}></Route>
                         <Route path="/help" element={<HelpPage />}></Route>
+                        <Route path="/payment" element={<PaymentPage/>}></Route>
                     </Routes>
                 </BrowserRouter>
     );
