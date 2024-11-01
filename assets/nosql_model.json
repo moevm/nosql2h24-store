@@ -1,0 +1,105 @@
+"USER" :
+[
+    {
+        "id" : "USER_ID_1",
+        "NameSurnamePatronymic" : string "SOME_NSP",
+        "role" : number "SOME_ROLE_NUM",
+        "login" : string "LOGIN_1",
+        "password" : string "PSWD_1",
+        "date" : number "YY-MM-DD",
+        "indebtedness" : number "SOME_DEBT"
+    },
+    ... ,
+    {
+        "id" : "USER_ID_N",
+        "NameSurnamePatronymic" : string "SOME_NSP",
+        "role" : number "SOME_ROLE_NUM",
+        "login" : string "LOGIN_N",
+        "password" : string "PSWD_N",
+        "date" : number "YY-MM-DD",
+        "indebtedness" : number "SOME_DEBT"
+    }
+],
+"CELL" :
+[
+    {
+        "cellId" : "CELL_ID_1",
+        "warehouseId" : "CURRENT_WAREHOUSE_ID",
+        "cellNum" : number "SOME_CELL_NUM",
+        "tierNum" : number "SOME_TIER_NUM",
+        "isFree" : bool "TRUE_OR_FALSE",
+        "endOfRent" : number "YY-MM-DD",
+        "size" : number "SOME_SQUARE_METRES",
+        "listOfEventIds" : array
+        [
+            "SOME_EVENT_ID_1",
+            "SOME_EVENT_ID_2",
+            ... ,
+            "SOME_EVENT_ID_N"
+        ]
+    },
+    ... ,
+    {
+        "cellId" : "CELL_ID_N",
+        "warehouseId" : "CURRENT_WAREHOUSE_ID",
+        "cellNum" : number "SOME_CELL_NUM",
+        "tierNum" : number "SOME_TIER_NUM",
+        "isFree" : bool "TRUE_OR_FALSE",
+        "endOfRent" : number "YY-MM-DD",
+        "size" : number "SOME_SQUARE_METRES",
+        "listOfEventIds" : array
+        [
+            "SOME_EVENT_ID_1",
+            "SOME_EVENT_ID_2",
+            ... ,
+            "SOME_EVENT_ID_N"
+        ]
+    }
+],
+"EVENT" :
+[
+    {
+        "eventId" : "EVENT_ID_1",
+        "cellId" : "SOME_CELL_ID",
+        "userId" : "SOME_USER_ID",
+        "action" : string "SOME_ACTION",
+        "dateAndTime" : number "YY-MM-DD_HH:MM:SS",
+        "description" : string "SOME_DISCRIPTION"
+    },
+    ... ,
+    {
+        "eventId" : "EVENT_ID_N",
+        "cellId" : "SOME_CELL_ID",
+        "userId" : "SOME_USER_ID",
+        "action" : string "SOME_ACTION",
+        "dateAndTime" : number "YY-MM-DD_HH:MM:SS",
+        "description" : string "SOME_DISCRIPTION"
+    }
+],
+"WAREHOUSE" :
+[
+    {
+        "id" : "WAREHOUSE_ID_1",
+        "address" : string "SOME_ADDRESS",
+        "cells" : array
+        [
+            "SOME_CELL_ID_1",
+            "SOME_CELL_ID_2", 
+            ... ,
+            "SOME_CELL_ID_N"
+        ]
+    },
+    ... ,
+    {
+        "id" : "WAREHOUSE_ID_N",
+        "address" : string "SOME_ADDRESS",
+        "cells" : array
+        [
+            "SOME_CELL_ID_1",
+            "SOME_CELL_ID_2", 
+            "SOME_CELL_ID_3",
+            ... ,
+            "SOME_CELL_ID_N"
+        ]
+    }
+]
