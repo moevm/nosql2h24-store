@@ -1,14 +1,25 @@
 import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import Payment from "./Payment";
+import { useState } from "react";
+import { Cell } from "../types/types";
 
-export default function CellsTable(props: { isForRent: boolean, cells: { cellId: number, isFree: boolean, endOfRent: string, warehouse: string }[] }) {
+export default function CellsTable(props: { isForRent: boolean, cells: Cell[] }) {
     
-    const navigate = useNavigate();
-    function handleRent(){
-        navigate('/payment');
+    const [showPayment, setShowPayment] = useState(false);
+    const [cellForRent, setCellForRent] = useState(props.cells[0]);
+    // let cellForRent: Cell|null = null;
+    function handleRent(cell: Cell){
+        setCellForRent(cell);
+        console.log(cellForRent);
+        setShowPayment(!showPayment);
+        console.log("again", cellForRent);
+    }
+    function CloseRent(){
+        setShowPayment(!showPayment);
     }
     
-    const listCells = props.cells.map((cell: { cellId: number, isFree: boolean, endOfRent: string, warehouse: string }, index) =>
+    const listCells = props.cells.map((cell: Cell, index) =>
         <TableRow key={cell.cellId}>
             <TableCell>
                 {cell.cellId}
@@ -22,10 +33,12 @@ export default function CellsTable(props: { isForRent: boolean, cells: { cellId:
             <TableCell>
                 {cell.warehouse}
             </TableCell>
-            {props.isForRent && <TableCell> <Button variant="contained" onClick={handleRent}> Арендовать </Button></TableCell>}
+            {props.isForRent && <TableCell> <Button variant="contained" onClick={()=>handleRent(cell)}> Арендовать </Button></TableCell>}
         </TableRow>
     )
     return (<>
+        {console.log("before dilog render", cellForRent)}
+        {showPayment && <Payment cell={cellForRent} handleClick={CloseRent} isOpen={showPayment}/>}
         <Table>
             <TableHead>
                 <TableCell>

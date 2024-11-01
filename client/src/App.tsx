@@ -7,20 +7,19 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MyCellsPage from './pages/MyCellsPage';
 import RentCellPage from './pages/RentCellPage';
 import HelpPage from './pages/HelpPage';
-import PaymentPage from './pages/PaymentPage';
 
 function App() {
     return (
-                <BrowserRouter>
-                <Link to="/personalAccount">ЛК</Link>
-                    <Routes>
-                        <Route path="/personalAccount" element={<PersonalAccount />}></Route>
-                        <Route path="/myCells" element={<MyCellsPage />}></Route>
-                        <Route path="/bookCell" element={<RentCellPage />}></Route>
-                        <Route path="/help" element={<HelpPage />}></Route>
-                        <Route path="/payment" element={<PaymentPage/>}></Route>
-                    </Routes>
-                </BrowserRouter>
+        <BrowserRouter>
+            <Link to="/personalAccount">ЛК</Link>
+            <Routes>
+                <Route path="/personalAccount" element={<PersonalAccount />}></Route>
+                <Route path="/myCells" element={<MyCellsPage />}></Route>
+                <Route path="/bookCell" element={<RentCellPage />}></Route>
+                <Route path="/help" element={<HelpPage />}></Route>
+            </Routes>
+        </BrowserRouter>
+
     );
 }
 
