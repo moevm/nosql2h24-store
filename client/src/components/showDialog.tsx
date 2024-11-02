@@ -4,13 +4,13 @@ import { Button } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react'
 
 
-export default function ShowDialog() {
+export default function ShowDialog(props: {handleClick: any, isOpen: boolean}) {
     const [isOpen, setIsOpen] = useState(true);
     function handleClickClose(){
-        setIsOpen(false);
+        props.handleClick()
     }
     return (<>
-        <Dialog open={isOpen}>
+        <Dialog open={props.isOpen}>
             <DialogTitle>Вы теперь одеты как черт</DialogTitle>
             <Button variant="outlined" onClick={handleClickClose}>
                 Ага
