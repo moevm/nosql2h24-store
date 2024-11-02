@@ -20,6 +20,9 @@ export default function PersonalAccount() {
             <ListItemButton>
                 <Link to="/help">Поддержка</Link>
             </ListItemButton>
+            <ListItemButton>
+                <Link to="/allCells">Все ячейки</Link>
+            </ListItemButton>
         </nav>
     </div>)
 }

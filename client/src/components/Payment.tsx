@@ -3,7 +3,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import ListItemButton from "@mui/material/ListItemButton";
 import { useState } from "react";
-import { Cell } from "../types/types";
+import { Cell } from "../serviceFiles/types";
 
 export default function Payment(props: { cell: Cell|null, handleClick: any, isOpen: boolean }) {
     function handleClickClose() {
