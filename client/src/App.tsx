@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MyCellsPage from './pages/MyCellsPage';
 import RentCellPage from './pages/RentCellPage';
 import HelpPage from './pages/HelpPage';
+import AllCellsPage from './pages/AllCellsPage';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/myCells" element={<MyCellsPage />}></Route>
                 <Route path="/bookCell" element={<RentCellPage />}></Route>
                 <Route path="/help" element={<HelpPage />}></Route>
+                <Route path="/allCells" element={<AllCellsPage />}></Route>
             </Routes>
         </BrowserRouter>
 
