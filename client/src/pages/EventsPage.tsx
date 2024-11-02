@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Event } from "../serviceFiles/types";
 
-export default function AllUsersPage() {
+export default function EventsPage() {
     let navigate = useNavigate();
 
     const [events, setEvent] = useState([{

@@ -10,6 +10,7 @@ import HelpPage from './pages/HelpPage';
 import AllCellsPage from './pages/AllCellsPage';
 import AllUsersPage from './pages/AllUsersPage';
 import UserPage from './pages/UserPage';
+import EventsPage from './pages/EventsPage';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/allCells" element={<AllCellsPage />}></Route>
                 <Route path="/allUsers" element={<AllUsersPage />}></Route>
                 <Route path="/user" element={<UserPage />}></Route>
+                <Route path="/events" element={<EventsPage />}></Route>
             </Routes>
         </BrowserRouter>
 
