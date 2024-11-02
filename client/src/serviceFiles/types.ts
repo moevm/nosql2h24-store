@@ -1,0 +1,1 @@
+export type Cell = { cellId: number, isFree: boolean, needService: boolean, size: number, endOfRent: string, warehouse: string }
