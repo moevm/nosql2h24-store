@@ -1,7 +1,7 @@
 import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User } from "../types/types";
+import { User } from "../serviceFiles/types";
 
 export default function AllUsersPage() {
     let navigate = useNavigate();
