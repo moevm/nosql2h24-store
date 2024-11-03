@@ -10,13 +10,16 @@ import HelpPage from './pages/HelpPage';
 import AllCellsPage from './pages/AllCellsPage';
 import AllUsersPage from './pages/AllUsersPage';
 import UserPage from './pages/UserPage';
-import EventsPage from './pages/EventsPage';
+import AllEventsPage from './pages/AllEventsPage';
+import EventPage from './pages/EventPage';
 
 function App() {
     return (
         <BrowserRouter>
+        <header>
             <Link to="/personalAccount">ЛК</Link>
             <Link to="/allUsers">Страница пользователей</Link>
+        </header>
             <Routes>
                 <Route path="/personalAccount" element={<PersonalAccount />}></Route>
                 <Route path="/myCells" element={<MyCellsPage />}></Route>
@@ -25,7 +28,8 @@ function App() {
                 <Route path="/allCells" element={<AllCellsPage />}></Route>
                 <Route path="/allUsers" element={<AllUsersPage />}></Route>
                 <Route path="/user" element={<UserPage />}></Route>
-                <Route path="/events" element={<EventsPage />}></Route>
+                <Route path="/allEvents" element={<AllEventsPage />}></Route>
+                <Route path="/event" element={<EventPage />}></Route>
             </Routes>
         </BrowserRouter>
 

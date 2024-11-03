@@ -23,6 +23,9 @@ export default function PersonalAccount() {
             <ListItemButton>
                 <Link to="/allCells">Все ячейки</Link>
             </ListItemButton>
+            <ListItemButton>
+                <Link to="/allEvents">Все события</Link>
+            </ListItemButton>
         </nav>
     </div>)
 }
