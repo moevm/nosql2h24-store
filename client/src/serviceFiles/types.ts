@@ -10,4 +10,9 @@ export type User = {
 }
 export type Event = {
     eventId: number,
+    cellId: number,
+    userId: number,
+    action: string,
+    dateAndTime: string,
+    description: string
 }
