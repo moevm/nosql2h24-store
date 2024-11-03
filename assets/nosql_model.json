@@ -3,20 +3,24 @@
     {
         "id" : "USER_ID_1",
         "NameSurnamePatronymic" : string "SOME_NSP",
-        "role" : number "SOME_ROLE_NUM",
+        "role" : string "SOME_ROLE_NUM",
         "login" : string "LOGIN_1",
         "password" : string "PSWD_1",
-        "date" : number "YY-MM-DD",
+        "birthday" : number "YY-MM-DD",
+        "regDate" : number "YY-MM-DD",
+        "editDate" : number "YY-MM-DD",
         "indebtedness" : number "SOME_DEBT"
     },
     ... ,
     {
         "id" : "USER_ID_N",
         "NameSurnamePatronymic" : string "SOME_NSP",
-        "role" : number "SOME_ROLE_NUM",
+        "role" : string "SOME_ROLE_NUM",
         "login" : string "LOGIN_N",
         "password" : string "PSWD_N",
-        "date" : number "YY-MM-DD",
+        "birthday" : number "YY-MM-DD",
+        "regDate" : number "YY-MM-DD",
+        "editDate" : number "YY-MM-DD",
         "indebtedness" : number "SOME_DEBT"
     }
 ],
@@ -81,6 +85,8 @@
     {
         "id" : "WAREHOUSE_ID_1",
         "address" : string "SOME_ADDRESS",
+        "capacity" : number "SOME_CELLS_NUMBER",
+        "chiefWarehouseWorker" : number "SOME_USER_ID",
         "cells" : array
         [
             "SOME_CELL_ID_1",
@@ -93,11 +99,12 @@
     {
         "id" : "WAREHOUSE_ID_N",
         "address" : string "SOME_ADDRESS",
+        "capacity" : number "SOME_CELLS_NUMBER",
+        "chiefWarehouseWorker" : number "SOME_USER_ID",
         "cells" : array
         [
             "SOME_CELL_ID_1",
             "SOME_CELL_ID_2", 
-            "SOME_CELL_ID_3",
             ... ,
             "SOME_CELL_ID_N"
         ]
