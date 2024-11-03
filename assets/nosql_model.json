@@ -86,7 +86,7 @@
         "id" : "WAREHOUSE_ID_1",
         "address" : string "SOME_ADDRESS",
         "capacity" : number "SOME_CELLS_NUMBER",
-        "chiefWarehouseWorker" : number "SOME_USER_ID",
+        "chiefId" : number "SOME_USER_ID",
         "cells" : array
         [
             "SOME_CELL_ID_1",
@@ -100,7 +100,7 @@
         "id" : "WAREHOUSE_ID_N",
         "address" : string "SOME_ADDRESS",
         "capacity" : number "SOME_CELLS_NUMBER",
-        "chiefWarehouseWorker" : number "SOME_USER_ID",
+        "chiefId" : number "SOME_USER_ID",
         "cells" : array
         [
             "SOME_CELL_ID_1",
