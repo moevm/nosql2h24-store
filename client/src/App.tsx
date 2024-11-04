@@ -12,15 +12,20 @@ import AllUsersPage from './pages/AllUsersPage';
 import UserPage from './pages/UserPage';
 import AllEventsPage from './pages/AllEventsPage';
 import EventPage from './pages/EventPage';
+import { AppProvider, SignInPage,  } from '@toolpad/core';
 
 function App() {
+    const providers = [{id: 'apple', name: "Email and Password"}]
     return (
+        <AppProvider>
+
         <BrowserRouter>
         <header>
             <Link to="/personalAccount">ЛК</Link>
             <Link to="/allUsers">Страница пользователей</Link>
         </header>
             <Routes>
+                <Route path="/" element={<SignInPage providers={providers} slotProps={{passwordField: {variant: 'outlined'}}}/>}></Route>
                 <Route path="/personalAccount" element={<PersonalAccount />}></Route>
                 <Route path="/myCells" element={<MyCellsPage />}></Route>
                 <Route path="/bookCell" element={<RentCellPage />}></Route>
@@ -32,6 +37,7 @@ function App() {
                 <Route path="/event" element={<EventPage />}></Route>
             </Routes>
         </BrowserRouter>
+        </AppProvider>
 
     );
 }
