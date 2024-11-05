@@ -33,6 +33,7 @@
         "tierNum" : number "SOME_TIER_NUM",
         "isFree" : bool "TRUE_OR_FALSE",
         "endOfRent" : number "YY-MM-DD",
+        "tariffPerDay" : number "SOME_PRICE",
         "size" : number "SOME_SQUARE_METRES",
         "listOfEventIds" : array
         [
@@ -50,6 +51,7 @@
         "tierNum" : number "SOME_TIER_NUM",
         "isFree" : bool "TRUE_OR_FALSE",
         "endOfRent" : number "YY-MM-DD",
+        "tariffPerDay" : number "SOME_PRICE",
         "size" : number "SOME_SQUARE_METRES",
         "listOfEventIds" : array
         [
