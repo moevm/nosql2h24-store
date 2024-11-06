@@ -3,6 +3,7 @@ import Payment from "../pages/PaymentPage";
 import { useState } from "react";
 import { Cell } from "../serviceFiles/types";
 import Table from "react-bootstrap/Table";
+import { Button } from "react-bootstrap";
 
 export default function CellsTable(props: { isForRent: boolean, isForAdmin: boolean, cells: Cell[] }) {
     let navigate = useNavigate();
@@ -34,9 +35,9 @@ export default function CellsTable(props: { isForRent: boolean, isForAdmin: bool
             <td>
                 {cell.warehouse}
             </td>
-            {props.isForRent && <td> <button type="button" className="btn" onClick={() => handleRent(cell)}> Арендовать </button></td>}
+            {props.isForRent && <td> <Button type="button" className="btn" onClick={() => handleRent(cell)}> Арендовать </Button></td>}
             {props.isForAdmin && <td> {cell.needService ? "Требует" : "Не требует"}</td>}
-            {props.isForAdmin && <td> <button type="button" className="btn" > Обслужить </button> </td>}
+            {props.isForAdmin && <td> <Button type="button" className="btn" > Обслужить </Button> </td>}
         </tr>
     )
     return (<>

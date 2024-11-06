@@ -12,6 +12,7 @@ import UserPage from './pages/oneEntity/UserPage';
 import AllEventsPage from './pages/manyEntity/AllEventsPage';
 import EventPage from './pages/oneEntity/EventPage';
 import PaymentPage from './pages/PaymentPage';
+import AuthPage from './pages/AuthPage';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
             <Link to="/allUsers">Страница пользователей</Link>
         </header>
             <Routes>
+            <Route path="/" element={<AuthPage />}></Route>
                 <Route path="/personalAccount" element={<PersonalAccount />}></Route>
                 <Route path="/myCells" element={<MyCellsPage />}></Route>
                 <Route path="/rentCell" element={<RentCellPage />}></Route>

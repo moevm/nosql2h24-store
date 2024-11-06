@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Cell } from "../serviceFiles/types";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 export default function PaymentPage() {
     const {state} = useLocation();
@@ -14,9 +15,9 @@ export default function PaymentPage() {
         <div>
             <p>Ячейка номер {state.cellId}</p>
             <p>Размер {state.size}</p>
-            <button> Оплата по карте </button>
-            <button> Оплата по СБП </button>
-            <button onClick={handleClick}>Отмена</button>
+            <Button> Оплата по карте </Button>
+            <Button> Оплата по СБП </Button>
+            <Button onClick={handleClick}>Отмена</Button>
             
         </div>
     </>)
