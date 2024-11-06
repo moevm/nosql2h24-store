@@ -1,7 +1,7 @@
-import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User } from "../serviceFiles/types";
+import { User } from "../../serviceFiles/types";
+import { Table } from "react-bootstrap";
 
 export default function AllUsersPage() {
     let navigate = useNavigate();
@@ -27,70 +27,70 @@ export default function AllUsersPage() {
         navigate("/user", {state: user})
     }
     const listUsers = users.map((user: User, index) =>
-        <TableRow key={user.id} onClick={()=>handleUserClick(user)}>
-            <TableCell>
+        <tr key={user.id} onClick={()=>handleUserClick(user)}>
+            <td>
                 {user.id}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.NameSurnamePatronymic}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.login}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.role}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.date}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.date}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.date}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.rentedCells.length}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {user.indebtedness}
-            </TableCell>
-        </TableRow>
+            </td>
+        </tr>
     )
     return (<>
-        <Table>
-            <TableHead>
-                <TableCell>
+        <Table striped bordered hover>
+            <thead>
+                <th>
                     id
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     ФИО
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     Логин
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     Роль
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     Дата регистрации
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     Дата рождения
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     Дата обновления
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     Количество арендованных ячеек
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     Задолженность
-                </TableCell>
-            </TableHead>
-            <TableBody>
+                </th>
+            </thead>
+            <tbody>
                 {listUsers}
-            </TableBody>
+            </tbody>
         </Table>
     </>)
 }

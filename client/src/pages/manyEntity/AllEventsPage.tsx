@@ -1,7 +1,8 @@
-import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Event } from "../serviceFiles/types";
+import { Event } from "../../serviceFiles/types";
+import Table from "react-bootstrap/Table";
+import { Tab } from "react-bootstrap";
 
 export default function AllEventsPage() {
     let navigate = useNavigate();
@@ -37,52 +38,52 @@ export default function AllEventsPage() {
         navigate("/event", { state: event })
     }
     const listUsers = events.map((event: Event, index) =>
-        <TableRow key={event.eventId} onClick={() => handleUserClick(event)}>
-            <TableCell>
+        <tr key={event.eventId} onClick={() => handleUserClick(event)}>
+            <td>
                 {event.eventId}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {event.cellId}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {event.userId}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {event.action}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {event.dateAndTime}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {event.description}
-            </TableCell>
-        </TableRow>
+            </td>
+        </tr>
     )
     return (<>
-        <Table>
-            <TableHead>
-                <TableCell>
+        <Table striped bordered hover>
+            <thead>
+                <th>
                     eventId
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     cellId
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     userId
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     action
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     dateAndTime
-                </TableCell>
-                <TableCell>
+                </th>
+                <th>
                     description
-                </TableCell>
-            </TableHead>
-            <TableBody>
+                </th>
+            </thead>
+            <tbody>
                 {listUsers}
-            </TableBody>
+            </tbody>
         </Table>
     </>)
 }

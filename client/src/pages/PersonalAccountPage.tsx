@@ -1,28 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { List, ListItemButton } from '@mui/material';
-import ListItem from '@mui/material';
+import MyCellsPage from './manyEntity/MyCellsPage';
+import BookCellPage from './manyEntity/RentCellPage';
+import HelpPage from './HelpPage';
 
 
 export default function PersonalAccount() {
     return (<div>
         PersonalPage
-        <nav>
-            <ListItemButton>
+        <ul className="list-group">
+            <li className="list-group-item"> 
+                {/* сам линк сделать элементом списка, а не вложенным */}
                 <Link to="/myCells">Мои ячейки</Link>
-            </ListItemButton>
-            <ListItemButton>
-                <Link to="/bookCell">Арендовать ячейку</Link>
-            </ListItemButton>
-            <ListItemButton>
+            </li>
+            <li className="list-group-item">
+                <Link to="/rentCell">Арендовать ячейку</Link>
+            </li>
+            <li className="list-group-item">
                 <Link to="/help">Поддержка</Link>
-            </ListItemButton>
-            <ListItemButton>
+            </li>
+            <li className="list-group-item">
                 <Link to="/allCells">Все ячейки</Link>
-            </ListItemButton>
-            <ListItemButton>
+            </li>
+            <li className="list-group-item">
                 <Link to="/allEvents">Все события</Link>
-            </ListItemButton>
-        </nav>
+            </li>
+        </ul>
     </div>)
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import CellsTable from "../components/CellsTable";
-import { cellsInit } from "../serviceFiles/constants";
+import CellsTable from "../../components/CellsTable";
+import { cellsInit } from "../../serviceFiles/constants";
 
 export default function AllCellsPage() {
     const [cells, setCells] = useState(cellsInit);
