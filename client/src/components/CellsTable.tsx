@@ -1,64 +1,66 @@
-import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { useNavigate } from "react-router-dom"
-import Payment from "./Payment";
+import Payment from "../pages/PaymentPage";
 import { useState } from "react";
 import { Cell } from "../serviceFiles/types";
+import Table from "react-bootstrap/Table";
+import { Button } from "react-bootstrap";
 
 export default function CellsTable(props: { isForRent: boolean, isForAdmin: boolean, cells: Cell[] }) {
-
+    let navigate = useNavigate();
     const [showPayment, setShowPayment] = useState(false);
     const [cellForRent, setCellForRent] = useState(props.cells[0]);
     // let cellForRent: Cell|null = null;
     function handleRent(cell: Cell) {
-        setCellForRent(cell);
-        console.log(cellForRent);
-        setShowPayment(!showPayment);
-        console.log("again", cellForRent);
+            navigate("/paymentCell", {state: cell})
+        // setCellForRent(cell);
+        // console.log(cellForRent);
+        // setShowPayment(!showPayment);
+        // console.log("again", cellForRent);
     }
     function CloseRent() {
         setShowPayment(!showPayment);
     }
 
     const listCells = props.cells.map((cell: Cell, index) =>
-        <TableRow key={cell.cellId}>
-            <TableCell>
+        <tr key={cell.cellId}>
+            <td>
                 {cell.cellId}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {cell.isFree ? "Свободна" : "Занята"}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {cell.endOfRent}
-            </TableCell>
-            <TableCell>
+            </td>
+            <td>
                 {cell.warehouse}
-            </TableCell>
-            {props.isForRent && <TableCell> <Button variant="contained" onClick={() => handleRent(cell)}> Арендовать </Button></TableCell>}
-            {props.isForAdmin && <TableCell> {cell.needService ? "Требует" : "Не требует"}</TableCell>}
-            {props.isForAdmin && <TableCell> <Button variant="contained" > Обслужить </Button> </TableCell>}
-        </TableRow>
+            </td>
+            {props.isForRent && <td> <Button type="button" className="btn" onClick={() => handleRent(cell)}> Арендовать </Button></td>}
+            {props.isForAdmin && <td> {cell.needService ? "Требует" : "Не требует"}</td>}
+            {props.isForAdmin && <td> <Button type="button" className="btn" > Обслужить </Button> </td>}
+        </tr>
     )
     return (<>
-        {showPayment && <Payment cell={cellForRent} handleClick={CloseRent} isOpen={showPayment} />}
-        <Table>
-            <TableHead>
-                <TableCell>
+        {/* {showPayment && <Payment cell={cellForRent} handleClick={CloseRent} isOpen={showPayment} />} */}
+        <Table striped bordered hover>
+            <thead>
+                <th scope="col">
                     Номер
-                </TableCell>
-                <TableCell>
+                </th>
+                <th scope="col">
                     Статус
-                </TableCell>
-                <TableCell>
+                </th>
+                <th scope="col">
                     Дата окончания аренды
-                </TableCell>
-                <TableCell>
+                </th>
+                <th scope="col">
                     Склад
-                </TableCell>
-                {props.isForAdmin && <TableCell> Тех.обслуживание </TableCell>}
-            </TableHead>
-            <TableBody>
+                </th>
+                {props.isForAdmin && <th scope="col"> Тех.обслуживание </th>}
+            </thead>
+            <tbody>
                 {listCells}
-            </TableBody>
+            </tbody>
         </Table>
     </>)
 }

@@ -1,4 +1,4 @@
-import { Event } from "../serviceFiles/types"
+import { Event } from "../../serviceFiles/types"
 import { useLocation } from "react-router-dom"
 
 export default function EventPage() {
