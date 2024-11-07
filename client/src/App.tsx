@@ -19,7 +19,6 @@ function App() {
         <BrowserRouter>
         <header>
             <Link to="/personalAccount">ЛК</Link>
-            <Link to="/allUsers">Страница пользователей</Link>
         </header>
             <Routes>
             <Route path="/" element={<AuthPage />}></Route>

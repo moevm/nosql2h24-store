@@ -3,28 +3,31 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MyCellsPage from './manyEntity/MyCellsPage';
 import BookCellPage from './manyEntity/RentCellPage';
 import HelpPage from './HelpPage';
+import { ListGroup } from 'react-bootstrap';
 
 
 export default function PersonalAccount() {
     return (<div>
         PersonalPage
-        <ul className="list-group">
-            <li className="list-group-item"> 
-                {/* сам линк сделать элементом списка, а не вложенным */}
+        <ListGroup>
+            <ListGroup.Item> 
                 <Link to="/myCells">Мои ячейки</Link>
-            </li>
-            <li className="list-group-item">
+            </ListGroup.Item>
+            <ListGroup.Item>
                 <Link to="/rentCell">Арендовать ячейку</Link>
-            </li>
-            <li className="list-group-item">
+            </ListGroup.Item>
+            <ListGroup.Item>
                 <Link to="/help">Поддержка</Link>
-            </li>
-            <li className="list-group-item">
+            </ListGroup.Item>
+            <ListGroup.Item>
                 <Link to="/allCells">Все ячейки</Link>
-            </li>
-            <li className="list-group-item">
+            </ListGroup.Item>
+            <ListGroup.Item>
                 <Link to="/allEvents">Все события</Link>
-            </li>
-        </ul>
+            </ListGroup.Item>
+            <ListGroup.Item>
+            <Link to="/allUsers">Страница пользователей</Link>
+            </ListGroup.Item>
+        </ListGroup>
     </div>)
 }

@@ -45,6 +45,7 @@ export default function AllUsersPage() {
     return (<>
         <Table striped bordered hover>
             <thead>
+                <tr>
                 <th>
                     id
                 </th>
@@ -72,6 +73,7 @@ export default function AllUsersPage() {
                 <th>
                     Задолженность
                 </th>
+                </tr>
             </thead>
             <tbody>
                 {listUsers}

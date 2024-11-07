@@ -37,6 +37,7 @@ export default function AllEventsPage() {
     return (<>
         <Table striped bordered hover>
             <thead>
+                <tr>
                 <th>
                     eventId
                 </th>
@@ -55,6 +56,7 @@ export default function AllEventsPage() {
                 <th>
                     description
                 </th>
+                </tr>
             </thead>
             <tbody>
                 {listUsers}
