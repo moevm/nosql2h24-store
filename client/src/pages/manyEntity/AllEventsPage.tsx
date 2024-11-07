@@ -3,37 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Event } from "../../serviceFiles/types";
 import Table from "react-bootstrap/Table";
 import { Tab } from "react-bootstrap";
+import { eventsInit } from "../../serviceFiles/constants";
 
 export default function AllEventsPage() {
     let navigate = useNavigate();
 
-    const [events, setEvent] = useState([
-        {
-            eventId: 1,
-            cellId: 1,
-            userId: 1,
-            action: "open",
-            dateAndTime: "2024-10-13 12:46:01",
-            description: ""
-
-        }, {
-            eventId: 2,
-            cellId: 2,
-            userId: 1,
-            action: "close",
-            dateAndTime: "2024-11-13 13:50:01",
-            description: ""
-
-        },
-        {
-            eventId: 3,
-            cellId: 2,
-            userId: 1,
-            action: "breaking",
-            dateAndTime: "2024-11-16 01:50:01",
-            description: "Сломана дверца"
-
-        }]);
+    const [events, setEvent] = useState(eventsInit);
     function handleUserClick(event: Event) {
         navigate("/event", { state: event })
     }
@@ -62,6 +37,7 @@ export default function AllEventsPage() {
     return (<>
         <Table striped bordered hover>
             <thead>
+                <tr>
                 <th>
                     eventId
                 </th>
@@ -80,6 +56,7 @@ export default function AllEventsPage() {
                 <th>
                     description
                 </th>
+                </tr>
             </thead>
             <tbody>
                 {listUsers}

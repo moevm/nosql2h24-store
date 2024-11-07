@@ -44,6 +44,7 @@ export default function CellsTable(props: { isForRent: boolean, isForAdmin: bool
         {/* {showPayment && <Payment cell={cellForRent} handleClick={CloseRent} isOpen={showPayment} />} */}
         <Table striped bordered hover>
             <thead>
+                <tr>
                 <th scope="col">
                     Номер
                 </th>
@@ -57,6 +58,7 @@ export default function CellsTable(props: { isForRent: boolean, isForAdmin: bool
                     Склад
                 </th>
                 {props.isForAdmin && <th scope="col"> Тех.обслуживание </th>}
+                </tr>
             </thead>
             <tbody>
                 {listCells}
