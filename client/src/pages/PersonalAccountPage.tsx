@@ -4,30 +4,40 @@ import MyCellsPage from './manyEntity/MyCellsPage';
 import BookCellPage from './manyEntity/RentCellPage';
 import HelpPage from './HelpPage';
 import { ListGroup } from 'react-bootstrap';
-
+import '../css/PersonalAccount.css'; 
+import { ReactComponent as CellIcon } from '../css/cell-icon.svg';
 
 export default function PersonalAccount() {
-    return (<div>
-        PersonalPage
-        <ListGroup>
-            <ListGroup.Item> 
-                <Link to="/myCells">Мои ячейки</Link>
-            </ListGroup.Item>
-            <ListGroup.Item>
-                <Link to="/rentCell">Арендовать ячейку</Link>
-            </ListGroup.Item>
-            <ListGroup.Item>
-                <Link to="/help">Поддержка</Link>
-            </ListGroup.Item>
-            <ListGroup.Item>
-                <Link to="/allCells">Все ячейки</Link>
-            </ListGroup.Item>
-            <ListGroup.Item>
-                <Link to="/allEvents">Все события</Link>
-            </ListGroup.Item>
-            <ListGroup.Item>
-            <Link to="/allUsers">Страница пользователей</Link>
-            </ListGroup.Item>
-        </ListGroup>
-    </div>)
+    return (
+        <div className="personal-account">
+            <header className="header">
+                <div className="logo-container">
+                    <CellIcon className="cell-icon" />
+                    <span className="logo-text">Ячейка.ру</span>
+                </div>
+                <nav className="header-nav">
+                    <Link to="/account">Личный кабинет</Link>
+                    <span className="divider">|</span>  
+                    <Link to="/contacts">Контакты</Link>
+                </nav>
+            </header>
+
+            <main className="main-content">
+                <h1>Личный кабинет</h1>
+                <ul className="menu-list">
+                    <li><Link to="/myCells">Мои ячейки</Link></li>
+                    <li><Link to="/rentCell">Арендовать ячейку</Link></li>
+                    <li><Link to="/help">Служба поддержки</Link></li>
+                    <li><Link to="/logout">Выход</Link></li>
+                </ul>
+            </main>
+
+            <footer className="footer">
+                <address>
+                    Улица Торжковская 1Б, Санкт-Петербург, Россия<br />
+                    © 2024 Ячейка.ру
+                </address>
+            </footer>
+        </div>
+    );
 }
