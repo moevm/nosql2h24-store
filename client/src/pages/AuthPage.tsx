@@ -66,7 +66,7 @@ export default function AuthPage() {
                       </Form.Group>
                       
                       <div className="auth-options">
-                          <Link to="/forgot-password" className="forgot-password">Забыли пароль?</Link>
+                          <Link to="/help" className="forgot-password">Забыли пароль?</Link>
                       </div>
 
                       <Button variant="primary" type="submit">
