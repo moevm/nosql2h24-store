@@ -16,9 +16,9 @@ export default function PersonalAccount() {
                     <span className="logo-text">Ячейка.ру</span>
                 </div>
                 <nav className="header-nav">
-                    <Link to="/account">Личный кабинет</Link>
+                    <Link to="/personalAccount">Личный кабинет</Link>
                     <span className="divider">|</span>  
-                    <Link to="/contacts">Контакты</Link>
+                    <Link to="/help">Контакты</Link>
                 </nav>
             </header>
 
@@ -28,7 +28,7 @@ export default function PersonalAccount() {
                     <li><Link to="/myCells">Мои ячейки</Link></li>
                     <li><Link to="/rentCell">Арендовать ячейку</Link></li>
                     <li><Link to="/help">Служба поддержки</Link></li>
-                    <li><Link to="/logout">Выход</Link></li>
+                    <li><Link to="/">Выход</Link></li>
                 </ul>
             </main>
 
