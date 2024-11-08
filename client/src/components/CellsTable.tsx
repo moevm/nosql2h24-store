@@ -33,7 +33,7 @@ export default function CellsTable(props: { isForRent: boolean, isForAdmin: bool
                 {cell.endOfRent}
             </td>
             <td>
-                {cell.warehouse}
+                {cell.warehouseId}
             </td>
             {props.isForRent && <td> <Button type="button" className="btn" onClick={() => handleRent(cell)}> Арендовать </Button></td>}
             {props.isForAdmin && <td> {cell.needService ? "Требует" : "Не требует"}</td>}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CellsTable from "../../components/CellsTable";
-import { cellsInit, GET_ALL_CELLS_URL } from "../../serviceFiles/constants";
+import { cellsInit, GET_ALL_CELLS_URL, POST_NEW_CELL_URL } from "../../serviceFiles/constants";
 import { Cell, cellFields } from "../../serviceFiles/types";
 import Filter from "../../components/Filter";
 import Addition from "../../components/Addition";
@@ -14,7 +14,7 @@ export default function AllCellsPage() {
     }
     function handleSendNewData(newObj: Cell){
         console.log("Получен объект в AllCellsPage", newObj);
-        axios.post(GET_ALL_CELLS_URL, newObj).then(response => { setCells(response.data) }).catch(error => {
+        axios.post(POST_NEW_CELL_URL, newObj).then(response => { setCells(response.data) }).catch(error => {
             console.error('Ошибка при получении ячеек. Взяты дефолтные ячейки', error);
             setCells(cellsInit);
         });

@@ -1,14 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Event } from "../../serviceFiles/types";
+import { Event, eventFields } from "../../serviceFiles/types";
 import Table from "react-bootstrap/Table";
 import { Tab } from "react-bootstrap";
-import { eventsInit } from "../../serviceFiles/constants";
+import { eventsInit, GET_ALL_EVENTS_URL, POST_NEW_EVENT_URL } from "../../serviceFiles/constants";
+import Addition from "../../components/Addition";
+import axios from "axios";
 
 export default function AllEventsPage() {
     let navigate = useNavigate();
 
     const [events, setEvent] = useState(eventsInit);
+    const [filters, setFilters] = useState({});
+
+    useEffect(() => {
+        axios.post(GET_ALL_EVENTS_URL, filters).then(response => { setEvent(response.data) }).catch(error => {
+            console.error('Ошибка при получении событий. Взяты дефолтные события', error);
+            setEvent(eventsInit);
+        });
+    })
+    function handleSendNewData(newObj: Event){
+        console.log("Получен объект в AllEventssPage", newObj);
+        axios.post(POST_NEW_EVENT_URL, newObj).then(response => { setEvent(response.data) }).catch(error => {
+            console.error('Ошибка при получении событий. Взяты дефолтные события', error);
+            setEvent(eventsInit);
+        });
+    }
+
     function handleUserClick(event: Event) {
         navigate("/event", { state: event })
     }
@@ -35,6 +53,7 @@ export default function AllEventsPage() {
         </tr>
     )
     return (<>
+            <Addition handleSend={handleSendNewData} obj={eventFields}></Addition>
         <Table striped bordered hover>
             <thead>
                 <tr>

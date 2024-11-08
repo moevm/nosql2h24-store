@@ -26,13 +26,13 @@ export default function AllUsersPage() {
                 {user.role}
             </td>
             <td>
-                {user.date}
+                {user.regDate}
             </td>
             <td>
-                {user.date}
+                {user.birthday}
             </td>
             <td>
-                {user.date}
+                {user.editDate}
             </td>
             <td>
                 {user.rentedCells.length}
