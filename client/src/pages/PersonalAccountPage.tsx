@@ -27,6 +27,10 @@ export default function PersonalAccount() {
                     <li><Link to="/myCells">Мои ячейки</Link></li>
                     <li><Link to="/rentCell">Арендовать ячейку</Link></li>
                     <li><Link to="/help">Служба поддержки</Link></li>
+                    <li><Link to="/allCells">Все ячейки</Link></li>
+                    <li><Link to="/allEvents">Все события</Link></li>
+                    <li><Link to="/allUsers">Все пользователи</Link></li>
+                    <li><Link to="/allWarehouses">Все склады</Link></li>
                     <li><Link to="/">Выход</Link></li>
                 </ul>
             </main>
