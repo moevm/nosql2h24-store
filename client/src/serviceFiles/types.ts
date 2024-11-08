@@ -20,3 +20,10 @@ export type Event = {
     dateAndTime: string,
     description: string
 }
+
+export type Warehouse = {
+    id: number,
+    adress: string,
+    capacity: number,
+    chiefId: number,
+}

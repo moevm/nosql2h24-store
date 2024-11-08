@@ -47,5 +47,20 @@ export let usersInit = [{
     rentedCells: [202, 901],
     indebtedness: 10.00
 }]
+
+export let warehousesInit = [
+    {
+        id: 1,
+        adress: "Voronezh",
+        capacity: 10,
+        chiefId: 1023,
+    },
+    {
+        id: 2,
+        adress: "Moscow",
+        capacity: 100,
+        chiefId: 2303,
+    }
+]
 export const SIGN_IN_URL = "src/serviceFiles/data.ts"
 export const GET_ALL_CELLS_URL = "src/serviceFiles/data.ts"

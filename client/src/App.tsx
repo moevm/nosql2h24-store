@@ -13,6 +13,8 @@ import AllEventsPage from './pages/manyEntity/AllEventsPage';
 import EventPage from './pages/oneEntity/EventPage';
 import PaymentPage from './pages/PaymentPage';
 import AuthPage from './pages/AuthPage';
+import AllWarehousesPage from './pages/manyEntity/AllWarehousesPage';
+import WarehousePage from './pages/oneEntity/WarehousePage';
 
 function App() {
     return (
@@ -32,6 +34,8 @@ function App() {
                 <Route path="/allEvents" element={<AllEventsPage />}></Route>
                 <Route path="/event" element={<EventPage />}></Route>
                 <Route path="/paymentCell" element={<PaymentPage />}></Route>
+                <Route path="/allWarehouses" element={<AllWarehousesPage />}></Route>
+                <Route path="/warehouse" element={<WarehousePage/>}></Route>
             </Routes>
         </BrowserRouter>
     );
