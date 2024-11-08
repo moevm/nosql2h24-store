@@ -5,10 +5,12 @@ import { Cell, cellFields } from "../../serviceFiles/types";
 import Filter from "../../components/Filter";
 import Addition from "../../components/Addition";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function AllCellsPage() {
     const [cells, setCells] = useState(cellsInit);
     const [filters, setFilters] = useState({});
+    let navigate = useNavigate();
     function handleSendFilters(obj: Cell){
         setFilters(obj)
     }

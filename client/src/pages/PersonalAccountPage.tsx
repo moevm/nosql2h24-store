@@ -26,7 +26,7 @@ export default function PersonalAccount() {
                 <Link to="/allEvents">Все события</Link>
             </ListGroup.Item>
             <ListGroup.Item>
-            <Link to="/allUsers">Страница пользователей</Link>
+            <Link to="/allUsers">Все пользователи</Link>
             </ListGroup.Item>
             <ListGroup.Item>
             <Link to="/allWarehouses">Все склады</Link>
