@@ -5,11 +5,11 @@ namespace Warehouse2.Models
     public class Event
     {
 
-        public Event(string action, string description)
+        public Event(string action, string description, int dat)
         {
             Action = action;
             Descritpion = description;
-            DateAndTime = 0;
+            DateAndTime = dat;
         }
 
         public string? Id { get; set; }

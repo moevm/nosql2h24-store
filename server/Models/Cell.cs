@@ -1,23 +1,27 @@
-﻿namespace Warehouse2.Models
+﻿
+
+namespace Warehouse2.Models
 {
     public class Cell
     {
-        public Guid cellId { get; set; }
+        public Cell() {}
 
-        public Guid? warehouseId { get; set; }
+        public string? Id { get; set; }
+
+        public string? warehouseId { get; set; }
         
-        public int? cellNum { get; set; }
+        public int cellNum { get; set; }
         
-        public int? tierNum { get; set; }
+        public int tierNum { get; set; }
         
-        public bool? isFree { get; set; }
+        public bool isFree { get; set; }
         
-        public int? endOfRent { get; set; }
+        public int endOfRent { get; set; }
         
-        public int? tariffPerDay { get; set; }
+        public float tariffPerDay { get; set; }
         
-        public int? size { get; set; }
+        public float size { get; set; }
         
-        public Guid[]? listOfEventIds { get; set; }
+        public string[]? listOfEventIds { get; set; }
     }
 }

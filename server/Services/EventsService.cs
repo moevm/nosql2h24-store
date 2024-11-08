@@ -2,6 +2,9 @@
 using Core.Arango.Modules;
 using Core.Arango.Protocol;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System;
 using Warehouse2.Models;
 
 namespace Warehouse2.Services
@@ -24,7 +27,13 @@ namespace Warehouse2.Services
 
         }
 
-        public async Task<List<Event>> GetAsync() =>
-            await _arango.Document.GetManyAsync<Event>(_dbName, _collectionName, new List<string> { "28163" });   // only for one now !!!!!
+        /* public async Task<List<Event>> GetAsync() =>
+             await _arango.Document.GetManyAsync<Event>(_dbName, _collectionName, new List<string> { "28163" });   // only for one now !!!!!
+        */
+        public async Task<List<Event>> ListDocsAsync()
+        {
+            //FormattableString filter = $"x";
+            return await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"x");
+        }
     }
 }

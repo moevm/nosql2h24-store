@@ -2,14 +2,16 @@
 {
     public class Warehouse
     {
-        public Guid Id { get; set; }
+        Warehouse() { }
+
+        public string? Id { get; set; }
 
         public string? address { get; set; }
 
         public int? capacity { get; set; }
 
-        public int? chiefId { get; set; }
+        public string? chiefId { get; set; }
 
-        public Guid[]? cells { get; set; }
+        public string[]? cells { get; set; }
     }
 }

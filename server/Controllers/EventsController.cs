@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Arango.Protocol;
+using Microsoft.AspNetCore.Mvc;
 using Warehouse2.Models;
 using Warehouse2.Services;
 
@@ -15,8 +16,9 @@ namespace Warehouse2.Controllers
             _eventsService = eventsService;
         }
 
+        
         [HttpGet]
-        public async Task<List<Event>> Get() =>
-            await _eventsService.GetAsync();
+        public async Task<List<Event>> GetDocsIndices() =>
+            await _eventsService.ListDocsAsync();
     }
 }
