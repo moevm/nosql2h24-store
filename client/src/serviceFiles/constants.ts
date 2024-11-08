@@ -1,7 +1,7 @@
 export let cellsInit = [
-    { cellId: 5, cellNum: 1, tierNum: 1, isFree: true, needService: true, endOfRent: "2025-02-02", size: 0.1, warehouseId: 1 },
-    { cellId: 9, cellNum: 2, tierNum: 10, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouseId: 2 },
-    { cellId: 4, cellNum: 3, tierNum: 2, isFree: true, needService: true, endOfRent: "2026-02-01", size: 0.6, warehouseId: 3 }]
+    { cellId: 5, cellNum: 1, tierNum: 1, isFree: true, needService: true, endOfRent: "2025-02-02", size: 0.1, warehouseId: 1, tarifPerDay: 12.00 },
+    { cellId: 9, cellNum: 2, tierNum: 10, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouseId: 2, tarifPerDay: 12.00 },
+    { cellId: 4, cellNum: 3, tierNum: 2, isFree: true, needService: true, endOfRent: "2026-02-01", size: 0.6, warehouseId: 3, tarifPerDay: 20.00}]
 
 export let eventsInit = [{
     eventId: 1,
