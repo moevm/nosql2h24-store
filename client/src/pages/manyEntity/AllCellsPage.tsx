@@ -22,7 +22,7 @@ export default function AllCellsPage() {
         });
     }
     useEffect(() => {
-        axios.post(GET_ALL_CELLS_URL, filters).then(response => { setCells(response.data) }).catch(error => {
+        axios.get(GET_ALL_CELLS_URL, {params: filters}).then(response => { setCells(response.data) }).catch(error => {
             console.error('Ошибка при получении ячеек. Взяты дефолтные ячейки', error);
             setCells(cellsInit);
         });

@@ -14,7 +14,7 @@ export default function AllEventsPage() {
     const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        axios.post(GET_ALL_EVENTS_URL, filters).then(response => { setEvent(response.data) }).catch(error => {
+        axios.get(GET_ALL_EVENTS_URL, {params: filters}).then(response => { setEvent(response.data) }).catch(error => {
             console.error('Ошибка при получении событий. Взяты дефолтные события', error);
             setEvent(eventsInit);
         });

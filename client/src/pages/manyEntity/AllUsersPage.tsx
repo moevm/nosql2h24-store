@@ -12,7 +12,7 @@ export default function AllUsersPage() {
     const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        axios.post(GET_ALL_USERS_URL, filters).then(response => { setUsers(response.data) }).catch(error => {
+        axios.get(GET_ALL_USERS_URL, {params: filters}).then(response => { setUsers(response.data) }).catch(error => {
             console.error('Ошибка при получении пользователей. Взяты дефолтные пользователи', error);
             setUsers(usersInit);
         });

@@ -13,7 +13,7 @@ export default function AllWarehousesPage() {
     const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        axios.post(GET_ALL_WAREHOUSES_URL, filters).then(response => { setWarehouses(response.data) }).catch(error => {
+        axios.get(GET_ALL_WAREHOUSES_URL, {params: filters}).then(response => { setWarehouses(response.data) }).catch(error => {
             console.error('Ошибка при получении складов. Взяты дефолтные склады', error);
             setWarehouses(warehousesInit);
         });

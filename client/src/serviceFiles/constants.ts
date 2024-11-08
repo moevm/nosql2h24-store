@@ -70,6 +70,8 @@ export let warehousesInit = [
 ]
 export const SIGN_IN_URL = ""
 export const GET_ALL_CELLS_URL = ""
+export const GET_MY_CELLS_URL = ""
+export const GET_FREE_CELLS_URL = ""
 export const POST_NEW_CELL_URL = ""
 export const GET_ALL_EVENTS_URL = ""
 export const POST_NEW_EVENT_URL = ""
