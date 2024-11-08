@@ -21,6 +21,10 @@ export default function CellsTable(props: { isForRent: boolean, isForAdmin: bool
         setShowPayment(!showPayment);
     }
 
+    function handleCellClick(cell: Cell) {
+        navigate("/cell", { state: cell })
+    }
+
     const listCells = props.cells.map((cell: Cell, index) =>
         <tr key={cell.cellId}>
             <td>
@@ -33,11 +37,12 @@ export default function CellsTable(props: { isForRent: boolean, isForAdmin: bool
                 {cell.endOfRent}
             </td>
             <td>
-                {cell.warehouse}
+                {cell.warehouseId}
             </td>
             {props.isForRent && <td> <Button type="button" className="btn" onClick={() => handleRent(cell)}> Арендовать </Button></td>}
             {props.isForAdmin && <td> {cell.needService ? "Требует" : "Не требует"}</td>}
             {props.isForAdmin && <td> <Button type="button" className="btn" > Обслужить </Button> </td>}
+            <td> <Button type="button" className="btn" onClick={() => handleCellClick(cell)}> Подробнее </Button></td>
         </tr>
     )
     return (<>

@@ -1,7 +1,7 @@
 export let cellsInit = [
-    { cellId: 5, isFree: true, needService: true, endOfRent: "2025-02-02", size: 0.1, warehouse: "Комендантский проспект" },
-    { cellId: 9, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouse: "Большевиков" },
-    { cellId: 4, isFree: true, needService: true, endOfRent: "2026-02-01", size: 0.6, warehouse: "Электросила" }]
+    { cellId: 5, cellNum: 1, tierNum: 1, isFree: true, needService: true, endOfRent: "2025-02-02", size: 0.1, warehouseId: 1 },
+    { cellId: 9, cellNum: 2, tierNum: 10, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouseId: 2 },
+    { cellId: 4, cellNum: 3, tierNum: 2, isFree: true, needService: true, endOfRent: "2026-02-01", size: 0.6, warehouseId: 3 }]
 
 export let eventsInit = [{
     eventId: 1,
@@ -35,7 +35,9 @@ export let usersInit = [{
     NameSurnamePatronymic: "Крупская Ольга Дмитриевна",
     role: "Client",
     login: "LOGIN_1",
-    date: "2024-01-13",
+    birthday: "1980-01-13",
+    regDate: "2024-01-13",
+    editDate: "2024-01-13",
     rentedCells: [201, 321, 710],
     indebtedness: 0.00
 }, {
@@ -43,8 +45,35 @@ export let usersInit = [{
     NameSurnamePatronymic: "Королева Полина Андреевна",
     role: "User",
     login: "LOGIN_2",
-    date: "2023-04-10",
+    birthday: "2000-01-13",
+    regDate: "2024-01-13",
+    editDate: "2024-01-13",
     rentedCells: [202, 901],
     indebtedness: 10.00
 }]
-export const SIGN_IN_URL = "src/serviceFiles/data.ts"
+
+export let warehousesInit = [
+    {
+        id: 1,
+        adress: "Voronezh",
+        capacity: 10,
+        chiefId: 1023,
+        cells:  [201, 321, 710]
+    },
+    {
+        id: 2,
+        adress: "Moscow",
+        capacity: 100,
+        chiefId: 2303,
+        cells:  [1, 3211, 10]
+    }
+]
+export const SIGN_IN_URL = ""
+export const GET_ALL_CELLS_URL = ""
+export const POST_NEW_CELL_URL = ""
+export const GET_ALL_EVENTS_URL = ""
+export const POST_NEW_EVENT_URL = ""
+export const GET_ALL_USERS_URL = ""
+export const POST_NEW_USER_URL = ""
+export const GET_ALL_WAREHOUSES_URL = ""
+export const POST_NEW_WAREHOUSE_URL = ""
