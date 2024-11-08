@@ -6,6 +6,7 @@ import HelpPage from './HelpPage';
 import { ListGroup } from 'react-bootstrap';
 import '../css/PersonalAccount.css'; 
 import { ReactComponent as CellIcon } from '../css/cell-icon.svg';
+import { ReactComponent as BackIcon } from '../css/back-icon.svg';
 
 export default function PersonalAccount() {
     return (
@@ -16,8 +17,6 @@ export default function PersonalAccount() {
                     <span className="logo-text">Ячейка.ру</span>
                 </div>
                 <nav className="header-nav">
-                    <Link to="/personalAccount">Личный кабинет</Link>
-                    <span className="divider">|</span>  
                     <Link to="/help">Контакты</Link>
                 </nav>
             </header>
@@ -28,10 +27,6 @@ export default function PersonalAccount() {
                     <li><Link to="/myCells">Мои ячейки</Link></li>
                     <li><Link to="/rentCell">Арендовать ячейку</Link></li>
                     <li><Link to="/help">Служба поддержки</Link></li>
-                    <li><Link to="/allCells">Все ячейки</Link></li>
-                    <li><Link to="/allEvents">Все события</Link></li>
-                    <li><Link to="/allUsers">Все пользователи</Link></li>
-                    <li><Link to="/allWarehouses">Все склады</Link></li>
                     <li><Link to="/">Выход</Link></li>
                 </ul>
             </main>
@@ -42,6 +37,10 @@ export default function PersonalAccount() {
                     © 2024 Ячейка.ру
                 </address>
             </footer>
+
+            <a href="/" className="back-to-dashboard-button">
+                <BackIcon className="back-icon" />
+            </a>
         </div>
     );
 }
