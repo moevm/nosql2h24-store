@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap"
 import axios, { AxiosError } from "axios";
 import { SIGN_IN_URL } from "../serviceFiles/constants";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import '../css/AuthPage.css';
+import { ReactComponent as CellIcon } from '../css/cell-icon.svg';
+import { ReactComponent as PhoneIcon } from '../css/phone-icon.svg';
 
 export default function AuthPage() {
     const [formData, setFormData] = useState({email: '', password: ''});
@@ -35,24 +38,65 @@ export default function AuthPage() {
             }
           }
     }
-    return (<div>
-        <h2>Вход</h2>
-        <Form onSubmit={handleEntry}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Логин</Form.Label>
-                <Form.Control type="email" placeholder="Почта" onChange={handleEmailChange}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Пароль</Form.Label>
-                <Form.Control type="password" placeholder="Пароль" onChange={handlePasswordChange}/>
-            </Form.Group>
+    return (
+      <div className="auth-page">
+          <header className="header">
+              <div className="logo-container">
+                  <CellIcon className="cell-icon" />
+                  <span className="logo-text">Ячейка.ру</span>
+              </div>
+              <nav className="header-nav">
+                  <Link to="/help">Контакты</Link>
+              </nav>
+          </header>
 
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Запомнить меня" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Вход
-            </Button>
-        </Form>
-    </div>)
+          <div className="auth-content">
+              <div className="auth-form-container">
+                  <h2>Вход</h2>
+                  <p>Для входа введите почтовый адрес и пароль.</p>
+                  <Form onSubmit={handleEntry}>
+                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Логин</Form.Label>
+                          <Form.Control type="email" placeholder="Почта" onChange={handleEmailChange}/>
+                      </Form.Group>
+                      
+                      <Form.Group className="mb-3" controlId="formBasicPassword">
+                          <Form.Label>Пароль</Form.Label>
+                          <Form.Control type="password" placeholder="Пароль" onChange={handlePasswordChange}/>
+                      </Form.Group>
+                      
+                      <div className="auth-options">
+                          <Link to="/help" className="forgot-password">Забыли пароль?</Link>
+                      </div>
+
+                      <Button variant="primary" type="submit">
+                          Вход
+                      </Button>
+
+                      <div className="register-link">
+                          <Link to="/register">Зарегистрироваться</Link>
+                      </div>
+
+                      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                          <Form.Check type="checkbox" label="Запомнить меня" />
+                      </Form.Group>
+                  </Form>
+              </div>
+
+              <div className="image">
+                  <div className="phone-mockup">
+                      <PhoneIcon className="phone-icon" />
+                      <CellIcon className="cell-icon2" />
+                  </div>
+              </div>
+          </div>
+
+          <footer className="footer">
+              <address>
+                  Улица Торжковская 15, Санкт-Петербург, Россия<br />
+                  © 2024 Ячейка.ру
+              </address>
+          </footer>
+      </div>
+  );
 }

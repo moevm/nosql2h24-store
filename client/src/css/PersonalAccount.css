@@ -1,0 +1,109 @@
+.personal-account {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Calibri', sans-serif;
+    color: black;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.cell-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-nav a {
+    color: black;
+    text-decoration: none;
+    font-weight: normal;
+    padding: 0 60px;
+}
+
+.divider {
+    color: #ccc; 
+    font-size: 18px;
+    padding: 0 10px; 
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    padding: 40px;
+}
+
+.main-content h1 {
+    font-size: 1.5em;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    width: 600px;
+}
+
+.menu-list li {
+    margin: 10px 0;
+}
+
+.menu-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border: 3px solid #6a5acd;
+    border-radius: 15px;
+    color: black;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+.menu-list a:hover {
+    background-color: #f0f0f0;
+}
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer address {
+    font-style: normal;
+}

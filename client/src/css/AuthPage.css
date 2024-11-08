@@ -1,0 +1,150 @@
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Calibri', sans-serif;
+    color: black;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.cell-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-nav a {
+    color: black;
+    text-decoration: none;
+    font-weight: normal;
+    padding: 0 60px;
+}
+
+.divider {
+    color: #ccc; 
+    font-size: 18px;
+    padding: 0 10px; 
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+
+.auth-content {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.auth-form-container {
+    max-width: 400px;
+    width: 100%;
+}
+
+.auth-form-container h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.auth-form-container p {
+    font-size: 1em;
+    color: #666;
+}
+
+.forgot-password {
+    font-size: 0.9em;
+    color: #6a5acd;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    background-color: #6a5acd;
+    border: none;
+    width: 100%;
+    font-size: 1.05em;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+
+.register-link {
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: #6a5acd;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.auth-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.phone-mockup {
+    width: 50%;
+    height: 50%;
+}
+
+.cell-icon2 {
+    position: absolute;
+    top: 52%;
+    left: 55.5%;
+    transform: translate(-50%, -50%);
+    width: 100px; 
+    height: 100px;
+    color: #6a5acd;
+}
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer address {
+    font-style: normal;
+}
