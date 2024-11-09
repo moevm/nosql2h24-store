@@ -22,10 +22,20 @@ namespace Warehouse2.Services
 
         }
 
-
+        // get all the docs
         public async Task<List<User>> ListDocsAsync()
         {
             return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"x");
+        }
+
+        public async Task<User> GetOneAsync(string id)
+        {
+            return await _arango.Document.GetAsync<User>(_dbName, _collectionName, id);
+        }
+
+        public async Task UserAddAsync(User newObj)
+        {
+            await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
         }
     }
 }

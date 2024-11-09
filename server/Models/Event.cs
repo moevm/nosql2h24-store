@@ -5,14 +5,25 @@ namespace Warehouse2.Models
     public class Event
     {
 
-        public Event(string action, string description, int dat)
+        public Event() { }
+
+        public Event(string action, string dscr, int dat, string WId, string CId = "")
         {
-            Action = action;
-            Descritpion = description;
-            DateAndTime = dat;
+            this.Key = Guid.NewGuid().ToString();
+            this.From = WId;
+            this.To = CId;
+            this.CellId = CId;
+            this.UserId = "";
+            this.Action = action;
+            this.Descritpion = dscr;
+            this.DateAndTime = dat;
         }
 
-        public string? Id { get; set; }
+        public string? Key { get; set; }
+
+        public string? From { get; set; }
+
+        public string? To { get; set; }
 
         public string? CellId { get; set; }
 

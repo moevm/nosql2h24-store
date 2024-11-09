@@ -2,13 +2,23 @@
 {
     public class Warehouse
     {
-        Warehouse() { }
+        public Warehouse() 
+        { }
 
-        public string? Id { get; set; }
+        public Warehouse(string nAddress, int nCapacity, string nChiefId = "")
+        {
+            this.Key = Guid.NewGuid().ToString();
+            this.address = nAddress;
+            this.capacity = nCapacity;
+            this.chiefId = nChiefId;
+            this.cells = [];
+        }
+
+        public string? Key { get; set; }
 
         public string? address { get; set; }
 
-        public int? capacity { get; set; }
+        public int capacity { get; set; }
 
         public string? chiefId { get; set; }
 

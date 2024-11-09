@@ -19,5 +19,19 @@ namespace Warehouse2.Controllers
         [HttpGet]
         public async Task<List<User>> GetDocsIndices() =>
             await _usersService.ListDocsAsync();
+
+        [HttpGet("{id}")]
+        public async Task<User> Get(string id) =>
+            await _usersService.GetOneAsync(id);
+
+        [HttpPost]
+        public async Task<IActionResult> Post(string NSP, string role, string log, string psw, int bd)
+        {
+            User newObj = new User(NSP, role, log, psw, bd);
+
+            await _usersService.UserAddAsync(newObj);
+
+            return CreatedAtAction(nameof(Get), new { id = newObj.Key }, newObj);
+        }
     }
 }

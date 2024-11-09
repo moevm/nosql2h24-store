@@ -9,7 +9,7 @@ using Warehouse2.Models;
 
 namespace Warehouse2.Services
 {
-    public class EventsService
+    public class EventsService 
     {
         private readonly IArangoContext _arango;
 
@@ -27,13 +27,20 @@ namespace Warehouse2.Services
 
         }
 
-        /* public async Task<List<Event>> GetAsync() =>
-             await _arango.Document.GetManyAsync<Event>(_dbName, _collectionName, new List<string> { "28163" });   // only for one now !!!!!
-        */
+        // get all the docs
         public async Task<List<Event>> ListDocsAsync()
         {
-            //FormattableString filter = $"x";
             return await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"x");
         }
+
+        public async Task<Event> GetOneAsync(string id)
+        {
+            return await _arango.Document.GetAsync<Event>(_dbName, _collectionName, id);
+        }
+
+        /*public async Task EventAddAsync(object newObj)
+        {
+            await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
+        }*/
     }
 }

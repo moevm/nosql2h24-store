@@ -19,6 +19,20 @@ namespace Warehouse2.Controllers
         [HttpGet]
         public async Task<List<Cell>> GetDocsIndices() =>
             await _cellsService.ListDocsAsync();
+
+        [HttpGet("{id}")]
+        public async Task<Cell> Get(string id) =>
+            await _cellsService.GetOneAsync(id);
+
+        [HttpPost]
+        public async Task<IActionResult> Post(int CNum, int TNum, float tar, float size, string WId)
+        {
+            Cell newObj = new Cell(CNum, TNum, tar, size, WId);
+
+            await _cellsService.CellAddAsync(newObj);
+
+            return CreatedAtAction(nameof(Get), new { id = newObj.Key }, newObj);
+        }
     }
 }
 

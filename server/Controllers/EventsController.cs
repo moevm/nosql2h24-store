@@ -20,5 +20,9 @@ namespace Warehouse2.Controllers
         [HttpGet]
         public async Task<List<Event>> GetDocsIndices() =>
             await _eventsService.ListDocsAsync();
+
+        [HttpGet("{id}")]
+        public async Task<Event> Get(string id) =>
+            await _eventsService.GetOneAsync(id);
     }
 }
