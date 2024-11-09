@@ -1,4 +1,5 @@
 ﻿using Core.Arango;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.Options;
 using System.Data;
 using Warehouse2.Models;
@@ -15,6 +16,8 @@ namespace Warehouse2.Services
 
         private readonly string _eColName;
 
+        private readonly string _graphName;
+
         public CellsService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
         {
             _arango = new ArangoContext(WarehouseDatabaseSettings.Value.ConnectionString);
@@ -24,6 +27,8 @@ namespace Warehouse2.Services
             _collectionName = WarehouseDatabaseSettings.Value.CellsCollectionName;
 
             _eColName = WarehouseDatabaseSettings.Value.EventCollectionName;
+
+            _graphName = WarehouseDatabaseSettings.Value.GraphCollectionName;
         }
 
         // get all the docs
@@ -41,10 +46,13 @@ namespace Warehouse2.Services
         {
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
 
+            
             string dscr = "new cell has just been created";
-            Event newEvent = new Event("CREATE", dscr, 0, newObj.warehouseId, newObj.Key);
+            string cellId = "CELL/" + newObj.Key;
+            string warehouseId = "WAREHOUSE/" + newObj.warehouseId;
+            Event newEvent = new Event("CREATE", dscr, 0, warehouseId, cellId);
 
-            await _arango.Document.CreateAsync(_dbName, _eColName, newObj);
+            await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
         }
     }
 }

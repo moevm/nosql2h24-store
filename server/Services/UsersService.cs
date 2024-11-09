@@ -1,5 +1,8 @@
 ﻿using Core.Arango;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Threading;
 using Warehouse2.Models;
 
 namespace Warehouse2.Services
@@ -36,6 +39,11 @@ namespace Warehouse2.Services
         public async Task UserAddAsync(User newObj)
         {
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
+        }
+
+        public async Task<List<User>> AuthenticateAsync(string log)
+        {
+             return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"x.login == {log:@}");
         }
     }
 }

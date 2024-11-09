@@ -17,6 +17,8 @@ namespace Warehouse2.Services
 
         private readonly string _collectionName;
 
+        private readonly string _graphName;
+
         public EventsService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
         {
             _arango = new ArangoContext(WarehouseDatabaseSettings.Value.ConnectionString);
@@ -24,6 +26,8 @@ namespace Warehouse2.Services
             _dbName = WarehouseDatabaseSettings.Value.DatabaseName;
 
             _collectionName = WarehouseDatabaseSettings.Value.EventCollectionName;
+
+            _graphName = WarehouseDatabaseSettings.Value.GraphCollectionName;
 
         }
 
@@ -38,9 +42,14 @@ namespace Warehouse2.Services
             return await _arango.Document.GetAsync<Event>(_dbName, _collectionName, id);
         }
 
-        /*public async Task EventAddAsync(object newObj)
+        /*public async Task EventAddAsync(string CKEY, string WKEY)
         {
-            await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
+            string dscr = "new cell has just been created";
+            string cellId = "CELL/" + CKEY;
+            string warehouseId = "WAREHOUSE/" + WKEY;
+            Event newEvent = new Event("CREATE", dscr, 0, warehouseId, cellId);
+
+            await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _collectionName, newEvent);
         }*/
     }
 }
