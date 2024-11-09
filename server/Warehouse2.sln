@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse2", "Warehouse2.csproj", "{DAC174C6-1646-479A-A2D4-0F5947E052E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAC174C6-1646-479A-A2D4-0F5947E052E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC174C6-1646-479A-A2D4-0F5947E052E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC174C6-1646-479A-A2D4-0F5947E052E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC174C6-1646-479A-A2D4-0F5947E052E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A1B1C12-ED98-486C-BF6F-98B64A227856}
+	EndGlobalSection
+EndGlobal
