@@ -1,4 +1,5 @@
 ﻿using Core.Arango;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
@@ -41,9 +42,12 @@ namespace Warehouse2.Services
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
         }
 
-        public async Task<List<User>> AuthenticateAsync(string log)
+        public async Task<List<string>> AuthenticateAsync(string log, string psw)
         {
-             return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"x.login == {log:@}");
+            var usrs = await _arango.Query.FindAsync<string>(_dbName, _collectionName, 
+                $"x.login == {log} AND x.password == {psw}", "x._key");
+
+            return usrs;
         }
     }
 }

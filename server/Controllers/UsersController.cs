@@ -34,10 +34,11 @@ namespace Warehouse2.Controllers
             return CreatedAtAction(nameof(Get), new { id = newObj.Key }, newObj);
         }
 
-        [HttpGet("login/{login}")]
-        public async Task<List<User>> Authenticate(string login)
+        //[HttpGet("login/{login}")]
+        [HttpPost("auth/")]
+        public async Task<List<string>> Authenticate(string log, string psw)
         {
-            return await _usersService.AuthenticateAsync(login);
+            return await _usersService.AuthenticateAsync(log, psw);
         }
     }
 }
