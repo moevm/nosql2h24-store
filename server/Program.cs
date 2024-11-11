@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<WarehouseDatabaseSettings>(
     builder.Configuration.GetSection("WarehouseDatabase"));
 
+builder.Services.AddSingleton<InitService>();
 builder.Services.AddSingleton<EventsService>();
 builder.Services.AddSingleton<CellsService>();
 builder.Services.AddSingleton<UsersService>();
