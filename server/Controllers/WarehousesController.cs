@@ -18,22 +18,22 @@ namespace Warehouse2.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("all")]
         public async Task<List<Warehouse>> Get() =>
             await _warehousesService.ListDocsAsync();
 
-        [HttpGet("{id}")]
-        public async Task<Warehouse> Get(string id) =>
-            await _warehousesService.GetOneAsync(id);
+        [HttpGet("{key}")]
+        public async Task<Warehouse> Get(string key) =>
+            await _warehousesService.GetOneAsync(key);
 
-        [HttpPost]
+        [HttpPost("new")]
         public async Task<IActionResult> Post(string nAddress, int nCapacity, string nChiefId = "")
         {
             Warehouse newObj = new Warehouse(nAddress, nCapacity, nChiefId);
 
             await _warehousesService.WarehouseAddAsync(newObj);
 
-            return CreatedAtAction(nameof(Get), new { id = newObj.Key }, newObj);
+            return CreatedAtAction(nameof(Get), new { key = newObj._key }, newObj);
         }
     }
 }

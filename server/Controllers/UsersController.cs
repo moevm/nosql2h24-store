@@ -16,25 +16,24 @@ namespace Warehouse2.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("all")]
         public async Task<List<User>> GetDocsIndices() =>
             await _usersService.ListDocsAsync();
 
-        [HttpGet("{id}")]
-        public async Task<User> Get(string id) =>
-            await _usersService.GetOneAsync(id);
+        [HttpGet("{key}")]
+        public async Task<User> Get(string key) =>
+            await _usersService.GetOneAsync(key);
 
-        [HttpPost]
-        public async Task<IActionResult> Post(string NSP, string role, string log, string psw, int bd)
+        [HttpPost("new")]
+        public async Task<IActionResult> Post(string NSP, string role, string log, string psw, string bd)
         {
             User newObj = new User(NSP, role, log, psw, bd);
 
             await _usersService.UserAddAsync(newObj);
 
-            return CreatedAtAction(nameof(Get), new { id = newObj.Key }, newObj);
+            return CreatedAtAction(nameof(Get), new { key = newObj._key }, newObj);
         }
 
-        //[HttpGet("login/{login}")]
         [HttpPost("auth/")]
         public async Task<List<string>> Authenticate(string log, string psw)
         {

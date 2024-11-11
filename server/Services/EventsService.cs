@@ -37,9 +37,9 @@ namespace Warehouse2.Services
             return await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"x");
         }
 
-        public async Task<Event> GetOneAsync(string id)
+        public async Task<Event> GetOneAsync(string key)
         {
-            return await _arango.Document.GetAsync<Event>(_dbName, _collectionName, id);
+            return await _arango.Document.GetAsync<Event>(_dbName, _collectionName, key);
         }
 
         /*public async Task EventAddAsync(string CKEY, string WKEY)
