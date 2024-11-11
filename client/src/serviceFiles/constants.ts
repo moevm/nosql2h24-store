@@ -68,14 +68,14 @@ export let warehousesInit = [
         cells:  [1, 3211, 10]
     }
 ]
-export const SIGN_IN_URL = ""
-export const GET_ALL_CELLS_URL = "Cells/get"
+export const SIGN_IN_URL = "Users/auth"
+export const GET_ALL_CELLS_URL = "Cells/all"
 export const GET_MY_CELLS_URL = ""
 export const GET_FREE_CELLS_URL = ""
-export const POST_NEW_CELL_URL = "Cells/post"
-export const GET_ALL_EVENTS_URL = "Events/get"
+export const POST_NEW_CELL_URL = "Cells/new"
+export const GET_ALL_EVENTS_URL = "Events/all"
 export const POST_NEW_EVENT_URL = ""
-export const GET_ALL_USERS_URL = "Users/get"
-export const POST_NEW_USER_URL = "Users/post"
-export const GET_ALL_WAREHOUSES_URL = "Warehouses/get"
-export const POST_NEW_WAREHOUSE_URL = "Warehouses/post"
+export const GET_ALL_USERS_URL = "Users/all"
+export const POST_NEW_USER_URL = "Users/new"
+export const GET_ALL_WAREHOUSES_URL = "Warehouses/all"
+export const POST_NEW_WAREHOUSE_URL = "Warehouses/new"
