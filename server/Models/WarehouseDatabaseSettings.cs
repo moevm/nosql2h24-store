@@ -13,5 +13,7 @@
         public string UsersCollectionName { get; set; } = null!;
 
         public string WarehousesCollectionName { get; set; } = null!;
+
+        public string GraphCollectionName { get; set; } = null!;
     }
 }

@@ -6,9 +6,23 @@ namespace Warehouse2.Models
     {
         public Cell() {}
 
-        public string? Id { get; set; }
+        public Cell (int CNum, int TNum, float tariff, float size, string WId = "")
+        {
+            this._key = Guid.NewGuid().ToString();
+            this.warehouseId = WId;
+            this.cellNum = CNum;
+            this.tierNum = TNum;
+            this.isFree = true;
+            this.needService = false;
+            this.endOfRent = null;
+            this.tariffPerDay = tariff;
+            this.size = size;
+            this.listOfEventIds = new List<string>();
+        }
 
-        public string? warehouseId { get; set; }
+        public string? _key { get; set; }
+
+        public string warehouseId { get; set; }
         
         public int cellNum { get; set; }
         
@@ -16,12 +30,14 @@ namespace Warehouse2.Models
         
         public bool isFree { get; set; }
         
-        public int endOfRent { get; set; }
+        public bool needService { get; set; }
+        
+        public DateTimeOffset? endOfRent { get; set; }
         
         public float tariffPerDay { get; set; }
         
         public float size { get; set; }
         
-        public string[]? listOfEventIds { get; set; }
+        public List<string>? listOfEventIds { get; set; }
     }
 }

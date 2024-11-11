@@ -1,5 +1,8 @@
 ﻿using Core.Arango;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 using Warehouse2.Models;
 
 namespace Warehouse2.Services
@@ -22,10 +25,21 @@ namespace Warehouse2.Services
 
         }
 
-
+        // get all the docs
         public async Task<List<Warehouse>> ListDocsAsync()
         {
             return await _arango.Query.FindAsync<Warehouse>(_dbName, _collectionName, $"x");
         }
+
+        public async Task<Warehouse> GetOneAsync(string key)
+        {
+            return await _arango.Document.GetAsync<Warehouse>(_dbName, _collectionName, key);
+        }
+
+        public async Task WarehouseAddAsync(Warehouse newObj)
+        {
+            await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
+        }
+
     }
 }
