@@ -1,0 +1,38 @@
+# Стадия для бэкенда (ASP.NET)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
+WORKDIR /app
+EXPOSE 8080
+
+# Стадия для сборки проекта службы (бэкенда)
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+
+COPY ["server/Warehouse2.csproj", "server/"]
+RUN dotnet restore "server/Warehouse2.csproj"
+COPY . . 
+WORKDIR "/src/"
+RUN dotnet build "server/Warehouse2.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# Стадия для публикации проекта службы
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "server/Warehouse2.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+# Финальный контейнер для работы приложения
+FROM base AS final
+WORKDIR /app
+
+# Копируем скомпилированное приложение с бэкенда
+COPY --from=publish /app/publish .  
+
+# Копируем собранный фронтенд в каталог статических файлов для .NET
+# COPY --from=build_frontend /app/build /app/wwwroot  
+# Путь для статических файлов
+
+ENTRYPOINT ["dotnet", "Warehouse2.dll"]  
+# Запускаем приложение
+
+
+
