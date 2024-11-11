@@ -17,7 +17,7 @@ namespace Warehouse2.Models
             this.endOfRent = null;
             this.tariffPerDay = tariff;
             this.size = size;
-            this.listOfEventIds = new List<string>();
+            this.listOfEventKeys = new List<string>();
         }
 
         public string? _key { get; set; }
@@ -38,6 +38,6 @@ namespace Warehouse2.Models
         
         public float size { get; set; }
         
-        public List<string>? listOfEventIds { get; set; }
+        public List<string>? listOfEventKeys { get; set; }
     }
 }

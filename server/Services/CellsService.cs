@@ -58,19 +58,18 @@ namespace Warehouse2.Services
             string cellId = "CELL/" + newObj._key;
             string warehouseId = /*"WAREHOUSE/" + */newObj.warehouseId;
 
-            //string warehouseKey = warehouseId.Substring(_wColName.Length + 1);
-            //string[] list = { "1" };
-            
             Event newEvent = new Event("CREATE", dscr, warehouseId, cellId);
-
-            newObj.listOfEventIds.Add(newEvent._key);
+            newObj.listOfEventKeys.Add(newEvent._key);
 
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
 
             await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
 
-            /*Console.WriteLine(await _arango.Query.ExecuteAsync<Warehouse>(_dbName,
-                $"FOR w IN WAREHOUSE FILTER w RETURN w.cells"));*/
+            string warehouseKey = warehouseId.Substring(_wColName.Length + 1);
+            Warehouse warehouse = await _arango.Document.GetAsync<Warehouse>(_dbName, _wColName, warehouseKey);
+            warehouse.cellsKeys.Add(newObj._key);
+            await _arango.Document.UpdateAsync(_dbName, _wColName, warehouse);
+
         }
     }
 }

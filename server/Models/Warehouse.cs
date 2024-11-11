@@ -11,6 +11,7 @@
             this.address = nAddress;
             this.capacity = nCapacity;
             this.chiefId = nChiefId;
+            this.cellsKeys = new List<string>();
         }
 
         public string? _key { get; set; }
@@ -21,6 +22,6 @@
 
         public string? chiefId { get; set; }
 
-        public string[]? cells { get; set; } = Array.Empty<string>();
+        public List<string>? cellsKeys { get; set; }
     }
 }
