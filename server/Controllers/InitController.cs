@@ -21,8 +21,5 @@ namespace Warehouse2.Controllers
             await _initService.Create();
 
 
-        [HttpGet("initialize")]
-        public async Task Init() =>
-            await _initService.Initialize();
     }
 }
