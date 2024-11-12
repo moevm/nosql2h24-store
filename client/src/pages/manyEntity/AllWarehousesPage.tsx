@@ -29,12 +29,12 @@ export default function AllWarehousesPage() {
         navigate("/warehouse", {state: warehouse})
     }
     const listWerehouses = warehouses.map((warehouse: Warehouse, index) =>
-        <tr key={warehouse.id} >
+        <tr key={warehouse._key} >
             <td>
-                {warehouse.id}
+                {warehouse._key}
             </td>
             <td>
-                {warehouse.adress}
+                {warehouse.address}
             </td>
             <td>
                 {warehouse.capacity}

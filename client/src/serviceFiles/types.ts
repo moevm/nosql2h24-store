@@ -1,5 +1,5 @@
 export type Cell = {
-    cellId: number,
+    _key: string,
     cellNum: number,
     tierNum: number,
     isFree: boolean, 
@@ -7,11 +7,11 @@ export type Cell = {
     size: number, 
     endOfRent: string, 
     warehouseId: number,
-    tarifPerDay: number
+    tariffPerDay: number
 }
 
 export let cellFields = {
-    cellId: { name: "id", type: "n" },
+    _key: { name: "id", type: "s" },
     cellNum: { name: "Номер", type: "n" },
     tierNum: { name: "Ряд", type: "n" },
     isFree: { name: "Свободна", type: "b" },
@@ -19,10 +19,10 @@ export let cellFields = {
     size: { name: "Размер", type: "n" },
     endOfRent: { name: "КонецАренды", type: "d" },
     warehouseId: { name: "id склада", type: "n" },
-    tarifPerDay: { name: "Тариф", type: "n" }
+    tariffPerDay: { name: "Тариф", type: "n" }
 };
 export type User = {
-    id: number,
+    _key: string,
     NameSurnamePatronymic: string,
     role: string,
     login: string,
@@ -34,7 +34,7 @@ export type User = {
 }
 
 export let userFields = {
-    id: { name: "id", type: "n" },
+    _key: { name: "id", type: "s" },
     NameSurnamePatronymic: { name: "ФИО", type: "s" },
     role: { name: "Роль", type: "s" },
     login: { name: "Почта", type: "s" },
@@ -46,7 +46,7 @@ export let userFields = {
 }
 
 export type Event = {
-    eventId: number,
+    _key: string,
     cellId: number,
     userId: number,
     action: string,
@@ -55,7 +55,7 @@ export type Event = {
 }
 
 export let eventFields = {
-    eventId: { name: "id", type: "n" },
+    _key: { name: "id", type: "s" },
     cellId: { name: "id Ячейки", type: "n" },
     userId: { name: "id Пользователя", type: "n" },
     action: { name: "Действие", type: "s" },
@@ -64,16 +64,16 @@ export let eventFields = {
 }
 
 export type Warehouse = {
-    id: number,
-    adress: string,
+    _key: string,
+    address: string,
     capacity: number,
     chiefId: number,
     cells: number[],
 }
 
 export let warehouseFields = {
-    id: { name: "id", type: "n" },
-    adress: { name: "Адресс", type: "s" },
+    _key: { name: "id", type: "s" },
+    address: { name: "Адресс", type: "s" },
     capacity: { name: "Вместимость", type: "n" },
     chiefId: { name: "id Ответственного", type: "n" },
     cells: { name: "Ячейки", type: "n" },

@@ -1,10 +1,9 @@
 export let cellsInit = [
-    { cellId: 5, cellNum: 1, tierNum: 1, isFree: true, needService: true, endOfRent: "2025-02-02", size: 0.1, warehouseId: 1, tarifPerDay: 12.00 },
-    { cellId: 9, cellNum: 2, tierNum: 10, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouseId: 2, tarifPerDay: 12.00 },
-    { cellId: 4, cellNum: 3, tierNum: 2, isFree: true, needService: true, endOfRent: "2026-02-01", size: 0.6, warehouseId: 3, tarifPerDay: 20.00}]
+    { _key: '5', cellNum: 1, tierNum: 1, isFree: true, needService: true, endOfRent: "2025-02-02", size: 0.1, warehouseId: 1, tariffPerDay: 12.00 },
+    { _key: '9', cellNum: 2, tierNum: 10, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouseId: 2, tariffPerDay: 12.00 }]
 
 export let eventsInit = [{
-    eventId: 1,
+    _key: '1',
     cellId: 1,
     userId: 1,
     action: "open",
@@ -12,7 +11,7 @@ export let eventsInit = [{
     description: ""
 
 }, {
-    eventId: 2,
+    _key: '2',
     cellId: 2,
     userId: 1,
     action: "close",
@@ -21,7 +20,7 @@ export let eventsInit = [{
 
 },
 {
-    eventId: 3,
+    _key: '3',
     cellId: 2,
     userId: 1,
     action: "breaking",
@@ -31,7 +30,7 @@ export let eventsInit = [{
 }]
 
 export let usersInit = [{
-    id: 1,
+    _key: '1',
     NameSurnamePatronymic: "Крупская Ольга Дмитриевна",
     role: "Client",
     login: "LOGIN_1",
@@ -41,7 +40,7 @@ export let usersInit = [{
     rentedCells: [201, 321, 710],
     indebtedness: 0.00
 }, {
-    id: 2,
+    _key: '2',
     NameSurnamePatronymic: "Королева Полина Андреевна",
     role: "User",
     login: "LOGIN_2",
@@ -54,15 +53,15 @@ export let usersInit = [{
 
 export let warehousesInit = [
     {
-        id: 1,
-        adress: "Voronezh",
+        _key: '1',
+        address: "Voronezh",
         capacity: 10,
         chiefId: 1023,
         cells:  [201, 321, 710]
     },
     {
-        id: 2,
-        adress: "Moscow",
+        _key: '2',
+        address: "Moscow",
         capacity: 100,
         chiefId: 2303,
         cells:  [1, 3211, 10]

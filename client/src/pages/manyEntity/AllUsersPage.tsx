@@ -29,9 +29,9 @@ export default function AllUsersPage() {
         navigate("/user", { state: user })
     }
     const listUsers = users.map((user: User, index) =>
-        <tr key={user.id}>
+        <tr key={user._key}>
             <td>
-                {user.id}
+                {user._key}
             </td>
             <td>
                 {user.NameSurnamePatronymic}

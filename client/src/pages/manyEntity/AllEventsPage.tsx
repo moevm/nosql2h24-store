@@ -31,9 +31,9 @@ export default function AllEventsPage() {
         navigate("/event", { state: event })
     }
     const listUsers = events.map((event: Event, index) =>
-        <tr key={event.eventId} >
+        <tr key={event._key} >
             <td>
-                {event.eventId}
+                {event._key}
             </td>
             <td>
                 {event.cellId}

@@ -26,9 +26,9 @@ export default function CellsTable(props: { isForRent: boolean, isForAdmin: bool
     }
 
     const listCells = props.cells.map((cell: Cell, index) =>
-        <tr key={cell.cellId}>
+        <tr key={cell._key}>
             <td>
-                {cell.cellId}
+                {cell._key}
             </td>
             <td>
                 {cell.isFree ? "Свободна" : "Занята"}
