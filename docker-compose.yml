@@ -5,17 +5,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: build_frontend  # Указываем целевой образ для фронтенда
+      target: nginx_server  # Цель сборки для Nginx и фронтенда
     ports:
-      - "3000:3000"
+      - "80:80"
     networks:
       - warehouse-network
+    depends_on:
+      - warehouse2
 
   warehouse2:
     build:
       context: .
       dockerfile: Dockerfile
-      target: backend  # Указываем целевой образ для бэкенда
+      target: backend  # Цель сборки для бэкенда
     ports:
       - "8080:8080"
     environment:
