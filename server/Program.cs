@@ -16,10 +16,13 @@ builder.Services.AddSingleton<CellsService>();
 builder.Services.AddSingleton<UsersService>();
 builder.Services.AddSingleton<WarehousesService>();
 
+builder.Services.AddCors();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

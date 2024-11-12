@@ -1,0 +1,24 @@
+[
+  {
+    "_key": "029e65bb-bf7d-43ba-8efe-4d4a4478ffbf",
+    "nameSurnamePatronymic": "Goga Yelin Boo",
+    "role": "employee",
+    "login": "bogatyr",
+    "password": "glaz-uslada",
+    "birthday": "20.09.2003",
+    "regDate": "2024-11-12T05:12:09.2289011+03:00",
+    "editDate": null,
+    "indebtedness": 0
+  },
+  {
+    "_key": "0142f058-89ac-43b8-a28c-c6695bf751fa",
+    "nameSurnamePatronymic": "Anna Yelina Boo",
+    "role": "director",
+    "login": "coolwife",
+    "password": "devils_s_girl",
+    "birthday": "31.03.2000",
+    "regDate": "2024-11-12T05:12:38.4140347+03:00",
+    "editDate": null,
+    "indebtedness": 0
+  }
+]
