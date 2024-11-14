@@ -31,17 +31,6 @@ export default function HelpPage() {
                     <button className="send-button">Отправить сообщение</button>
                 </section>
             </main>
-
-            <footer className="footer">
-                <address>
-                    Улица Торжковская 1Б, Санкт-Петербург, Россия<br />
-                    © 2024 Ячейка.ру
-                </address>
-            </footer>
-
-            <a href="/personalAccount" className="back-to-dashboard-button">
-                <BackIcon className="back-icon" />
-            </a>
         </div>
     );
 }

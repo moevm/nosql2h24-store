@@ -22,20 +22,9 @@ export default function PersonalAccount() {
                     <li><Link to="/allEvents">Все события</Link></li>
                     <li><Link to="/allUsers">Все пользователи</Link></li>
                     <li><Link to="/allWarehouses">Все склады</Link></li>
-                    <li><Link to="/">Выход</Link></li>
+                    <li><Link to="/auth">Выход</Link></li>
                 </ul>
             </main>
-
-            <footer className="footer">
-                <address>
-                    Улица Торжковская 1Б, Санкт-Петербург, Россия<br />
-                    © 2024 Ячейка.ру
-                </address>
-            </footer>
-
-            <a href="/" className="back-to-dashboard-button">
-                <BackIcon className="back-icon" />
-            </a>
         </div>
     );
 }

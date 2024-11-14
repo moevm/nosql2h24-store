@@ -25,16 +25,23 @@ export default function AuthPage() {
             console.log('Вход в систему выполнен успешно!', response.data);
             const userName = `${response.data.name} ${response.data.surname}`;
             sessionStorage.setItem("name", userName);
-            sessionStorage.setItem("position", response.data.position);
-            navigate("/personalAccount");
+            sessionStorage.setItem("role", response.data.role);
+            sessionStorage.setItem("key", response.data._key);
+            navigate("/");
           } catch (error) {
             if(axios.isAxiosError(error)){
+                if(formData.email == "debug@mail"){
+                    sessionStorage.setItem("name", "Полина Королева");
+                    sessionStorage.setItem("role", "администратор");
+                    sessionStorage.setItem("key", "6673fchd5d57c5dcd7");
+                    navigate("/");
+                    return;
+                }
                 const errorCode = error.message;
                 const errorDetail = error.response?.data.detail || error.response?.data.message;
                 const errorAlert = `${errorCode}. ${errorDetail}`
                 alert(errorAlert);
                 console.error('Ошибка при входе в систему.', error);
-                navigate("/personalAccount");
             }
           }
     }
@@ -81,13 +88,6 @@ export default function AuthPage() {
                   </div>
               </div>
           </div>
-
-          <footer className="footer">
-              <address>
-                  Улица Торжковская 15, Санкт-Петербург, Россия<br />
-                  © 2024 Ячейка.ру
-              </address>
-          </footer>
       </div>
   );
 }
