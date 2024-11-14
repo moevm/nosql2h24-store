@@ -8,13 +8,21 @@ export default function Filter<Type>(props: { handleSend: any, obj: any }) {
         filters.push(
             <>
                 <InputGroup.Text id="basic-addon1">{props.obj[key].name}</InputGroup.Text>
-                {props.obj[key].type == "b" && <InputGroup.Checkbox/>}
+                {props.obj[key].type == "b" && <InputGroup.Checkbox />}
                 {props.obj[key].type == "s" && <Form.Control
                     placeholder={props.obj[key].name}
                 />}
-                {props.obj[key].type == "d" && <Form.Control
+                {props.obj[key].type == "d" && <Form.Control type="datetime-local"
                     placeholder={props.obj[key].name}
                 />}
+                {props.obj[key].type == "n" && <Form.Control type="number"
+                    placeholder={props.obj[key].name}
+                />}
+                {
+                    props.obj[key].type == "l" && <Form.Control
+                        placeholder={props.obj[key].name} name={key} pattern="[0-9,]+"
+                    />
+                }
 
             </>
         )
