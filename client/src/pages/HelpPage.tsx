@@ -3,21 +3,11 @@ import '../css/HelpPage.css';
 import { Link } from "react-router-dom";
 import { ReactComponent as MailIcon } from '../css/mail-icon.svg';
 import { ReactComponent as PhoneIcon } from '../css/phone2-icon.svg';
-import { ReactComponent as CellIcon } from '../css/cell-icon.svg';
 import { ReactComponent as BackIcon } from '../css/back-icon.svg';
 
 export default function HelpPage() {
     return (
         <div className="help-page">
-            <header className="header">
-                <div className="logo-container">
-                    <CellIcon className="cell-icon" />
-                    <span className="logo-text">Ячейка.ру</span>
-                </div>
-                <nav className="header-nav">
-                    <Link to="/personalAccount">Личный кабинет</Link>
-                </nav>
-            </header>
 
             <main className="main">
                 <section className="contact-section">
@@ -41,17 +31,6 @@ export default function HelpPage() {
                     <button className="send-button">Отправить сообщение</button>
                 </section>
             </main>
-
-            <footer className="footer">
-                <address>
-                    Улица Торжковская 1Б, Санкт-Петербург, Россия<br />
-                    © 2024 Ячейка.ру
-                </address>
-            </footer>
-
-            <a href="/personalAccount" className="back-to-dashboard-button">
-                <BackIcon className="back-icon" />
-            </a>
         </div>
     );
 }

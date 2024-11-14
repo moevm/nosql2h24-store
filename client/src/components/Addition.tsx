@@ -34,14 +34,19 @@ export default function Addition<Type>(props: { handleSend: any, obj: any }) {
                 }
                 {
                     props.obj[key].type == "d" && <Form.Control
-                    type="datetime-local"
+                        type="datetime-local"
                         placeholder={props.obj[key].name} name={key}
                     />
                 }
                 {
                     props.obj[key].type == "n" && <Form.Control
-                    type="number"
+                        type="number"
                         placeholder={props.obj[key].name} name={key}
+                    />
+                }
+                {
+                    props.obj[key].type == "l" && <Form.Control
+                        placeholder={props.obj[key].name} name={key} pattern="[0-9,]+"
                     />
                 }
 

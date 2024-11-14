@@ -41,7 +41,7 @@ export let userFields = {
     birthday: { name: "Дата рождения", type: "d" },
     regDate: { name: "Дата регистрации", type: "d" },
     editDate: { name: "Дата обновления", type: "d" },
-    rentedCells: { name: "Арендованные ячейки", type: "n" },
+    rentedCells: { name: "Арендованные ячейки", type: "l" },
     indebtedness: { name: "Долг", type: "n" }
 }
 
@@ -76,5 +76,5 @@ export let warehouseFields = {
     address: { name: "Адресс", type: "s" },
     capacity: { name: "Вместимость", type: "n" },
     chiefId: { name: "id Ответственного", type: "n" },
-    cells: { name: "Ячейки", type: "n" },
+    cells: { name: "Ячейки", type: "l" },
 }

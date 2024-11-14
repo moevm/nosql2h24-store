@@ -11,15 +11,6 @@ import { ReactComponent as BackIcon } from '../css/back-icon.svg';
 export default function PersonalAccount() {
     return (
         <div className="personal-account">
-            <header className="header">
-                <div className="logo-container">
-                    <CellIcon className="cell-icon" />
-                    <span className="logo-text">Ячейка.ру</span>
-                </div>
-                <nav className="header-nav">
-                    <Link to="/help">Контакты</Link>
-                </nav>
-            </header>
 
             <main className="main-content">
                 <h1>Личный кабинет</h1>
@@ -31,20 +22,9 @@ export default function PersonalAccount() {
                     <li><Link to="/allEvents">Все события</Link></li>
                     <li><Link to="/allUsers">Все пользователи</Link></li>
                     <li><Link to="/allWarehouses">Все склады</Link></li>
-                    <li><Link to="/">Выход</Link></li>
+                    <li><Link to="/auth">Выход</Link></li>
                 </ul>
             </main>
-
-            <footer className="footer">
-                <address>
-                    Улица Торжковская 1Б, Санкт-Петербург, Россия<br />
-                    © 2024 Ячейка.ру
-                </address>
-            </footer>
-
-            <a href="/" className="back-to-dashboard-button">
-                <BackIcon className="back-icon" />
-            </a>
         </div>
     );
 }
