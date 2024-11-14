@@ -16,13 +16,23 @@ import AuthPage from './pages/AuthPage';
 import AllWarehousesPage from './pages/manyEntity/AllWarehousesPage';
 import WarehousePage from './pages/oneEntity/WarehousePage';
 import CellPage from './pages/oneEntity/CellPage';
+import { ReactComponent as CellIcon } from './css/cell-icon.svg';
 
 function App() {
     return (
         <BrowserRouter>
-        <header>
-            <Link to="/personalAccount">ЛК</Link>
-        </header>
+        <header className="header">
+              <div className="logo-container">
+                  <CellIcon className="cell-icon" />
+                  <span className="logo-text">Ячейка.ру</span>
+              </div>
+              <nav className="header-nav">
+                  <Link to="/help">Контакты</Link>
+              </nav>
+              <nav className="header-nav">
+                    <Link to="/personalAccount">Личный кабинет</Link>
+                </nav>
+          </header>
             <Routes>
             <Route path="/" element={<AuthPage />}></Route>
                 <Route path="/personalAccount" element={<PersonalAccount />}></Route>

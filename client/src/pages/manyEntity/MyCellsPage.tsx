@@ -18,15 +18,6 @@ export default function MyCellsPage() {
 
     return (
         <div className="my-cells-page">
-            <header className="header">
-                <div className="logo-container">
-                    <CellIcon className="cell-icon" />
-                    <span className="logo-text">Ячейка.ру</span>
-                </div>
-                <nav className="header-nav">
-                    <Link to="/personalAccount">Личный кабинет</Link>
-                </nav>
-            </header>
 
             <main className="main">
                 <h1 className="page-title">Мои ячейки</h1>

@@ -11,15 +11,6 @@ import { ReactComponent as BackIcon } from '../css/back-icon.svg';
 export default function PersonalAccount() {
     return (
         <div className="personal-account">
-            <header className="header">
-                <div className="logo-container">
-                    <CellIcon className="cell-icon" />
-                    <span className="logo-text">Ячейка.ру</span>
-                </div>
-                <nav className="header-nav">
-                    <Link to="/help">Контакты</Link>
-                </nav>
-            </header>
 
             <main className="main-content">
                 <h1>Личный кабинет</h1>

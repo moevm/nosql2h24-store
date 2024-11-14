@@ -40,15 +40,6 @@ export default function AuthPage() {
     }
     return (
       <div className="auth-page">
-          <header className="header">
-              <div className="logo-container">
-                  <CellIcon className="cell-icon" />
-                  <span className="logo-text">Ячейка.ру</span>
-              </div>
-              <nav className="header-nav">
-                  <Link to="/help">Контакты</Link>
-              </nav>
-          </header>
 
           <div className="auth-content">
               <div className="auth-form-container">
