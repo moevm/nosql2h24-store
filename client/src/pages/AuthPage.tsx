@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap"
 import axios, { AxiosError } from "axios";
-import { SIGN_IN_URL } from "../serviceFiles/constants";
+import { AUTH_DB_URL, SIGN_IN_URL } from "../serviceFiles/constants";
 import { useNavigate, Link } from "react-router-dom";
 import '../css/AuthPage.css';
 import { ReactComponent as CellIcon } from '../css/cell-icon.svg';
@@ -11,6 +11,14 @@ export default function AuthPage() {
     const [formData, setFormData] = useState({email: '', password: ''});
     let navigate = useNavigate();
     
+    async function handleInitBase(){
+        try{
+            const response = await axios.post(AUTH_DB_URL, formData);
+            console.log('Авторизация базы успешна!');
+        }catch(error){
+            console.error('Ошибка при авторизации базы.', error);
+        }
+    }
     function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>){
         setFormData(prevData => ({...prevData, "email": e.target.value}))
     }
@@ -50,6 +58,7 @@ export default function AuthPage() {
 
           <div className="auth-content">
               <div className="auth-form-container">
+              <Button variant="primary" onClick={handleInitBase}>Инициализировать базу данных</Button>
                   <h2>Вход</h2>
                   <p>Для входа введите почтовый адрес и пароль.</p>
                   <Form onSubmit={handleEntry}>
