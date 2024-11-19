@@ -6,6 +6,7 @@ import { Button, Tab } from "react-bootstrap";
 import { eventsInit, GET_ALL_EVENTS_URL, POST_NEW_EVENT_URL } from "../../serviceFiles/constants";
 import Addition from "../../components/Addition";
 import axios from "axios";
+import Filter from "../../components/Filter";
 
 export default function AllEventsPage() {
     let navigate = useNavigate();
@@ -19,12 +20,9 @@ export default function AllEventsPage() {
             setEvent(eventsInit);
         });
     })
-    function handleSendNewData(newObj: Event) {
-        console.log("Получен объект в AllEventssPage", newObj);
-        axios.post(POST_NEW_EVENT_URL, newObj).then(response => { setEvent(response.data) }).catch(error => {
-            console.error('Ошибка при получении событий. Взяты дефолтные события', error);
-            setEvent(eventsInit);
-        });
+    function handleSendFilters(obj: Event){
+        console.log("Получен объект в AllEventsPage (filters)", obj);
+        setFilters(obj)
     }
 
     function handleEventClick(event: Event) {
@@ -54,7 +52,7 @@ export default function AllEventsPage() {
         </tr>
     )
     return (<>
-        <Addition handleSend={handleSendNewData} obj={eventFields}></Addition>
+    <Filter handleSend={handleSendFilters} obj={eventFields}></Filter>
         <Table striped bordered hover>
             <thead>
                 <tr>

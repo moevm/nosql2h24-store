@@ -5,6 +5,7 @@ import { Button, Table } from "react-bootstrap";
 import { GET_ALL_USERS_URL, POST_NEW_USER_URL, usersInit } from "../../serviceFiles/constants";
 import Addition from "../../components/Addition";
 import axios from "axios";
+import Filter from "../../components/Filter";
 
 export default function AllUsersPage() {
     let navigate = useNavigate();
@@ -17,9 +18,16 @@ export default function AllUsersPage() {
             setUsers(usersInit);
         });
     })
+    function handleSendFilters(obj: User){
+        console.log("Получен объект в AllUsersPage (filters)", obj);
+        setFilters(obj)
+    }
     function handleSendNewData(newObj: User) {
         console.log("Получен объект в AllUsersPage", newObj);
-        axios.post(POST_NEW_USER_URL, newObj).then(response => { setUsers(response.data) }).catch(error => {
+        axios.post(POST_NEW_USER_URL, newObj).catch(error => {
+            console.error('Ошибка при создании пользователя.', error);
+        });
+        axios.get(GET_ALL_USERS_URL, {params: filters}).then(response => { setUsers(response.data) }).catch(error => {
             console.error('Ошибка при получении пользователей. Взяты дефолтные пользователи', error);
             setUsers(usersInit);
         });
@@ -61,6 +69,7 @@ export default function AllUsersPage() {
         </tr>
     )
     return (<>
+            <Filter handleSend={handleSendFilters} obj={userFields}></Filter>
         <Addition handleSend={handleSendNewData} obj={userFields}></Addition>
         <Table striped bordered hover>
             <thead>

@@ -5,6 +5,8 @@ import axios from "axios";
 import "../../css/MyCellsPage.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as CellIcon } from '../../css/cell-icon.svg';
+import { Cell, cellFields } from "../../serviceFiles/types";
+import Filter from "../../components/Filter";
 
 export default function MyCellsPage() {
     const [cells, setCells] = useState(cellsInit);
@@ -15,6 +17,10 @@ export default function MyCellsPage() {
             setCells(cellsInit);
         });
     })
+    function handleSendFilters(obj: Cell){
+        console.log("Получен объект в MyCellsPage (filters)", obj);
+        setFilters(obj)
+    }
 
     return (
         <div className="my-cells-page">
@@ -22,10 +28,7 @@ export default function MyCellsPage() {
             <main className="main">
                 <h1 className="page-title">Мои ячейки</h1>
                 
-                <div className="filter-section">
-                    <input type="text" placeholder="Search..." className="search-input" />
-                    <button className="filter-button">Фильтр</button>
-                </div>
+                <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>
 
                 <CellsTable isForRent={false} isForAdmin={false} cells={cells} ></CellsTable>
 
@@ -37,11 +40,6 @@ export default function MyCellsPage() {
                     <button className="pagination-button">Вперед</button>
                 </div>
             </main>
-
-            <footer className="footer">
-                <p>Улица Торжковская 15, Санкт-Петербург, Россия</p>
-                <p>© 2024 Ячейка.ру.</p>
-            </footer>
         </div>
     );
 }

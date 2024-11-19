@@ -5,6 +5,7 @@ import { Button, Table } from "react-bootstrap";
 import {GET_ALL_WAREHOUSES_URL, POST_NEW_WAREHOUSE_URL, warehousesInit } from "../../serviceFiles/constants";
 import Addition from "../../components/Addition";
 import axios from "axios";
+import Filter from "../../components/Filter";
 
 export default function AllWarehousesPage() {
     let navigate = useNavigate();
@@ -18,9 +19,18 @@ export default function AllWarehousesPage() {
             setWarehouses(warehousesInit);
         });
     })
+
+    function handleSendFilters(obj: Warehouse){
+        console.log("Получен объект в AllWarehousesPage (filters)", obj);
+        setFilters(obj)
+    }
+
     function handleSendNewData(newObj: Warehouse) {
         console.log("Получен объект в AllUsersPage", newObj);
         axios.post(POST_NEW_WAREHOUSE_URL, newObj).then(response => { setWarehouses(response.data) }).catch(error => {
+            console.error('Ошибка при создании склада.', error);
+        });
+        axios.get(GET_ALL_WAREHOUSES_URL, {params: filters}).then(response => { setWarehouses(response.data) }).catch(error => {
             console.error('Ошибка при получении складов. Взяты дефолтные склады', error);
             setWarehouses(warehousesInit);
         });
@@ -46,6 +56,7 @@ export default function AllWarehousesPage() {
         </tr>
     )
     return (<>
+    <Filter handleSend={handleSendFilters} obj={warehouseFields}></Filter>
     <Addition handleSend={handleSendNewData} obj={warehouseFields}></Addition>
         <Table striped bordered hover>
             <thead>
