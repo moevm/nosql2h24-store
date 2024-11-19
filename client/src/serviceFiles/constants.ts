@@ -3,24 +3,24 @@ export let cellsInit = [
     { _key: '9', cellNum: 2, tierNum: 10, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouseId: 2, tariffPerDay: 12.00 }]
 
 export let eventsInit = [{
-    _key: '1',
+    _key: '1e4',
+    dateAndTime: "2024-10-13 12:46:01",
     cellId: 1,
     userId: 1,
     action: "open",
-    dateAndTime: "2024-10-13 12:46:01",
     description: ""
 
 }, {
-    _key: '2',
     cellId: 2,
     userId: 1,
+    _key: '2f4',
+    description: "",
     action: "close",
     dateAndTime: "2024-11-13 13:50:01",
-    description: ""
 
 },
 {
-    _key: '3',
+    _key: 'g33',
     cellId: 2,
     userId: 1,
     action: "breaking",
