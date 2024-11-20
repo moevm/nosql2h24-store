@@ -14,6 +14,7 @@ import PaymentPage from './PaymentPage';
 import AllWarehousesPage from './manyEntity/AllWarehousesPage';
 import WarehousePage from './oneEntity/WarehousePage';
 import CellPage from './oneEntity/CellPage';
+import ImportExport from "../components/ImportExport";
 
 export default function MainComponentPage() {
     const [{ name, role }, setUser] = useState({ name: "", role: "" });
@@ -45,6 +46,7 @@ export default function MainComponentPage() {
             <nav className="header-nav">
                 <Link to="/">Личный кабинет</Link>
             </nav>
+            <ImportExport></ImportExport>
             <div>
                 <p>{name}</p>
                 <p>{role}</p>

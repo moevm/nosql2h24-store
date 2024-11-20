@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 
-export default function Addition<Type>(props: { handleSend: any, obj: any }) {
+export default function Addition(props: { handleSend: any, obj: any }) {
     const [state, setState] = useState(props.obj);
     const [show, setShow] = useState(false);
 
