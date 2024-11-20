@@ -1,28 +1,17 @@
 version: '3.8'
 
 services:
-  frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: nginx_server  # Цель сборки для Nginx и фронтенда
-    ports:
-      - "80:80"
-    networks:
-      - warehouse-network
-    depends_on:
-      - warehouse2
-
   warehouse2:
     build:
       context: .
       dockerfile: Dockerfile
       target: backend  # Цель сборки для бэкенда
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - DB_HOST=arangodb
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - DB_HOST=arangoDB
       - DB_PORT=8529
     depends_on:
       - arangodb
@@ -30,13 +19,16 @@ services:
       - warehouse-network
 
   arangodb:
-    image: arangodb:3.11.12
+    image: arangodb:3.12.3
+    container_name: arangoDB
+    hostname:
+      arangoDB
     ports:
       - "8529:8529"
     environment:
       - ARANGO_ROOT_PASSWORD=5DwY5BIAGFHpuSSE
       - ARANGO_ROOT_USERNAME=root
-      - ARANGO_NO_AUTH=0
+      - ARANGO_NO_AUTH=1
     networks:
       - warehouse-network
     volumes:
