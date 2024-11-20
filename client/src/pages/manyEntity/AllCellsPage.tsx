@@ -18,6 +18,7 @@ export default function AllCellsPage() {
     function handleSendNewData(newObj: Cell){
         console.log("Получен объект в AllCellsPage", newObj);
         axios.post(POST_NEW_CELL_URL, newObj).catch(error => {
+            alert('Ошибка при создании Ячейки');
             console.error('Ошибка при создании Ячейки', error);
         });
         axios.get(GET_ALL_CELLS_URL, {params: filters}).then(response => { setCells(response.data) }).catch(error => {

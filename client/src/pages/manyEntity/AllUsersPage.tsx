@@ -25,6 +25,7 @@ export default function AllUsersPage() {
     function handleSendNewData(newObj: User) {
         console.log("Получен объект в AllUsersPage", newObj);
         axios.post(POST_NEW_USER_URL, newObj).catch(error => {
+            alert('Ошибка при создании пользователя.');
             console.error('Ошибка при создании пользователя.', error);
         });
         axios.get(GET_ALL_USERS_URL, {params: filters}).then(response => { setUsers(response.data) }).catch(error => {
