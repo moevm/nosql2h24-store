@@ -4,7 +4,7 @@ services:
   warehouse2:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: server/Dockerfile
       target: backend  # Цель сборки для бэкенда
     ports:
       - "127.0.0.1:8080:8080"
@@ -16,7 +16,21 @@ services:
     depends_on:
       - arangodb
     networks:
-      - warehouse-network
+      - backend-network
+      - frontend-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+      target: nginx_server  # Цель сборки для Nginx и фронтенда
+    restart: on-failure
+    ports:
+      - "127.0.0.1:80:80"
+    depends_on:
+      - warehouse2
+    networks:
+      - frontend-network
 
   arangodb:
     image: arangodb:3.12.3
@@ -30,13 +44,14 @@ services:
       - ARANGO_ROOT_USERNAME=root
       - ARANGO_NO_AUTH=1
     networks:
-      - warehouse-network
+      - backend-network
     volumes:
       - arango_data:/var/lib/arangodb3
 
 networks:
-  warehouse-network:
-    driver: bridge
+  frontend-network:
+  backend-network:
+    
 
 volumes:
   arango_data:
