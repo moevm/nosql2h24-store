@@ -12,7 +12,7 @@ RUN npm run build --prefix client
 FROM nginx:alpine AS nginx_server
 COPY --from=build_frontend /app/client/build /usr/share/nginx/html  
 # Копируем собранный фронтенд в Nginx
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf            
+COPY /nginx/default.conf /etc/nginx/conf.d/default.conf            
 # Копируем конфигурацию Nginx
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

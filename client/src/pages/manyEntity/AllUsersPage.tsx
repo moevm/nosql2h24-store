@@ -13,11 +13,11 @@ export default function AllUsersPage() {
     const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        axios.get(GET_ALL_USERS_URL, {params: filters}).then(response => { setUsers(response.data) }).catch(error => {
+        axios.get(GET_ALL_USERS_URL, {params: filters}).then(response => { console.log(response); setUsers(response.data); }).catch(error => {
             console.error('Ошибка при получении пользователей. Взяты дефолтные пользователи', error);
             setUsers(usersInit);
         });
-    })
+    }, [])
     function handleSendFilters(obj: User){
         console.log("Получен объект в AllUsersPage (filters)", obj);
         setFilters(obj)
@@ -60,9 +60,9 @@ export default function AllUsersPage() {
             <td>
                 {user.editDate}
             </td>
-            <td>
+            {/* <td>
                 {user.rentedCells.length}
-            </td>
+            </td> */}
             <td>
                 {user.indebtedness}
             </td>
@@ -96,9 +96,9 @@ export default function AllUsersPage() {
                     <th>
                         Дата обновления
                     </th>
-                    <th>
+                    {/* <th>
                         Количество арендованных ячеек
-                    </th>
+                    </th> */}
                     <th>
                         Задолженность
                     </th>

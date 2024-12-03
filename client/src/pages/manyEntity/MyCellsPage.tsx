@@ -12,11 +12,11 @@ export default function MyCellsPage() {
     const [cells, setCells] = useState(cellsInit);
     const [filters, setFilters] = useState({});
     useEffect(() => {
-        axios.get(GET_MY_CELLS_URL, {params: filters}).then(response => { setCells(response.data) }).catch(error => {
+        axios.get(GET_MY_CELLS_URL, {params: filters}).then(response => { console.log(response); setCells(response.data); }).catch(error => {
             console.error('Ошибка при получении ячеек пользователя. Взяты дефолтные ячейки', error);
             setCells(cellsInit);
         });
-    })
+    }, [])
     function handleSendFilters(obj: Cell){
         console.log("Получен объект в MyCellsPage (filters)", obj);
         setFilters(obj)

@@ -8,7 +8,7 @@ export default function UserPage() {
         <div>
             <p>Пользователь Ячейка.ру с {state.date}</p>
             <p>Роль: {state.role}</p>
-            <p>Арендованные ячейки: {state.rentedCells.join(',')}</p>
+            {/* <p>Арендованные ячейки: {state.rentedCells.join(',')}</p> */}
             <p>Задолженность: {state.indebtedness > 0.00 ? state.indebtedness : "нет"}</p>
         </div>
     </div>)
