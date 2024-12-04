@@ -13,7 +13,7 @@ export default function AuthPage() {
     
     async function handleInitBase(){
         try{
-            const response = await axios.post(AUTH_DB_URL, formData);
+            const response = await axios.get(AUTH_DB_URL);
             console.log('Авторизация базы успешна!');
         }catch(error){
             console.error('Ошибка при авторизации базы.', error);

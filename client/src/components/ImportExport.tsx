@@ -19,7 +19,10 @@ export default function ImportExport() {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
-        axios.post(IMPORT_URL, formDataObj).catch(error => {
+        axios.post(IMPORT_URL, formDataObj).then(() => {
+            alert("Импорт успешен");
+        }).catch(error => {
+            alert("Ошибка при импорте");
             console.error('Ошибка при импорте', error);
         });
         setShow(false);
@@ -35,6 +38,7 @@ export default function ImportExport() {
             link.click();
             URL.revokeObjectURL(link.href)
         }).catch(error => {
+            alert("Ошибка при экспорте'");
             console.error('Ошибка при экспорте', error);
         });
         setShow(false);

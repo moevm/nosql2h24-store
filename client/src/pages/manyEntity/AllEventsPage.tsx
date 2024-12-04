@@ -15,12 +15,12 @@ export default function AllEventsPage() {
     const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        axios.get(GET_ALL_EVENTS_URL, {params: filters}).then(response => { setEvent(response.data) }).catch(error => {
+        axios.get(GET_ALL_EVENTS_URL, { params: filters }).then(response => { console.log(response); setEvent(response.data); }).catch(error => {
             console.error('Ошибка при получении событий. Взяты дефолтные события', error);
             setEvent(eventsInit);
         });
-    })
-    function handleSendFilters(obj: Event){
+    }, [])
+    function handleSendFilters(obj: Event) {
         console.log("Получен объект в AllEventsPage (filters)", obj);
         setFilters(obj)
     }
@@ -52,7 +52,7 @@ export default function AllEventsPage() {
         </tr>
     )
     return (<>
-    <Filter handleSend={handleSendFilters} obj={eventFields}></Filter>
+        <Filter handleSend={handleSendFilters} obj={eventFields}></Filter>
         <Table striped bordered hover>
             <thead>
                 <tr>

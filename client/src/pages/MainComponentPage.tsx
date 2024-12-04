@@ -15,6 +15,7 @@ import AllWarehousesPage from './manyEntity/AllWarehousesPage';
 import WarehousePage from './oneEntity/WarehousePage';
 import CellPage from './oneEntity/CellPage';
 import ImportExport from "../components/ImportExport";
+// import '../css/AuthPage.css';
 
 export default function MainComponentPage() {
     const [{ name, role }, setUser] = useState({ name: "", role: "" });
@@ -52,6 +53,8 @@ export default function MainComponentPage() {
                 <p>{role}</p>
             </div>
         </header>
+        <body>
+        <div className="content">
         <Routes>
             <Route path="/" element={<PersonalAccount />}></Route>
             <Route path="/myCells" element={<MyCellsPage />}></Route>
@@ -67,12 +70,13 @@ export default function MainComponentPage() {
             <Route path="/allWarehouses" element={<AllWarehousesPage />}></Route>
             <Route path="/warehouse" element={<WarehousePage />}></Route>
         </Routes>
-
-        <footer className="footer">
+        </div>
+        <div className="info">
                 <address>
                     Улица Торжковская 1Б, Санкт-Петербург, Россия<br />
                     © 2024 Ячейка.ру
                 </address>
-            </footer>
+            </div>
+        </body>
     </>)
 }

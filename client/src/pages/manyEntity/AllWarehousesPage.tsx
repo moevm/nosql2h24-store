@@ -14,11 +14,11 @@ export default function AllWarehousesPage() {
     const [filters, setFilters] = useState({});
 
     useEffect(() => {
-        axios.get(GET_ALL_WAREHOUSES_URL, {params: filters}).then(response => { setWarehouses(response.data) }).catch(error => {
+        axios.get(GET_ALL_WAREHOUSES_URL, {params: filters}).then(response => { console.log(response); setWarehouses(response.data); }).catch(error => {
             console.error('Ошибка при получении складов. Взяты дефолтные склады', error);
             setWarehouses(warehousesInit);
         });
-    })
+    }, [])
 
     function handleSendFilters(obj: Warehouse){
         console.log("Получен объект в AllWarehousesPage (filters)", obj);
@@ -28,6 +28,7 @@ export default function AllWarehousesPage() {
     function handleSendNewData(newObj: Warehouse) {
         console.log("Получен объект в AllUsersPage", newObj);
         axios.post(POST_NEW_WAREHOUSE_URL, newObj).then(response => { setWarehouses(response.data) }).catch(error => {
+            alert('Ошибка при создании склада.');
             console.error('Ошибка при создании склада.', error);
         });
         axios.get(GET_ALL_WAREHOUSES_URL, {params: filters}).then(response => { setWarehouses(response.data) }).catch(error => {
