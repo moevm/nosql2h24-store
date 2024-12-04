@@ -28,11 +28,14 @@ export default function AllCellsPage() {
     }
     useEffect(() => {
         console.log("отправлен запрос на получение ячеек, с параметрами:", filters)
-        axios.get(GET_ALL_CELLS_URL, {params: filters}).then(response => { setCells(response.data) }).catch(error => {
+        axios.get(GET_ALL_CELLS_URL, {params: filters}).then(response => { 
+            console.log(response);
+            setCells(response.data);
+        }).catch(error => {
             console.error('Ошибка при получении ячеек. Взяты дефолтные ячейки', error);
             setCells(cellsInit);
         });
-    })
+    }, [])
     return (<>
         <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>
         <Addition handleSend={handleSendNewData} obj={cellFields}></Addition>

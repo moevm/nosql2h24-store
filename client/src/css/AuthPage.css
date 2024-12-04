@@ -135,16 +135,6 @@
     color: #6a5acd;
 }
 
-.footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+.info{
     text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #666;
-}
-
-.footer address {
-    font-style: normal;
 }
