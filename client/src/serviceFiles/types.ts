@@ -59,7 +59,8 @@ export let eventFields = {
     cellId: { name: "id Ячейки", type: "n" },
     userId: { name: "id Пользователя", type: "n" },
     action: { name: "Действие", type: "s" },
-    dateAndTime: { name: "Дата и время события", type: "d" },
+    dateAndTimeStart: { name: "Начало поиска", type: "d" },
+    dateAndTimeEnd: { name: "Конец поиска", type: "d" },
     description: { name: "Описание", type: "s" }
 }
 
