@@ -16,7 +16,7 @@ export let cellFields = {
     tierNum: { name: "Ряд", type: "n" },
     isFree: { name: "Свободна", type: "b" },
     needService: { name: "Нужно ТО", type: "b" },
-    size: { name: "Размер", type: "n" },
+    size: { name: "Размер", type: "nf" },
     endOfRent: { name: "КонецАренды", type: "d" },
     warehouseId: { name: "id склада", type: "n" },
     tariffPerDay: { name: "Тариф", type: "n" }
