@@ -16,7 +16,7 @@ export let cellFields = {
     tierNum: { name: "Ряд", type: "n" },
     isFree: { name: "Свободна", type: "b" },
     needService: { name: "Нужно ТО", type: "b" },
-    size: { name: "Размер", type: "n" },
+    size: { name: "Размер", type: "nf" },
     endOfRent: { name: "КонецАренды", type: "d" },
     warehouseId: { name: "id склада", type: "n" },
     tariffPerDay: { name: "Тариф", type: "n" }
@@ -59,7 +59,8 @@ export let eventFields = {
     cellId: { name: "id Ячейки", type: "n" },
     userId: { name: "id Пользователя", type: "n" },
     action: { name: "Действие", type: "s" },
-    dateAndTime: { name: "Дата и время события", type: "d" },
+    dateAndTimeStart: { name: "Начало поиска", type: "d" },
+    dateAndTimeEnd: { name: "Конец поиска", type: "d" },
     description: { name: "Описание", type: "s" }
 }
 

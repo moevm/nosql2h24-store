@@ -45,6 +45,13 @@ export default function Addition(props: { handleSend: any, obj: any }) {
                     />
                 }
                 {
+                    props.obj[key].type == "nf" && <Form.Control
+                        type="number"
+                        step={0.1}
+                        placeholder={props.obj[key].name} name={key}
+                    />
+                }
+                {
                     props.obj[key].type == "l" && <Form.Control
                         placeholder={props.obj[key].name} name={key} pattern="[0-9,]+"
                     />

@@ -22,8 +22,8 @@ export default function AllCellsPage() {
             console.error('Ошибка при создании Ячейки', error);
         });
         axios.get(GET_ALL_CELLS_URL, {params: filters}).then(response => { setCells(response.data) }).catch(error => {
-            console.error('Ошибка при получении ячеек. Взяты дефолтные ячейки', error);
-            setCells(cellsInit);
+            console.error('Ошибка при получении ячеек. Взяты дефолтные ячейки с добавлением новой', error);
+            setCells([...cellsInit, newObj]);
         });
     }
     useEffect(() => {
