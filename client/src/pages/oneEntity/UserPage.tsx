@@ -6,7 +6,7 @@ export default function UserPage() {
     return (<div>
         <h2>{state.nameSurnamePatronymic}</h2>
         <div>
-            <p>Пользователь Ячейка.ру с {state.date}</p>
+            <p>Пользователь Ячейка.ру с {state.regDate}</p>
             <p>Роль: {state.role}</p>
             {/* <p>Арендованные ячейки: {state.rentedCells.join(',')}</p> */}
             <p>Задолженность: {state.indebtedness > 0.00 ? state.indebtedness : "нет"}</p>
