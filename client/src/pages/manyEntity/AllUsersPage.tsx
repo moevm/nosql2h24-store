@@ -43,7 +43,7 @@ export default function AllUsersPage() {
                 {user._key}
             </td>
             <td>
-                {user.NameSurnamePatronymic}
+                {user.nameSurnamePatronymic}
             </td>
             <td>
                 {user.login}

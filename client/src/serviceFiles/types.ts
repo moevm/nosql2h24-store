@@ -23,7 +23,7 @@ export let cellFields = {
 };
 export type User = {
     _key: string,
-    NameSurnamePatronymic: string,
+    nameSurnamePatronymic: string,
     role: string,
     login: string,
     birthday: string,
@@ -35,7 +35,7 @@ export type User = {
 
 export let userFields = {
     _key: { name: "id", type: "s" },
-    NameSurnamePatronymic: { name: "ФИО", type: "s" },
+    nameSurnamePatronymic: { name: "ФИО", type: "s" },
     role: { name: "Роль", type: "s" },
     login: { name: "Почта", type: "s" },
     birthday: { name: "Дата рождения", type: "d" },

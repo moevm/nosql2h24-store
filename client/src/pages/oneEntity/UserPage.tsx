@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 export default function UserPage() {
     const {state} = useLocation();
     return (<div>
-        <h2>{state.NameSurnamePatronymic}</h2>
+        <h2>{state.nameSurnamePatronymic}</h2>
         <div>
             <p>Пользователь Ячейка.ру с {state.date}</p>
             <p>Роль: {state.role}</p>

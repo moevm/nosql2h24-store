@@ -7,7 +7,7 @@
     "userId": "",
     "action": "CREATE",
     "dateAndTime": "2024-11-12T05:24:24.2032039+03:00",
-    "descritpion": "new cell has just been created"
+    "description": "new cell has just been created"
   },
   {
     "_key": "244f53a9-eafe-41c3-8a34-9a9d59a221e2",
@@ -17,7 +17,7 @@
     "userId": "",
     "action": "CREATE",
     "dateAndTime": "2024-11-12T05:24:54.3078098+03:00",
-    "descritpion": "new cell has just been created"
+    "description": "new cell has just been created"
   },
   {
     "_key": "3bbb3706-478c-4d6d-b415-d98b42a26ebe",
@@ -27,7 +27,7 @@
     "userId": "",
     "action": "CREATE",
     "dateAndTime": "2024-11-12T05:25:08.7560891+03:00",
-    "descritpion": "new cell has just been created"
+    "description": "new cell has just been created"
   },
   {
     "_key": "f82d8d86-0ff0-4f51-8454-ba0df059f9e9",
@@ -37,7 +37,7 @@
     "userId": "",
     "action": "CREATE",
     "dateAndTime": "2024-11-12T05:25:36.9877129+03:00",
-    "descritpion": "new cell has just been created"
+    "description": "new cell has just been created"
   },
   {
     "_key": "7c269f53-a1ec-4d8e-a9dc-6e78dbbffb1f",
@@ -47,7 +47,7 @@
     "userId": "",
     "action": "CREATE",
     "dateAndTime": "2024-11-12T05:26:13.1561926+03:00",
-    "descritpion": "new cell has just been created"
+    "description": "new cell has just been created"
   },
   {
     "_key": "6ab91513-b490-4876-a17f-1760a7a87ae3",
@@ -57,6 +57,6 @@
     "userId": "",
     "action": "CREATE",
     "dateAndTime": "2024-11-12T05:26:21.1811614+03:00",
-    "descritpion": "new cell has just been created"
+    "description": "new cell has just been created"
   }
 ]

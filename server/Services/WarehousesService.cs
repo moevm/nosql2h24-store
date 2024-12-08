@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using Warehouse2.Models;
+using Core.Arango.Serialization.Newtonsoft;
 
 namespace Warehouse2.Services
 {
@@ -15,6 +16,8 @@ namespace Warehouse2.Services
 
         private readonly string _collectionName;
 
+        private readonly ArangoNewtonsoftSerializer _serializer;
+
         public WarehousesService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
         {
             _arango = new ArangoContext(WarehouseDatabaseSettings.Value.ConnectionString);
@@ -23,6 +26,7 @@ namespace Warehouse2.Services
 
             _collectionName = WarehouseDatabaseSettings.Value.WarehousesCollectionName;
 
+            _serializer = new ArangoNewtonsoftSerializer(new ArangoNewtonsoftDefaultContractResolver());
         }
 
         // get all the docs

@@ -15,7 +15,7 @@ namespace Warehouse2.Models
             this.cellId = CId;
             this.userId = "";
             this.action = action;
-            this.descritpion = dscr;
+            this.description = dscr;
             this.dateAndTime = DateTime.Now;
         }
 
@@ -33,6 +33,6 @@ namespace Warehouse2.Models
 
         public DateTimeOffset dateAndTime { get; set; }
 
-        public string descritpion { get; set; }
+        public string description { get; set; }
     }
 }

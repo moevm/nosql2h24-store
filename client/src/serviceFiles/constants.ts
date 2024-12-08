@@ -31,7 +31,7 @@ export let eventsInit = [{
 
 export let usersInit = [{
     _key: '1',
-    NameSurnamePatronymic: "Крупская Ольга Дмитриевна",
+    nameSurnamePatronymic: "Крупская Ольга Дмитриевна",
     role: "Client",
     login: "LOGIN_1",
     birthday: "1980-01-13",
@@ -41,7 +41,7 @@ export let usersInit = [{
     indebtedness: 0.00
 }, {
     _key: '2',
-    NameSurnamePatronymic: "Королева Полина Андреевна",
+    nameSurnamePatronymic: "Королева Полина Андреевна",
     role: "User",
     login: "LOGIN_2",
     birthday: "2000-01-13",
