@@ -7,13 +7,13 @@ namespace Warehouse2.Models
 
         public Event() { }
 
-        public Event(string action, string dscr, string WId, string CId = "")
+        public Event(string action, string dscr, string WKey, string CKey = "")
         {
             this._key = Guid.NewGuid().ToString();
-            this._from = WId;
-            this._to = CId;
-            this.cellId = CId;
-            this.userId = "";
+            this._from = "WAREHOUSE/" + WKey;
+            this._to = "CELL/" + CKey;
+            this.cellKey = CKey;
+            this.userKey = "";
             this.action = action;
             this.description = dscr;
             this.dateAndTime = DateTime.Now;
@@ -25,9 +25,9 @@ namespace Warehouse2.Models
 
         public string _to { get; set; }
 
-        public string? cellId { get; set; }
+        public string? cellKey { get; set; }
 
-        public string? userId { get; set; }
+        public string? userKey { get; set; }
 
         public string action { get; set; }
 

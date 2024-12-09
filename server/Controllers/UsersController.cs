@@ -25,9 +25,12 @@ namespace Warehouse2.Controllers
             await _usersService.GetOneAsync(key);
 
         [HttpPost("new")]
-        public async Task<IActionResult> Post(string NSP, string role, string log, string psw, string bd)
+        public async Task<IActionResult> Post(User newObj)
         {
-            User newObj = new User(NSP, role, log, psw, bd);
+            newObj._key = Guid.NewGuid().ToString();
+            newObj.regDate = DateTime.Now;
+            newObj.editDate = null;
+            newObj.indebtedness = 0;
 
             await _usersService.UserAddAsync(newObj);
 

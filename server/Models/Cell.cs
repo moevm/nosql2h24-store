@@ -6,10 +6,10 @@ namespace Warehouse2.Models
     {
         public Cell() {}
 
-        public Cell (int CNum, int TNum, float tariff, float size, string WId = "")
+        public Cell (int CNum, int TNum, float tariff, float size, string WKey = "")
         {
             this._key = Guid.NewGuid().ToString();
-            this.warehouseId = WId;
+            this.warehouseKey = WKey;
             this.cellNum = CNum;
             this.tierNum = TNum;
             this.isFree = true;
@@ -22,7 +22,7 @@ namespace Warehouse2.Models
 
         public string? _key { get; set; }
 
-        public string warehouseId { get; set; }
+        public string warehouseKey { get; set; }
         
         public int cellNum { get; set; }
         

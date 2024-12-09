@@ -25,9 +25,13 @@ namespace Warehouse2.Controllers
             await _cellsService.GetOneAsync(key);
 
         [HttpPost("new")]
-        public async Task<IActionResult> Post(int CNum, int TNum, float tar, float size, string WId)
+        public async Task<IActionResult> Post(Cell newObj)
         {
-            Cell newObj = new Cell(CNum, TNum, tar, size, WId);
+            newObj._key = Guid.NewGuid().ToString();
+            newObj.isFree = true;
+            newObj.needService = false;
+            newObj.endOfRent = null;
+            newObj.listOfEventKeys = new List<string>();
 
             await _cellsService.CellAddAsync(newObj);
 

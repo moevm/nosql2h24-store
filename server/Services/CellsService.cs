@@ -55,17 +55,16 @@ namespace Warehouse2.Services
         public async Task CellAddAsync(Cell newObj)
         {
             string dscr = "new cell has just been created";
-            string cellId = "CELL/" + newObj._key;
-            string warehouseId = /*"WAREHOUSE/" + */newObj.warehouseId;
+            string cellKey = newObj._key;
+            string warehouseKey = newObj.warehouseKey;
 
-            Event newEvent = new Event("CREATE", dscr, warehouseId, cellId);
+            Event newEvent = new Event("CREATE", dscr, warehouseKey, cellKey);
             newObj.listOfEventKeys.Add(newEvent._key);
 
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
 
             await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
 
-            string warehouseKey = warehouseId.Substring(_wColName.Length + 1);
             Warehouse warehouse = await _arango.Document.GetAsync<Warehouse>(_dbName, _wColName, warehouseKey);
             warehouse.cellsKeys.Add(newObj._key);
             await _arango.Document.UpdateAsync(_dbName, _wColName, warehouse);
