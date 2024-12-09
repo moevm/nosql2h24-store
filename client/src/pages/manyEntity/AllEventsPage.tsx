@@ -34,10 +34,10 @@ export default function AllEventsPage() {
                 {event._key}
             </td>
             <td>
-                {event.cellId}
+                {event.cellKey}
             </td>
             <td>
-                {event.userId}
+                {event.userKey}
             </td>
             <td>
                 {event.action}
@@ -57,13 +57,13 @@ export default function AllEventsPage() {
             <thead>
                 <tr>
                     <th>
-                        eventId
+                        eventKey
                     </th>
                     <th>
-                        cellId
+                        cellKey
                     </th>
                     <th>
-                        userId
+                        userKey
                     </th>
                     <th>
                         action

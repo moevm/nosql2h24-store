@@ -23,42 +23,44 @@ export default function Addition(props: { handleSend: any, obj: any }) {
     }
     const data = []
     for (let key in props.obj) {
-        data.push(
-            <InputGroup className="mb-3">
-                <InputGroup.Text id="basic-addon1">{props.obj[key].name}</InputGroup.Text>
-                {props.obj[key].type == "b" && <InputGroup.Checkbox name={key} />}
-                {
-                    props.obj[key].type == "s" && <Form.Control
-                        placeholder={props.obj[key].name} name={key}
-                    />
-                }
-                {
-                    props.obj[key].type == "d" && <Form.Control
-                        type="datetime-local"
-                        placeholder={props.obj[key].name} name={key}
-                    />
-                }
-                {
-                    props.obj[key].type == "n" && <Form.Control
-                        type="number"
-                        placeholder={props.obj[key].name} name={key}
-                    />
-                }
-                {
-                    props.obj[key].type == "nf" && <Form.Control
-                        type="number"
-                        step={0.1}
-                        placeholder={props.obj[key].name} name={key}
-                    />
-                }
-                {
-                    props.obj[key].type == "l" && <Form.Control
-                        placeholder={props.obj[key].name} name={key} pattern="[0-9,]+"
-                    />
-                }
-
-            </InputGroup>
-        )
+        if(!props.obj[key].noNeedAddition){
+            data.push(
+                <InputGroup className="mb-3">
+                    <InputGroup.Text id="basic-addon1">{props.obj[key].name}</InputGroup.Text>
+                    {props.obj[key].type == "b" && <InputGroup.Checkbox name={key} />}
+                    {
+                        props.obj[key].type == "s" && <Form.Control
+                            placeholder={props.obj[key].name} name={key}
+                        />
+                    }
+                    {
+                        props.obj[key].type == "d" && <Form.Control
+                            type="datetime-local"
+                            placeholder={props.obj[key].name} name={key}
+                        />
+                    }
+                    {
+                        props.obj[key].type == "n" && <Form.Control
+                            type="number"
+                            placeholder={props.obj[key].name} name={key}
+                        />
+                    }
+                    {
+                        props.obj[key].type == "nf" && <Form.Control
+                            type="number"
+                            step={0.1}
+                            placeholder={props.obj[key].name} name={key}
+                        />
+                    }
+                    {
+                        props.obj[key].type == "l" && <Form.Control
+                            placeholder={props.obj[key].name} name={key} pattern="[0-9,]+"
+                        />
+                    }
+    
+                </InputGroup>
+            )
+        }
 
     }
     return (

@@ -55,7 +55,7 @@ export default function AllWarehousesPage() {
                 {warehouse.capacity}
             </td>
             <td>
-                {warehouse.chiefId}
+                {warehouse.chiefKey}
             </td>
             <td> <Button type="button" className="btn" onClick={() => handleWerehouseClick(warehouse)}> Подробнее </Button></td>
         </tr>

@@ -40,13 +40,16 @@ const listCells = props.cells.map((cell: Cell, index) =>
             {cell._key}
         </td>
         <td>
+            {cell.cellNum}
+        </td>
+        <td>
             {cell.isFree ? "Свободна" : "Занята"}
         </td>
         <td>
             {cell.endOfRent}
         </td>
         <td>
-            {cell.warehouseId}
+            {cell.warehouseKey}
         </td>
         {props.isForRent && <td> <Button type="button" className="btn" onClick={() => handleRent(cell)}> Арендовать </Button></td>}
         {props.isForAdmin && <td> {cell.needService ? "Требует" : "Не требует"}</td>}
@@ -59,6 +62,9 @@ return (<>
     <Table striped bordered hover>
         <thead>
             <tr>
+                <th scope="col">
+                    CellKey
+                </th>
                 <th scope="col">
                     Номер
                 </th>

@@ -1,31 +1,42 @@
 export let cellsInit = [
-    { _key: '5', cellNum: 1, tierNum: 1, isFree: true, needService: true, endOfRent: "2025-02-02", size: 0.1, warehouseId: 1, tariffPerDay: 12.00 },
-    { _key: '9', cellNum: 2, tierNum: 10, isFree: true, needService: false, endOfRent: "2025-01-02", size: 0.3, warehouseId: 2, tariffPerDay: 12.00 }]
+    {
+        _key: '5fdg',
+        cellNum: 1,
+        tierNum: 1,
+        isFree: true,
+        needService: true,
+        endOfRent: "2025-02-02",
+        size: 0.1,
+        warehouseKey: 'fgd1',
+        tariffPerDay: 12.00
+    },
+    {
+        _key: 'fdg9',
+        cellNum: 2,
+        tierNum: 10,
+        isFree: true,
+        needService: false,
+        endOfRent: "2025-01-02",
+        size: 0.3,
+        warehouseKey: 'dfg2',
+        tariffPerDay: 12.00
+    }]
 
 export let eventsInit = [{
     _key: '1e4',
     dateAndTime: "2024-10-13 12:46:01",
-    cellId: 1,
-    userId: 1,
+    cellKey: '1fd',
+    userKey: '1dfg',
     action: "open",
     description: ""
 
 }, {
-    cellId: 2,
-    userId: 1,
+    cellKey: 'df2',
+    userKey: 'fgd1',
     _key: '2f4',
     description: "",
     action: "close",
     dateAndTime: "2024-11-13 13:50:01",
-
-},
-{
-    _key: 'g33',
-    cellId: 2,
-    userId: 1,
-    action: "breaking",
-    dateAndTime: "2024-11-16 01:50:01",
-    description: "Сломана дверца"
 
 }]
 
@@ -56,15 +67,15 @@ export let warehousesInit = [
         _key: '1',
         address: "Voronezh",
         capacity: 10,
-        chiefId: 1023,
-        cells:  [201, 321, 710]
+        chiefKey: '1fdg02gfd3',
+        cells: [201, 321, 710]
     },
     {
         _key: '2',
         address: "Moscow",
         capacity: 100,
-        chiefId: 2303,
-        cells:  [1, 3211, 10]
+        chiefKey: 'fdg2303fgd',
+        cells: [1, 3211, 10]
     }
 ]
 export const SIGN_IN_URL = "http://127.0.0.1:8080/Users/auth"

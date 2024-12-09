@@ -6,19 +6,19 @@ export type Cell = {
     needService: boolean, 
     size: number, 
     endOfRent: string, 
-    warehouseId: number,
+    warehouseKey: string,
     tariffPerDay: number
 }
 
 export let cellFields = {
-    _key: { name: "id", type: "s" },
+    _key: { name: "key", type: "s", noNeedAddition: true },
     cellNum: { name: "Номер", type: "n" },
     tierNum: { name: "Ряд", type: "n" },
-    isFree: { name: "Свободна", type: "b" },
-    needService: { name: "Нужно ТО", type: "b" },
+    isFree: { name: "Свободна", type: "b", noNeedAddition: true },
+    needService: { name: "Нужно ТО", type: "b", noNeedAddition: true },
     size: { name: "Размер", type: "nf" },
-    endOfRent: { name: "КонецАренды", type: "d" },
-    warehouseId: { name: "id склада", type: "n" },
+    endOfRent: { name: "КонецАренды", type: "d", noNeedAddition: true },
+    warehouseKey: { name: "key склада", type: "s" },
     tariffPerDay: { name: "Тариф", type: "n" }
 };
 export type User = {
@@ -34,21 +34,21 @@ export type User = {
 }
 
 export let userFields = {
-    _key: { name: "id", type: "s" },
+    _key: { name: "id", type: "s", noNeedAddition: true },
     nameSurnamePatronymic: { name: "ФИО", type: "s" },
     role: { name: "Роль", type: "s" },
     login: { name: "Почта", type: "s" },
     birthday: { name: "Дата рождения", type: "d" },
-    regDate: { name: "Дата регистрации", type: "d" },
-    editDate: { name: "Дата обновления", type: "d" },
-    rentedCells: { name: "Арендованные ячейки", type: "l" },
-    indebtedness: { name: "Долг", type: "n" }
+    regDate: { name: "Дата регистрации", type: "d", noNeedAddition: true },
+    editDate: { name: "Дата обновления", type: "d", noNeedAddition: true },
+    rentedCells: { name: "Арендованные ячейки", type: "l", noNeedAddition: true },
+    indebtedness: { name: "Долг", type: "n", noNeedAddition: true }
 }
 
 export type Event = {
     _key: string,
-    cellId: number,
-    userId: number,
+    cellKey: string,
+    userKey: string,
     action: string,
     dateAndTime: string,
     description: string
@@ -56,8 +56,8 @@ export type Event = {
 
 export let eventFields = {
     _key: { name: "id", type: "s" },
-    cellId: { name: "id Ячейки", type: "n" },
-    userId: { name: "id Пользователя", type: "n" },
+    cellKey: { name: "key Ячейки", type: "s" },
+    userKey: { name: "key Пользователя", type: "s" },
     action: { name: "Действие", type: "s" },
     dateAndTimeStart: { name: "Начало поиска", type: "d" },
     dateAndTimeEnd: { name: "Конец поиска", type: "d" },
@@ -68,14 +68,13 @@ export type Warehouse = {
     _key: string,
     address: string,
     capacity: number,
-    chiefId: number,
-    cells: number[],
+    chiefKey: string,
 }
 
 export let warehouseFields = {
-    _key: { name: "id", type: "s" },
+    _key: { name: "id", type: "s", noNeedAddition: true },
     address: { name: "Адресс", type: "s" },
     capacity: { name: "Вместимость", type: "n" },
-    chiefId: { name: "id Ответственного", type: "n" },
-    cells: { name: "Ячейки", type: "l" },
+    chiefKey: { name: "key Ответственного", type: "s" },
+    cells: { name: "Ячейки", type: "l", noNeedAddition: true },
 }
