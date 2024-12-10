@@ -1,0 +1,26 @@
+.cellsBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.cellsTable tr,
+.cellsTable th,
+.cellsTable td {
+  padding: 40px;
+  border: 2px solid var(--color-black);
+}
+
+.button {
+  background-color: var(--color-violet);
+  padding: 14px 20px;
+  border-radius: var(--border);
+  color: var(--color-white);
+}
+
+td {
+  border: 2px solid var(--color-black);
+  padding: 20px 10px;
+  text-align: center;
+}
