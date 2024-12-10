@@ -38,9 +38,9 @@ export default function PaymentPage() {
                 src="./icons/store-icon.png"
                 alt="Ячейка"
               />
-              Ячейка номер {state.cellId}
+              Ячейка номер &nbsp; {state.cellId}
             </p>
-            <p className="paymentPageCellSize">Размер {state.size}</p>
+            <p className="paymentPageCellSize">Размер &nbsp; {state.size}</p>
             <p className="paymentPageCellDate">
               Срок аренды до &nbsp;{}
               <label className="visually-hidden" htmlFor="rentDate">

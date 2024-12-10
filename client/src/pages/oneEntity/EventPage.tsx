@@ -1,17 +1,22 @@
-import { Event } from "../../serviceFiles/types"
-import { useLocation } from "react-router-dom"
+import { Event } from "../../serviceFiles/types";
+import { useLocation } from "react-router-dom";
+import "../../css/oneEntity/EventPage.css";
 
 export default function EventPage() {
-    const {state} = useLocation();
-    console.log(state)
-    return (<div>
-        <h2>Событие id {state._key}</h2>
+  const { state } = useLocation();
+  console.log(state);
+  return (
+    <div className="eventPageContainer">
+      <div className="eventPageBody">
+        <h2>Событие id &nbsp; {state._key}</h2>
         <div>
-            <p>Ячейка {state.cellId}</p>
-            <p>Пользователь {state.userId}</p>
-            <p>Действие {state.action}</p>
-            <p>Время {state.dateAndTime}</p>
-            <p>Описание {state.description}</p>
+          <p>Ячейка &nbsp; {state.cellId}</p>
+          <p>Пользователь &nbsp; {state.userId}</p>
+          <p>Действие &nbsp; {state.action}</p>
+          <p>Время &nbsp; {state.dateAndTime}</p>
+          <p>Описание &nbsp; {state.description}</p>
         </div>
-    </div>)
+      </div>
+    </div>
+  );
 }
