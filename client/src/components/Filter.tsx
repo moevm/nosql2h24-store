@@ -64,7 +64,7 @@ export default function Filter(props: { handleSend: any; obj: any }) {
   return (
     <div className="filterContainer">
       <form className="filterContainer" onSubmit={handleSubmit}>
-        <InputGroup className="mb-3">{filters}</InputGroup>
+        <InputGroup className="filterInput">{filters}</InputGroup>
         <button className="button" type="submit">
           Поиск
         </button>
