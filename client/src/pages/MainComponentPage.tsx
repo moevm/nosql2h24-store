@@ -62,10 +62,6 @@ export default function MainComponentPage() {
             ></Route>
             <Route path="/warehouse" element={<WarehousePage />}></Route>
           </Routes>
-          <address>
-            Улица Торжковская 1Б, Санкт-Петербург, Россия
-            <br />© 2024 Ячейка.ру
-          </address>
         </div>
       </body>
     </>

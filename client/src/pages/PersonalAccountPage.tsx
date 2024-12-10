@@ -1,30 +1,54 @@
-import React, { useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import MyCellsPage from './manyEntity/MyCellsPage';
-import BookCellPage from './manyEntity/RentCellPage';
-import HelpPage from './HelpPage';
-import { ListGroup } from 'react-bootstrap';
-import '../css/PersonalAccount.css'; 
-import { ReactComponent as CellIcon } from '../css/cell-icon.svg';
-import { ReactComponent as BackIcon } from '../css/back-icon.svg';
+import "../css/PersonalAccount.css";
 
 export default function PersonalAccount() {
-    return (
-        <div className="personal-account">
-
-            <main className="main-content">
-                <h1>Личный кабинет</h1>
-                <ul className="menu-list">
-                    <li><Link to="/myCells">Мои ячейки</Link></li>
-                    <li><Link to="/rentCell">Арендовать ячейку</Link></li>
-                    <li><Link to="/help">Служба поддержки</Link></li>
-                    <li><Link to="/allCells">Все ячейки</Link></li>
-                    <li><Link to="/allEvents">Все события</Link></li>
-                    <li><Link to="/allUsers">Все пользователи</Link></li>
-                    <li><Link to="/allWarehouses">Все склады</Link></li>
-                    <li><Link to="/auth">Выход</Link></li>
-                </ul>
-            </main>
-        </div>
-    );
+  return (
+    <div className="personalAccountContainer">
+      <div className="personalAccountBody">
+        <h1 className="personalAccountTitle">Личный кабинет</h1>
+        <ul className="personalAccountList">
+          <li>
+            <a className="personalAccountItem" href="/myCells">
+              Мои ячейки
+            </a>
+          </li>
+          <li>
+            <a className="personalAccountItem" href="/rentCell">
+              Арендовать ячейку
+            </a>
+          </li>
+          <li>
+            <a className="personalAccountItem" href="/help">
+              Служба поддержки
+            </a>
+          </li>
+          <li>
+            <a className="personalAccountItem" href="/allCells">
+              Все ячейки
+            </a>
+          </li>
+          <li>
+            <a className="personalAccountItem" href="/allEvents">
+              Все события
+            </a>
+          </li>
+          <li>
+            <a className="personalAccountItem" href="/allUsers">
+              Все пользователи
+            </a>
+          </li>
+          <li>
+            <a className="personalAccountItem" href="/allWarehouses">
+              Все склады
+            </a>
+          </li>
+          <li>
+            <a className="personalAccountItem" href="/auth">
+              Выход
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
 }
