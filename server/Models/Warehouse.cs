@@ -5,12 +5,12 @@
         public Warehouse() 
         { }
 
-        public Warehouse(string nAddress, int nCapacity, string nChiefId)
+        public Warehouse(string nAddress, int nCapacity, string nChiefKey)
         {
             this._key = Guid.NewGuid().ToString();
             this.address = nAddress;
             this.capacity = nCapacity;
-            this.chiefId = nChiefId;
+            this.chiefKey = nChiefKey;
             this.cellsKeys = new List<string>();
         }
 
@@ -20,7 +20,7 @@
 
         public int capacity { get; set; }
 
-        public string? chiefId { get; set; }
+        public string? chiefKey { get; set; }
 
         public List<string>? cellsKeys { get; set; }
     }
