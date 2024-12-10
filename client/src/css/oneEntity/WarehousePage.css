@@ -1,0 +1,20 @@
+.warehousePageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 50px 150px;
+}
+
+.warehousePageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 20px;
+  padding: 35px;
+  font-weight: 600;
+  width: 400px;
+  color: var(--color-white);
+  border-radius: var(--border);
+  background-color: var(--color-violet);
+  border: 2px solid var(--color-black);
+}

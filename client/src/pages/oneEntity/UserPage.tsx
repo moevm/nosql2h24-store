@@ -7,14 +7,14 @@ export default function UserPage() {
   return (
     <div className="userPageContainer">
       <div className="userPageBody">
-        <h2>{/*state.nameSurnamePatronymic*/}</h2>
+        <h2>{state.nameSurnamePatronymic}</h2>
         <div>
-          <p>Пользователь Ячейка.ру: &nbsp; {/*state.regDate*/}</p>
-          <p>Роль: &nbsp; {/*state.role*/}</p>
-          {/* <p>Арендованные ячейки: &nbsp; {state.rentedCells.join(',')}</p> */}
+          <p>Пользователь Ячейка.ру: &nbsp; {state.regDate}</p>
+          <p>Роль: &nbsp; {state.role}</p>
+          {<p>Арендованные ячейки: &nbsp; {state.rentedCells.join(",")}</p>}
           <p>
             Задолженность: &nbsp;
-            {/*state.indebtedness > 0.00 ? state.indebtedness : "нет"*/}
+            {state.indebtedness > 0.0 ? state.indebtedness : "нет"}
           </p>
         </div>
       </div>
