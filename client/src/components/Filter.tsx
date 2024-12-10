@@ -16,27 +16,37 @@ export default function Filter(props: { handleSend: any, obj: any }) {
             <>
                 <InputGroup.Text id="basic-addon1">{props.obj[key].name}</InputGroup.Text>
                 {props.obj[key].type == "b" && <InputGroup.Checkbox name={key} />}
-                {props.obj[key].type == "s" && <Form.Control
+                {props.obj[key].type == "s" && <div><Form.Control
                     placeholder={props.obj[key].name} name={key}
-                />}
+                /></div>}
                 {
-                    props.obj[key].type == "d" && <Form.Control type="datet"
-                        placeholder={props.obj[key].name} name={key}
-                    />}
+                    props.obj[key].type == "d" && <div><Form.Control type="date"
+                        placeholder={props.obj[key].name  + ' от'} name={'start'+key}
+                    /><Form.Control type="date"
+                    placeholder={props.obj[key].name  + ' до'} name={'end'+key}
+                /></div>}
                 {
-                    props.obj[key].type == "dt" && <Form.Control type="datetime-local"
-                        placeholder={props.obj[key].name} name={key}
-                    />}
+                    props.obj[key].type == "dt" && <div><Form.Control type="datetime-local"
+                        placeholder={props.obj[key].name + ' от'} name={'start'+key}
+                    /><Form.Control type="datetime-local"
+                    placeholder={props.obj[key].name + ' до'} name={'end'+key}
+                /></div>}
                 {
-                    props.obj[key].type == "n" && <Form.Control type="number"
-                        placeholder={props.obj[key].name} name={key}
-                    />}
+                    props.obj[key].type == "n" && <div><Form.Control type="number"
+                        placeholder={props.obj[key].name + ' от'} name={'start'+key}
+                    /><Form.Control type="number"
+                    placeholder={props.obj[key].name + ' до'} name={'end'+key}
+                /></div>}
                 {
-                    props.obj[key].type == "nf" && <Form.Control
+                    props.obj[key].type == "nf" && <div><Form.Control
                         type="number"
                         step={0.1}
-                        placeholder={props.obj[key].name} name={key}
-                    />
+                        placeholder={props.obj[key].name + ' от'} name={'start'+key}
+                    /><Form.Control
+                    type="number"
+                    step={0.1}
+                    placeholder={props.obj[key].name + ' до'} name={'end'+key}
+                /></div>
                 }
                 {
                     props.obj[key].type == "l" && <Form.Control
