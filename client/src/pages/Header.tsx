@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { ReactComponent as CellIcon } from "../css/cell-icon.svg";
 import ImportExport from "../components/ImportExport";
 import "../css/Header.css";
 

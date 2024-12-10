@@ -1,140 +1,81 @@
-.auth-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Calibri', sans-serif;
-    color: black;
+.authPageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 60px 150px;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 20px;
-    border-bottom: 1px solid #e0e0e0;
+.authPageBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
+.authPageEnter {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  row-gap: 20px;
 }
 
-.cell-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
+.authPageEnterTitle {
+  font-size: 28px;
+  font-weight: 700;
 }
 
-.logo-text {
-    font-weight: bold;
-    font-size: 1.2em;
+.dataInput {
+  height: 35px;
+  width: 450px;
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border);
+  padding-inline: 10px;
 }
 
-.header-nav {
-    display: flex;
-    gap: 20px;
+.authPageForm {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  row-gap: 20px;
 }
 
-.header-nav a {
-    color: black;
-    text-decoration: none;
-    font-weight: normal;
-    padding: 0 60px;
+.authPageFormData {
+  display: flex;
+  flex-direction: column;
 }
 
-.divider {
-    color: #ccc; 
-    font-size: 18px;
-    padding: 0 10px; 
+.authPageFormData label {
+  font-weight: 500;
+  padding-inline: 10px;
 }
 
-.header-nav a:hover {
-    text-decoration: underline;
+.authPageEnterOption {
+  color: var(--color-violet);
 }
 
-.auth-content {
-    display: flex;
-    width: 100%;
-    max-width: 900px;
-    justify-content: space-between;
-    padding: 40px 0;
+.authPageButtons {
+  display: flex;
+  column-gap: 50px;
 }
 
-.auth-form-container {
-    max-width: 400px;
-    width: 100%;
+.rememberCheckbox {
+  display: flex;
+  column-gap: 15px;
+  color: var(--color-gray);
 }
 
-.auth-form-container h2 {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 15px;
+.authPageImage {
+  position: relative;
 }
 
-.auth-form-container p {
-    font-size: 1em;
-    color: #666;
-}
-
-.forgot-password {
-    font-size: 0.9em;
-    color: #6a5acd;
-    text-decoration: none;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.login-button {
-    background-color: #6a5acd;
-    border: none;
-    width: 100%;
-    font-size: 1.05em;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 7px;
-    margin-top: 10px;
-}
-
-.register-link {
-    text-decoration: underline;
-    text-align: center;
-    margin-top: 15px;
-}
-
-.register-link a {
-    color: #6a5acd;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
-}
-
-.auth-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-}
-
-.phone-mockup {
-    width: 50%;
-    height: 50%;
-}
-
-.cell-icon2 {
-    position: absolute;
-    top: 52%;
-    left: 55.5%;
-    transform: translate(-50%, -50%);
-    width: 100px; 
-    height: 100px;
-    color: #6a5acd;
-}
-
-.info{
-    text-align: center;
+.authPageImage:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  height: 100px;
+  aspect-ratio: 1;
+  background: url("./icons/cell-icon.svg") center/cover no-repeat;
 }
