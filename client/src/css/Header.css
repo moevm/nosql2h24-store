@@ -1,0 +1,55 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 50px;
+  padding-block: 25px;
+}
+
+.headerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 15px;
+}
+
+.headerLogoName {
+  font-family: var(--font-family-base);
+  font-size: 25px;
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 100px;
+}
+
+.headerNavSeparator {
+  width: 1px;
+  background-color: var(--color-gray);
+  height: 30px;
+}
+
+.headerNav a {
+  color: var(--color-gray);
+}
+
+.headerExportImport {
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 40px;
+}
+
+.headerVariables {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerVariablesName {
+  font-weight: 600;
+}
