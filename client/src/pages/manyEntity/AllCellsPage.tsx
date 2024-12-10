@@ -60,7 +60,7 @@ export default function AllCellsPage() {
       });
   }, []);
   return (
-    <>
+    <div className="allCellsPageContainer">
       <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>
       <Addition handleSend={handleSendNewData} obj={cellFields}></Addition>
       <CellsTable
@@ -68,6 +68,6 @@ export default function AllCellsPage() {
         isForAdmin={true}
         cells={cells}
       ></CellsTable>
-    </>
+    </div>
   );
 }
