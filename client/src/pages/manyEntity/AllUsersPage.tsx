@@ -77,7 +77,7 @@ export default function AllUsersPage() {
             <thead>
                 <tr>
                     <th>
-                        id
+                    _key
                     </th>
                     <th>
                         ФИО

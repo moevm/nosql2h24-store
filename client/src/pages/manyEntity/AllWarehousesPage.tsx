@@ -67,7 +67,7 @@ export default function AllWarehousesPage() {
             <thead>
                 <tr>
                     <th>
-                        id
+                    _key
                     </th>
                     <th>
                         Адресс

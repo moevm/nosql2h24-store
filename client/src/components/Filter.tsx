@@ -20,7 +20,11 @@ export default function Filter(props: { handleSend: any, obj: any }) {
                     placeholder={props.obj[key].name} name={key}
                 />}
                 {
-                    props.obj[key].type == "d" && <Form.Control type="datetime-local"
+                    props.obj[key].type == "d" && <Form.Control type="datet"
+                        placeholder={props.obj[key].name} name={key}
+                    />}
+                {
+                    props.obj[key].type == "dt" && <Form.Control type="datetime-local"
                         placeholder={props.obj[key].name} name={key}
                     />}
                 {

@@ -17,7 +17,7 @@ export let cellFields = {
     isFree: { name: "Свободна", type: "b", noNeedAddition: true },
     needService: { name: "Нужно ТО", type: "b", noNeedAddition: true },
     size: { name: "Размер", type: "nf" },
-    endOfRent: { name: "КонецАренды", type: "d", noNeedAddition: true },
+    endOfRent: { name: "КонецАренды", type: "dt", noNeedAddition: true },
     warehouseKey: { name: "key склада", type: "s" },
     tariffPerDay: { name: "Тариф", type: "n" }
 };
@@ -39,8 +39,8 @@ export let userFields = {
     role: { name: "Роль", type: "s" },
     login: { name: "Почта", type: "s" },
     birthday: { name: "Дата рождения", type: "d" },
-    regDate: { name: "Дата регистрации", type: "d", noNeedAddition: true },
-    editDate: { name: "Дата обновления", type: "d", noNeedAddition: true },
+    regDate: { name: "Дата регистрации", type: "dt", noNeedAddition: true },
+    editDate: { name: "Дата обновления", type: "dt", noNeedAddition: true },
     rentedCells: { name: "Арендованные ячейки", type: "l", noNeedAddition: true },
     indebtedness: { name: "Долг", type: "n", noNeedAddition: true }
 }
@@ -59,8 +59,8 @@ export let eventFields = {
     cellKey: { name: "key Ячейки", type: "s" },
     userKey: { name: "key Пользователя", type: "s" },
     action: { name: "Действие", type: "s" },
-    dateAndTimeStart: { name: "Начало поиска", type: "d" },
-    dateAndTimeEnd: { name: "Конец поиска", type: "d" },
+    dateAndTimeStart: { name: "Начало поиска", type: "dt" },
+    dateAndTimeEnd: { name: "Конец поиска", type: "dt" },
     description: { name: "Описание", type: "s" }
 }
 

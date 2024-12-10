@@ -63,7 +63,7 @@ return (<>
         <thead>
             <tr>
                 <th scope="col">
-                    CellKey
+                    _key ячейки
                 </th>
                 <th scope="col">
                     Номер
@@ -75,7 +75,7 @@ return (<>
                     Дата окончания аренды
                 </th>
                 <th scope="col">
-                    Склад
+                    _key склада
                 </th>
                 {props.isForAdmin && <th scope="col"> Тех.обслуживание </th>}
             </tr>

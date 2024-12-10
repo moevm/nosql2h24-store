@@ -35,7 +35,7 @@ export default function Addition(props: { handleSend: any, obj: any }) {
                     }
                     {
                         props.obj[key].type == "d" && <Form.Control
-                            type="datetime-local"
+                            type="date"
                             placeholder={props.obj[key].name} name={key}
                         />
                     }

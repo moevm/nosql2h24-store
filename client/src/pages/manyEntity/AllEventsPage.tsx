@@ -57,13 +57,13 @@ export default function AllEventsPage() {
             <thead>
                 <tr>
                     <th>
-                        eventKey
+                        _key события
                     </th>
                     <th>
-                        cellKey
+                    _key ячейки
                     </th>
                     <th>
-                        userKey
+                    _key пользователя
                     </th>
                     <th>
                         action
