@@ -1,0 +1,74 @@
+.paymentPageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 150px;
+  column-gap: 150px;
+}
+
+.paymentPageInfo {
+  display: flex;
+  color: var(--color-white);
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  background-color: var(--color-violet);
+  padding: 50px;
+  border-radius: var(--border);
+  row-gap: 30px;
+}
+
+.paymentPageInfoBody {
+  padding: 35px;
+  font-weight: 600;
+  width: 400px;
+  height: 200px;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  border-radius: var(--border);
+}
+
+.paymentPageButton {
+  font-weight: 600;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.paymentPageCellName {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  column-gap: 20px;
+}
+
+.paymentPageCellSize,
+.paymentPageCellDate {
+  padding-left: 10px;
+}
+
+.paymentPageCellDateInput {
+  font-weight: 600;
+  border: 1px solid var(--color-gray);
+  padding: 10px;
+  border-radius: var(--border);
+}
+
+.paymentPageOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  row-gap: 50px;
+}
+
+.paymentOptionsItem {
+  width: 500px;
+  text-align: start;
+  font-size: 23px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-weight: 600;
+  padding: 20px;
+  border: 2px solid var(--color-black);
+  border-radius: var(--border);
+}
