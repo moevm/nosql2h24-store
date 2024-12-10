@@ -5,11 +5,8 @@
   width: 100%;
 }
 
-.cellsTable tr,
-.cellsTable th,
-.cellsTable td {
-  padding: 40px;
-  border: 2px solid var(--color-black);
+.cellName {
+  text-align: center;
 }
 
 .button {

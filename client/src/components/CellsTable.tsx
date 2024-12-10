@@ -85,19 +85,34 @@ export default function CellsTable(props: {
   return (
     <div className="cellsBody">
       {/* {showPayment && <Payment cell={cellForRent} handleClick={CloseRent} isOpen={showPayment} />} */}
-      <table className="cellsTable">
+      <Table striped bordered hover>
         <thead>
           <tr>
-            <th scope="col">_key ячейки</th>
-            <th scope="col">Номер</th>
-            <th scope="col">Статус</th>
-            <th scope="col">Дата окончания аренды</th>
-            <th scope="col">_key склада</th>
-            {props.isForAdmin && <th scope="col"> Тех.обслуживание </th>}
+            <th className="cellName" scope="col">
+              _key ячейки
+            </th>
+            <th className="cellName" scope="col">
+              Номер
+            </th>
+            <th className="cellName" scope="col">
+              Статус
+            </th>
+            <th className="cellName" scope="col">
+              Дата окончания аренды
+            </th>
+            <th className="cellName" scope="col">
+              _key склада
+            </th>
+            {props.isForAdmin && (
+              <th className="cellName" scope="col">
+                {" "}
+                Тех.обслуживание{" "}
+              </th>
+            )}
           </tr>
         </thead>
         <tbody className="cellsTableBody">{listCells}</tbody>
-      </table>
+      </Table>
     </div>
   );
 }
