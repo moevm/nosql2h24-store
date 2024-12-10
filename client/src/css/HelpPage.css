@@ -1,3 +1,65 @@
 .helpPageContainer {
-  background-color: black;
+  padding: 50px 150px;
+}
+
+.helpPageBody {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  column-gap: 150px;
+  height: 700px;
+}
+
+.helpPageForm {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.formItem {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  column-gap: 20px;
+  padding: 10px 15px;
+  height: 50px;
+  width: 500px;
+  font-weight: 600;
+  border-radius: var(--border);
+  border: 2px solid var(--color-violet);
+  background-color: var(--color-darh-white);
+}
+
+.helpPageMain {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  height: 600px;
+  width: 100%;
+}
+
+.helpPageRequest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  border-radius: var(--border);
+  background-color: var(--color-darh-white);
+  padding: 50px;
+}
+
+.helpPageFormRequest {
+  font-weight: 600;
+}
+
+.helpPageFormTextarea {
+  width: 90%;
+  height: 80%;
+  padding: 15px;
+  border-radius: var(--border);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-violet);
 }
