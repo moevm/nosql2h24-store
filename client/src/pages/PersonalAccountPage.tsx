@@ -7,45 +7,29 @@ export default function PersonalAccount() {
       <div className="personalAccountBody">
         <h1 className="personalAccountTitle">Личный кабинет</h1>
         <ul className="personalAccountList">
-          <li>
-            <a className="personalAccountItem" href="/myCells">
-              Мои ячейки
-            </a>
+          <li className="personalAccountItem">
+            <a href="/myCells">Мои ячейки</a>
           </li>
-          <li>
-            <a className="personalAccountItem" href="/rentCell">
-              Арендовать ячейку
-            </a>
+          <li className="personalAccountItem">
+            <a href="/rentCell">Арендовать ячейку</a>
           </li>
-          <li>
-            <a className="personalAccountItem" href="/help">
-              Служба поддержки
-            </a>
+          <li className="personalAccountItem">
+            <a href="/help">Служба поддержки</a>
           </li>
-          <li>
-            <a className="personalAccountItem" href="/allCells">
-              Все ячейки
-            </a>
+          <li className="personalAccountItem">
+            <a href="/allCells">Все ячейки</a>
           </li>
-          <li>
-            <a className="personalAccountItem" href="/allEvents">
-              Все события
-            </a>
+          <li className="personalAccountItem">
+            <a href="/allEvents">Все события</a>
           </li>
-          <li>
-            <a className="personalAccountItem" href="/allUsers">
-              Все пользователи
-            </a>
+          <li className="personalAccountItem">
+            <a href="/allUsers">Все пользователи</a>
           </li>
-          <li>
-            <a className="personalAccountItem" href="/allWarehouses">
-              Все склады
-            </a>
+          <li className="personalAccountItem">
+            <a href="/allWarehouses">Все склады</a>
           </li>
-          <li>
-            <a className="personalAccountItem" href="/auth">
-              Выход
-            </a>
+          <li className="personalAccountItem">
+            <a href="/auth">Выход</a>
           </li>
         </ul>
       </div>
