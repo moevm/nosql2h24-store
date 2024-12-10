@@ -1,43 +1,47 @@
-import React from "react";
 import "../css/HelpPage.css";
-import { Link } from "react-router-dom";
-import { ReactComponent as MailIcon } from "../css/mail-icon.svg";
-// import { ReactComponent as PhoneIcon } from "./icons/css/phone2-icon.svg";
-import { ReactComponent as BackIcon } from "../css/back-icon.svg";
 
 export default function HelpPage() {
   return (
-    <div className="help-page">
-      <main className="main">
-        <section className="contact-section">
-          <h1 className="heading">Служба поддержки</h1>
-          <p className="subheading">
-            Мы всегда рады вопросам и фидбеку, поэтому предлагаем контакты для
-            связи!
-          </p>
-          <div className="contact-info">
-            <div className="contact-item">
-              <MailIcon className="mail-icon" />
-              <span>Email: yacheika.ru@company.co</span>
-            </div>
-            <div className="contact-item">
-              {/* <PhoneIcon className="phone2-icon" /> */}
-              <span>Phone: (123) 456-7890</span>
-            </div>
-          </div>
-        </section>
+    <div className="helpPageContainer">
+      <div className="helpPageBody">
+        <h1 className="helpPageContactTitle">Служба поддержки</h1>
+        <p className="helpPageContactDescription">
+          Мы всегда рады вопросам и фидбеку, поэтому предлагаем контакты для
+          связи!
+        </p>
 
-        <section className="form-section">
-          <p>
-            Оставьте свое сообщение, и оператор ответит вам в ближайшее время.
-          </p>
-          <textarea
-            placeholder="Оставьте свое сообщение здесь..."
-            className="textarea"
-          ></textarea>
-          <button className="send-button">Отправить сообщение</button>
-        </section>
-      </main>
+        <form className="helpPageForm">
+          <label className="visually-hidden" htmlFor="email">
+            Почта
+          </label>
+          <input
+            className="dataInput"
+            id="email"
+            type="email"
+            placeholder="Email: yacheika.ru@company.co"
+          ></input>
+
+          <label className="visually-hidden" htmlFor="phone">
+            Телефон
+          </label>
+          <input
+            className="dataInput"
+            id="phone"
+            type="phone"
+            placeholder="Phone: (123) 456-7890"
+          ></input>
+        </form>
+
+        <p className="helpPageFormRequest">
+          Оставьте свое сообщение, и оператор ответит вам в ближайшее время.
+        </p>
+        <textarea
+          className="helpPageFormTextarea"
+          placeholder="Оставьте свое сообщение здесь..."
+        ></textarea>
+
+        <button className="requestButton button">Отправить сообщение</button>
+      </div>
     </div>
   );
 }
