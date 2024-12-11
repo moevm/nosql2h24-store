@@ -12,7 +12,7 @@ export default function WarehousePage() {
         <div>
           <p>Адрес:&nbsp; {state.address}</p>
           <p>Вместимость:&nbsp; {state.capacity}</p>
-          <p>Ответственный:&nbsp; {state.chiefId}</p>
+          <p>Ответственный:&nbsp; {state.chiefKey}</p>
         </div>
       </div>
     </div>

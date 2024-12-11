@@ -91,7 +91,7 @@ export default function AllUsersPage() {
         {" "}
         <button
           type="button"
-          className="btn"
+          className="button"
           onClick={() => handleUserClick(user)}
         >
           {" "}

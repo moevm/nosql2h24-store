@@ -10,7 +10,7 @@ export default function CellPage() {
         <h2>Ячейка id &nbsp; {state._key}</h2>
         <div>
           <p>Номер &nbsp; {state.cellNum}</p>
-          <p>Склад &nbsp; {state.warehouseId}</p>
+          <p>Склад &nbsp; {state.warehouseKey}</p>
           <p>Ряд &nbsp; {state.tierNum}</p>
           <p>Свободна &nbsp; {state.isFree}</p>
           <p>Конец аренды &nbsp; {state.endOfRent}</p>

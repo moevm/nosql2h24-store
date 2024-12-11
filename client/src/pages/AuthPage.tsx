@@ -35,7 +35,7 @@ export default function AuthPage() {
       navigate("/");
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        if (formData.email == "debug@mail") {
+        if (formData.email == "polina@mail") {
           sessionStorage.setItem("name", "Полина Королева");
           sessionStorage.setItem("role", "администратор");
           sessionStorage.setItem("key", "6673fchd5d57c5dcd7");

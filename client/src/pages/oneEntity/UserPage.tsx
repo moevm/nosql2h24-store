@@ -11,7 +11,7 @@ export default function UserPage() {
         <div>
           <p>Пользователь Ячейка.ру: &nbsp; {state.regDate}</p>
           <p>Роль: &nbsp; {state.role}</p>
-          {<p>Арендованные ячейки: &nbsp; {state.rentedCells.join(",")}</p>}
+          {/* {<p>Арендованные ячейки: &nbsp; {state.rentedCells.join(",")}</p>} */}
           <p>
             Задолженность: &nbsp;
             {state.indebtedness > 0.0 ? state.indebtedness : "нет"}
