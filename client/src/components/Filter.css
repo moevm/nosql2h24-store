@@ -1,0 +1,10 @@
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterInput {
+  margin-bottom: 50px;
+}

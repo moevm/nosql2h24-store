@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import "./Filter.css";
 
 export default function Filter(props: { handleSend: any, obj: any }) {
     const [state, setState] = useState(props.obj);
@@ -67,10 +68,4 @@ export default function Filter(props: { handleSend: any, obj: any }) {
         </Form>
 
     </>)
-
 }
-
-// {
-//     data: "Дата",
-//     FIO: "Фамилия Имя Отчество"
-// }
