@@ -39,7 +39,18 @@ export default function AllCellsPage() {
           });
       })
       .catch((error) => {
-        alert("Ошибка при создании Ячейки");
+        axios
+        .get(GET_ALL_CELLS_URL, { params: filters })
+        .then((response) => {
+          setCells(response.data);
+        })
+        .catch((error) => {
+          console.error(
+            "Ошибка при получении ячеек. Взяты дефолтные ячейки",
+            error
+          );
+          setCells(cellsInit);
+        });
         console.error("Ошибка при создании Ячейки", error);
       });
   }

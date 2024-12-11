@@ -55,7 +55,18 @@ export default function AllUsersPage() {
           });
       })
       .catch((error) => {
-        alert("Ошибка при создании пользователя.");
+        axios
+        .get(GET_ALL_USERS_URL, { params: filters })
+        .then((response) => {
+          setUsers(response.data);
+        })
+        .catch((error) => {
+          console.error(
+            "Ошибка при получении пользователей. Взяты дефолтные пользователи",
+            error
+          );
+          setUsers(usersInit);
+        });
         console.error("Ошибка при создании пользователя.", error);
       });
   }

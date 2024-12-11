@@ -59,7 +59,19 @@ export default function AllWarehousesPage() {
           });
       })
       .catch((error) => {
-        alert("Ошибка при создании склада.");
+        axios
+          .get(GET_ALL_WAREHOUSES_URL, { params: filters })
+          .then((response) => {
+            console.log("get all warehouses, response: ", response);
+            setWarehouses(response.data);
+          })
+          .catch((error) => {
+            console.error(
+              "Ошибка при получении складов. Взяты дефолтные склады",
+              error
+            );
+            setWarehouses(warehousesInit);
+          });
         console.error("Ошибка при создании склада.", error);
       });
   }
