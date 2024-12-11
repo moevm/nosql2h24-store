@@ -80,8 +80,8 @@ export let warehousesInit = [
 ]
 export const SIGN_IN_URL = "http://127.0.0.1:8080/Users/auth"
 export const GET_ALL_CELLS_URL = "http://127.0.0.1:8080/Cells/all"
-export const GET_MY_CELLS_URL = ""
-export const GET_FREE_CELLS_URL = ""
+export const GET_MY_CELLS_URL = "http://127.0.0.1:8080/Cells/all"
+export const GET_FREE_CELLS_URL = "http://127.0.0.1:8080/Cells/all"
 export const POST_NEW_CELL_URL = "http://127.0.0.1:8080/Cells/new"
 export const GET_ALL_EVENTS_URL = "http://127.0.0.1:8080/Events/all"
 export const POST_NEW_EVENT_URL = ""
