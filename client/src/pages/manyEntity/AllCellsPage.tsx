@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import CellsTable from "../../components/CellsTable";
 import {
+    cellDefaultFilter,
   cellsInit,
   GET_ALL_CELLS_URL,
   POST_NEW_CELL_URL,
 } from "../../serviceFiles/constants";
-import { Cell, cellFields } from "../../serviceFiles/types";
+import { Cell, cellFields, cellFilters } from "../../serviceFiles/types";
 import Filter from "../../components/Filter";
 import Addition from "../../components/Addition";
 import axios from "axios";
@@ -14,22 +15,21 @@ import "../../css/manyEntity/AllCellsPage.css";
 
 export default function AllCellsPage() {
   const [cells, setCells] = useState(cellsInit);
-  const [filters, setFilters] = useState({_key: "",
-    warehouseKey: "",
-    startcellNum: 0,
-    endcellNum: 21, // => < 20
-    starttierNum: 0,
-    endtierNum: 6,  // => < 6
-    isFree: true,
-    needService: false,
-    startsize: 0,
-    endsize: 2.1,   // => < 2.1
-    starttariffPerDay: 0,
-    endtariffPerDay: 5001,     // => < 5001});
-  });
+  const [filters, setFilters] = useState(cellDefaultFilter);
   let navigate = useNavigate();
   function handleSendFilters(obj: any) {
     console.log("Получен объект в AllCellsPage (filters)", obj);
+    obj.startcellNum = obj.startcellNum ? parseInt(obj.startcellNum) : cellDefaultFilter.startcellNum;
+    obj.endcellNum = obj.endcellNum ? parseInt(obj.endcellNum) : cellDefaultFilter.endcellNum; // => < 20
+    obj.starttierNum = obj.starttierNum ? parseInt(obj.starttierNum) : cellDefaultFilter.starttierNum;
+    obj.endtierNum = obj.endtierNum ? parseInt(obj.endtierNum) : cellDefaultFilter.endtierNum;  // => < 6
+    obj.isFree = obj.isFree ? true : cellDefaultFilter.isFree;
+    obj.needService = obj.needService ? true : cellDefaultFilter.needService;
+    obj.startsize = obj.startsize ? parseFloat(obj.startsize) : cellDefaultFilter.startsize;
+    obj.endsize = obj.endsize ? parseFloat(obj.endsize) : cellDefaultFilter.endsize;   // => < 2.1
+    obj.starttariffPerDay = obj.starttariffPerDay ? parseInt(obj.starttariffPerDay) : cellDefaultFilter.starttariffPerDay;
+    obj.endtariffPerDay = obj.endtariffPerDay ? parseInt(obj.endtariffPerDay) : cellDefaultFilter.endtariffPerDay; 
+    console.log("Преобразовано (filters)", obj);
     setFilters(obj);
   }
   function handleSendNewData(newObj: Cell) {

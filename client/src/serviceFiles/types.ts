@@ -2,10 +2,10 @@ export type Cell = {
     _key: string,
     cellNum: number,
     tierNum: number,
-    isFree: boolean, 
-    needService: boolean, 
-    size: number, 
-    endOfRent: string, 
+    isFree: boolean,
+    needService: boolean,
+    size: number,
+    endOfRent: string,
     warehouseKey: string,
     tariffPerDay: number
 }
@@ -21,6 +21,22 @@ export let cellFields = {
     warehouseKey: { name: "key склада", type: "s" },
     tariffPerDay: { name: "Тариф", type: "n" }
 };
+
+export let cellFilters = {
+    _key: "s",
+    warehouseKey: "s",
+    startcellNum: "n",
+    endcellNum: "n", // => < 20
+    starttierNum: "n",
+    endtierNum: "n",  // => < 6
+    isFree: "b",
+    needService: "b",
+    startsize: "n",
+    endsize: "nf",   // => < 2.1
+    starttariffPerDay: "n",
+    endtariffPerDay: "n",     // => < 5001});
+}
+
 export type User = {
     _key: string,
     nameSurnamePatronymic: string,

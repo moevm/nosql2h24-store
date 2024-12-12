@@ -22,6 +22,20 @@ export let cellsInit = [
         tariffPerDay: 12.00
     }]
 
+export let cellDefaultFilter = {
+    _key: "",
+    warehouseKey: "",
+    startcellNum: 0,
+    endcellNum: 21, // => < 20
+    starttierNum: 0,
+    endtierNum: 6,  // => < 6
+    isFree: true,
+    needService: false,
+    startsize: 0,
+    endsize: 2.1,   // => < 2.1
+    starttariffPerDay: 0,
+    endtariffPerDay: 5001,     // => < 5001});
+}
 export let eventsInit = [{
     _key: '1e4',
     dateAndTime: "2024-10-13 12:46:01",
