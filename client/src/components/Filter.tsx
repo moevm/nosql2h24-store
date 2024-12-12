@@ -14,7 +14,7 @@ export default function Filter(props: { handleSend: any, obj: any }) {
     const filters = []
     for (let key in props.obj) {
         filters.push(
-            <>
+            <InputGroup className="mb-3">
                 <InputGroup.Text id="basic-addon1">{props.obj[key].name}</InputGroup.Text>
                 {props.obj[key].type == "b" && <InputGroup.Checkbox name={key} />}
                 {props.obj[key].type == "s" && <div><Form.Control
@@ -22,32 +22,32 @@ export default function Filter(props: { handleSend: any, obj: any }) {
                 /></div>}
                 {
                     props.obj[key].type == "d" && <div><Form.Control type="date"
-                        placeholder={props.obj[key].name  + ' от'} name={'start'+key}
+                        placeholder={props.obj[key].name + ' от'} name={'start' + key}
                     /><Form.Control type="date"
-                    placeholder={props.obj[key].name  + ' до'} name={'end'+key}
-                /></div>}
+                        placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                        /></div>}
                 {
                     props.obj[key].type == "dt" && <div><Form.Control type="datetime-local"
-                        placeholder={props.obj[key].name + ' от'} name={'start'+key}
+                        placeholder={props.obj[key].name + ' от'} name={'start' + key}
                     /><Form.Control type="datetime-local"
-                    placeholder={props.obj[key].name + ' до'} name={'end'+key}
-                /></div>}
+                        placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                        /></div>}
                 {
                     props.obj[key].type == "n" && <div><Form.Control type="number"
-                        placeholder={props.obj[key].name + ' от'} name={'start'+key}
+                        placeholder={props.obj[key].name + ' от'} name={'start' + key}
                     /><Form.Control type="number"
-                    placeholder={props.obj[key].name + ' до'} name={'end'+key}
-                /></div>}
+                        placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                        /></div>}
                 {
                     props.obj[key].type == "nf" && <div><Form.Control
                         type="number"
                         step={0.1}
-                        placeholder={props.obj[key].name + ' от'} name={'start'+key}
+                        placeholder={props.obj[key].name + ' от'} name={'start' + key}
                     /><Form.Control
-                    type="number"
-                    step={0.1}
-                    placeholder={props.obj[key].name + ' до'} name={'end'+key}
-                /></div>
+                            type="number"
+                            step={0.1}
+                            placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                        /></div>
                 }
                 {
                     props.obj[key].type == "l" && <Form.Control
@@ -55,15 +55,13 @@ export default function Filter(props: { handleSend: any, obj: any }) {
                     />
                 }
 
-            </>
+            </InputGroup>
         )
 
     }
     return (<>
         <Form onSubmit={handleSubmit}>
-            <InputGroup className="mb-3">
-                {filters}
-            </InputGroup>
+            {filters}
             <Button type="submit">Поиск</Button>
         </Form>
 
