@@ -81,7 +81,7 @@ export default function AllCellsPage() {
         );
         setCells(cellsInit);
       });
-  }, []);
+  }, [filters]);
   return (
     <div className="allCellsPageContainer">
       <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>
