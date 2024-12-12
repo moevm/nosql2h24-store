@@ -22,6 +22,20 @@ export let cellsInit = [
         tariffPerDay: 12.00
     }]
 
+export let cellDefaultFilter = {
+    startcellNum: 0,
+    endcellNum: 21, // => < 20
+    starttierNum: 0,
+    endtierNum: 6,  // => < 6
+    isFree: true,
+    needService: false,
+    startsize: 0,
+    endsize: 2.1,   // => < 2.1
+    starttariffPerDay: 0,
+    endtariffPerDay: 5001,     // => < 5001});
+    startendOfRent: "2023-01-01T00:00:00.000Z",
+    endendOfRent: "2050-12-12T00:00:00.000Z",
+}
 export let eventsInit = [{
     _key: '1e4',
     dateAndTime: "2024-10-13 12:46:01",
@@ -40,6 +54,16 @@ export let eventsInit = [{
 
 }]
 
+export let eventDefaultFilter = {
+    _key: '',
+    cellKey: '',
+    userKey: '',
+    description: "",
+    action: "",
+    startdateAndTime: "2023-01-01T00:00:00.000Z",
+    enddateAndTime: "2050-12-12T00:00:00.000Z",
+}
+
 export let usersInit = [{
     _key: '1',
     nameSurnamePatronymic: "Крупская Ольга Дмитриевна",
@@ -48,7 +72,7 @@ export let usersInit = [{
     birthday: "1980-01-13",
     regDate: "2024-01-13",
     editDate: "2024-01-13",
-    rentedCells: [201, 321, 710],
+    // rentedCells: [201, 321, 710],
     indebtedness: 0.00
 }, {
     _key: '2',
@@ -58,9 +82,24 @@ export let usersInit = [{
     birthday: "2000-01-13",
     regDate: "2024-01-13",
     editDate: "2024-01-13",
-    rentedCells: [202, 901],
+    // rentedCells: [202, 901],
     indebtedness: 10.00
 }]
+
+export let usersDefaultFilter = {
+    _key: '',
+    nameSurnamePatronymic: "",
+    role: "",
+    login: "",
+    startbirthday: "2023-01-01T00:00:00.000Z",
+    endbirthday: "2050-12-12T00:00:00.000Z",
+    starteditDate: "2023-01-01T00:00:00.000Z",
+    endeditDate: "2050-12-12T00:00:00.000Z",
+    startindebtedness: 0.0,
+    endindebtedness: 100000,
+    startregDate: "2023-01-01T00:00:00.000Z",
+    endregDate: "2050-12-12T00:00:00.000Z",
+}
 
 export let warehousesInit = [
     {
@@ -78,6 +117,15 @@ export let warehousesInit = [
         cells: [1, 3211, 10]
     }
 ]
+
+export let warehouseDefaultFilter = {
+    _key: "",
+    address: "",
+    cells: "",
+    chiefKey: "",
+    startcapacity: 0,
+    endcapacity: 1000000,
+}
 export const SIGN_IN_URL = "http://127.0.0.1:8080/Users/auth"
 export const GET_ALL_CELLS_URL = "http://127.0.0.1:8080/Cells/all"
 export const GET_MY_CELLS_URL = "http://127.0.0.1:8080/Cells/all"
@@ -90,7 +138,7 @@ export const POST_NEW_USER_URL = "http://127.0.0.1:8080/Users/new"
 export const GET_ALL_WAREHOUSES_URL = "http://127.0.0.1:8080/Warehouses/all"
 export const POST_NEW_WAREHOUSE_URL = "http://127.0.0.1:8080/Warehouses/new"
 export const AUTH_DB_URL = "http://127.0.0.1:8080/Init/create"
-export const EXPORT_URL = ""
-export const IMPORT_URL = ""
+export const EXPORT_URL = "http://127.0.0.1:8080/Init/export"
+export const IMPORT_URL = "http://127.0.0.1:8080/Init/import"
 export const POST_SERVICE_CELL_URL = ""
 export const POST_RENT_CELL_URL = ""

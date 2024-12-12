@@ -32,7 +32,6 @@ export default function Header({ name, role }: HeaderProps) {
       </nav>
 
       <div className="headerExportImport">
-        <ImportExport />
         <div className="headerVariables">
           <span className="headerVariablesName">{name}</span>
           <span className="headerVariablesRole">{role}</span>

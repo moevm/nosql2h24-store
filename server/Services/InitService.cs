@@ -7,6 +7,7 @@ using System;
 using Core.Arango.Protocol;
 using System.Xml.Linq;
 using Core.Arango.Serialization.Newtonsoft;
+using System.Reflection.Metadata;
 
 namespace Warehouse2.Services
 {
@@ -81,6 +82,48 @@ namespace Warehouse2.Services
                 var eDocument = _serializer.Deserialize<List<Event>>(eText);
                 await _arango.Document.CreateManyAsync<Event>(_dbName, _eColName, eDocument);
             }
+        }
+
+        public async Task Import(Data data)
+        {
+            try
+            {   
+                if (data != null){
+                    List<string> cDocs = await _arango.Query.FindAsync<string>(_dbName, _cColName, $"x", $"x._key");
+                    List<string> uDocs = await _arango.Query.FindAsync<string>(_dbName, _uColName, $"x", $"x._key");
+                    List<string> eDocs = await _arango.Query.FindAsync<string>(_dbName, _eColName, $"x", $"x._key");
+                    List<string> wDocs = await _arango.Query.FindAsync<string>(_dbName, _wColName, $"x", $"x._key");
+
+                    foreach (var key in  cDocs)
+                        await _arango.Document.DeleteAsync<Cell>(_dbName, _cColName, key);
+                    foreach (var key in uDocs)
+                        await _arango.Document.DeleteAsync<User>(_dbName, _cColName, key);
+                    foreach (var key in eDocs)
+                        await _arango.Document.DeleteAsync<Event>(_dbName, _cColName, key);
+                    foreach (var key in wDocs)
+                        await _arango.Document.DeleteAsync<Warehouse>(_dbName, _cColName, key);
+
+
+                    await _arango.Document.CreateManyAsync<User>(_dbName, _uColName, data.users);
+                    await _arango.Document.CreateManyAsync<Warehouse>(_dbName, _wColName, data.warehouses);
+                    await _arango.Document.CreateManyAsync<Cell>(_dbName, _cColName, data.cells);
+                    await _arango.Document.CreateManyAsync<Event>(_dbName, _eColName, data.events);
+                }
+            }
+            catch {
+                Console.WriteLine("Huston, we have some troubles!");
+            }
+        }
+
+        public async Task<Data> ExportData()
+        {   
+            Data data = new Data();
+            data.users = await _arango.Query.FindAsync<User>(_dbName, _uColName, $"x");
+            data.cells = await _arango.Query.FindAsync<Cell>(_dbName, _cColName, $"x");
+            data.events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"x");
+            data.warehouses = await _arango.Query.FindAsync<Warehouse>(_dbName, _wColName, $"x");
+
+            return data;
         }
     }
 }

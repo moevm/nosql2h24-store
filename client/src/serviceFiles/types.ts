@@ -2,10 +2,10 @@ export type Cell = {
     _key: string,
     cellNum: number,
     tierNum: number,
-    isFree: boolean, 
-    needService: boolean, 
-    size: number, 
-    endOfRent: string, 
+    isFree: boolean,
+    needService: boolean,
+    size: number,
+    endOfRent: string,
     warehouseKey: string,
     tariffPerDay: number
 }
@@ -21,6 +21,22 @@ export let cellFields = {
     warehouseKey: { name: "key склада", type: "s" },
     tariffPerDay: { name: "Тариф", type: "n" }
 };
+
+export let cellFilters = {
+    _key: "s",
+    warehouseKey: "s",
+    startcellNum: "n",
+    endcellNum: "n", // => < 20
+    starttierNum: "n",
+    endtierNum: "n",  // => < 6
+    isFree: "b",
+    needService: "b",
+    startsize: "n",
+    endsize: "nf",   // => < 2.1
+    starttariffPerDay: "n",
+    endtariffPerDay: "n",     // => < 5001});
+}
+
 export type User = {
     _key: string,
     nameSurnamePatronymic: string,
@@ -29,7 +45,7 @@ export type User = {
     birthday: string,
     regDate: string,
     editDate: string,
-    rentedCells: number[],
+    // rentedCells: number[],
     indebtedness: number
 }
 
@@ -41,7 +57,7 @@ export let userFields = {
     birthday: { name: "Дата рождения", type: "d" },
     regDate: { name: "Дата регистрации", type: "dt", noNeedAddition: true },
     editDate: { name: "Дата обновления", type: "dt", noNeedAddition: true },
-    rentedCells: { name: "Арендованные ячейки", type: "l", noNeedAddition: true },
+    // rentedCells: { name: "Арендованные ячейки", type: "l", noNeedAddition: true },
     indebtedness: { name: "Долг", type: "n", noNeedAddition: true }
 }
 
@@ -59,8 +75,7 @@ export let eventFields = {
     cellKey: { name: "key Ячейки", type: "s" },
     userKey: { name: "key Пользователя", type: "s" },
     action: { name: "Действие", type: "s" },
-    dateAndTimeStart: { name: "Начало поиска", type: "dt" },
-    dateAndTimeEnd: { name: "Конец поиска", type: "dt" },
+    dateAndTime: { name: "Дата и время", type: "dt" },
     description: { name: "Описание", type: "s" }
 }
 

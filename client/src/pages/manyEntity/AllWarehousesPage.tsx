@@ -5,6 +5,7 @@ import { Button, Table } from "react-bootstrap";
 import {
   GET_ALL_WAREHOUSES_URL,
   POST_NEW_WAREHOUSE_URL,
+  warehouseDefaultFilter,
   warehousesInit,
 } from "../../serviceFiles/constants";
 import Addition from "../../components/Addition";
@@ -16,9 +17,10 @@ export default function AllWarehousesPage() {
   let navigate = useNavigate();
 
   const [warehouses, setWarehouses] = useState(warehousesInit);
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState(warehouseDefaultFilter);
 
   useEffect(() => {
+    console.log("отправлен запрос на получение складов, с параметрами:", filters);
     axios
       .get(GET_ALL_WAREHOUSES_URL, { params: filters })
       .then((response) => {
@@ -32,10 +34,12 @@ export default function AllWarehousesPage() {
         );
         setWarehouses(warehousesInit);
       });
-  }, []);
+  }, [filters]);
 
-  function handleSendFilters(obj: Warehouse) {
+  function handleSendFilters(obj: any) {
     console.log("Получен объект в AllWarehousesPage (filters)", obj);
+    obj.startcapacity = obj.startcapacity ? parseFloat(obj.startcapacity) : warehouseDefaultFilter.startcapacity;
+    obj.endcapacity = obj.endcapacity ? parseFloat(obj.endcapacity) : warehouseDefaultFilter.endcapacity;
     setFilters(obj);
   }
 
