@@ -35,6 +35,8 @@ export let cellDefaultFilter = {
     endsize: 2.1,   // => < 2.1
     starttariffPerDay: 0,
     endtariffPerDay: 5001,     // => < 5001});
+    startendOfRent: "2023-01-01T00:00:00.000Z",
+    endendOfRent: "2050-12-12T00:00:00.000Z",
 }
 export let eventsInit = [{
     _key: '1e4',

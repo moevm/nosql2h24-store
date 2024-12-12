@@ -29,6 +29,8 @@ export default function AllCellsPage() {
     obj.endsize = obj.endsize ? parseFloat(obj.endsize) : cellDefaultFilter.endsize;   // => < 2.1
     obj.starttariffPerDay = obj.starttariffPerDay ? parseInt(obj.starttariffPerDay) : cellDefaultFilter.starttariffPerDay;
     obj.endtariffPerDay = obj.endtariffPerDay ? parseInt(obj.endtariffPerDay) : cellDefaultFilter.endtariffPerDay; 
+    obj.startendOfRent = obj.startendOfRent || cellDefaultFilter.startendOfRent;
+    obj.endendOfRent = obj.endendOfRent|| cellDefaultFilter.endendOfRent; 
     console.log("Преобразовано (filters)", obj);
     setFilters(obj);
   }
