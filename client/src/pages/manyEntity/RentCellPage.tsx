@@ -12,7 +12,7 @@ export default function RentCellPage() {
     useEffect(() => {
         console.log("отправлен запрос на получение ячеек, с параметрами:", filters);
         axios
-            .get(GET_FREE_CELLS_URL, { params: filters })
+            .post(GET_FREE_CELLS_URL, filters)
             .then((response) => {
                 console.log(response);
                 setCells(response.data);

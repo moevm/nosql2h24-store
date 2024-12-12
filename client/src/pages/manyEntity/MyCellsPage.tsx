@@ -14,7 +14,7 @@ export default function MyCellsPage() {
     useEffect(() => {
         console.log("отправлен запрос на получение ячеек, с параметрами:", filters);
         axios
-            .get(GET_MY_CELLS_URL, { params: filters })
+            .post(GET_MY_CELLS_URL, filters)
             .then((response) => {
                 console.log(response);
                 setCells(response.data);
@@ -27,6 +27,7 @@ export default function MyCellsPage() {
                 setCells(cellsInit);
             });
     }, [filters]);
+
     function handleSendFilters(obj: any) {
         console.log("Получен объект в MyCellsPage (filters)", obj);
         obj.startcellNum = obj.startcellNum ? parseInt(obj.startcellNum) : cellDefaultFilter.startcellNum;

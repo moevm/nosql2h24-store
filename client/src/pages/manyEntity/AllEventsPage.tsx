@@ -69,7 +69,7 @@ export default function AllEventsPage() {
   ));
   return (
     <div className="allEventsPageContainer">
-      <Filter handleSend={handleSendFilters} obj={eventFields}></Filter>
+      {/* <Filter handleSend={handleSendFilters} obj={eventFields}></Filter> */}
       <Table striped bordered hover>
         <thead>
           <tr>
