@@ -54,7 +54,7 @@ export default function ImportExport() {
 
   return (
     <>
-      <button className="button" onClick={handleShow}>
+      <button className="button-bold" onClick={handleShow}>
         Импорт/Экспорт данных
       </button>
       <Modal show={show} onHide={handleClose}>
