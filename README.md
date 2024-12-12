@@ -38,7 +38,5 @@ docker compose up
 Пароль: 123
 ```
 
-## Файл для проверки импорта находится по адресу:
-```
-server/test_data/import.json
-```
+> [!TIP] Файл для проверки импорта находится по адресу:
+> server/test_data/import.json
