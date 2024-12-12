@@ -14,9 +14,21 @@ import "../../css/manyEntity/AllCellsPage.css";
 
 export default function AllCellsPage() {
   const [cells, setCells] = useState(cellsInit);
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({_key: "",
+    warehouseKey: "",
+    startcellNum: 0,
+    endcellNum: 21, // => < 20
+    starttierNum: 0,
+    endtierNum: 6,  // => < 6
+    isFree: true,
+    needService: false,
+    startsize: 0,
+    endsize: 2.1,   // => < 2.1
+    starttariffPerDay: 0,
+    endtariffPerDay: 5001,     // => < 5001});
+  });
   let navigate = useNavigate();
-  function handleSendFilters(obj: Cell) {
+  function handleSendFilters(obj: any) {
     console.log("Получен объект в AllCellsPage (filters)", obj);
     setFilters(obj);
   }
@@ -26,7 +38,7 @@ export default function AllCellsPage() {
       .post(POST_NEW_CELL_URL, newObj)
       .then(() => {
         axios
-          .get(GET_ALL_CELLS_URL, { params: filters })
+          .post(GET_ALL_CELLS_URL, filters)
           .then((response) => {
             setCells(response.data);
           })
@@ -40,7 +52,7 @@ export default function AllCellsPage() {
       })
       .catch((error) => {
         axios
-        .get(GET_ALL_CELLS_URL, { params: filters })
+        .post(GET_ALL_CELLS_URL, filters)
         .then((response) => {
           setCells(response.data);
         })
@@ -57,7 +69,7 @@ export default function AllCellsPage() {
   useEffect(() => {
     console.log("отправлен запрос на получение ячеек, с параметрами:", filters);
     axios
-      .get(GET_ALL_CELLS_URL, { params: filters })
+      .post(GET_ALL_CELLS_URL, filters)
       .then((response) => {
         console.log(response);
         setCells(response.data);
