@@ -40,9 +40,9 @@ namespace Warehouse2.Controllers
         [HttpGet("export")]
         public async Task<IActionResult> ExportData()
         {
-            var data = await _initService.ExportData();
+            Data data = await _initService.ExportData();
 
-            if (data == null || !data.users.Any() || !data.cells.Any() || !data.events.Any() || !data.warehouses.Any())
+            if (data == null)
             {
                 return NotFound("No data found");
             }
