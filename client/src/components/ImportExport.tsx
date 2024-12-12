@@ -60,7 +60,7 @@ export default function ImportExport() {
             .get(EXPORT_URL)
             .then((response) => {
                 const blob = new Blob([JSON.stringify(response.data)], {
-                    type: "text/json",
+                    type: "application/json",
                 });
                 const link = document.createElement("a");
                 link.href = URL.createObjectURL(blob);
