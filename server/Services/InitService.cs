@@ -97,11 +97,11 @@ namespace Warehouse2.Services
                     foreach (var key in  cDocs)
                         await _arango.Document.DeleteAsync<Cell>(_dbName, _cColName, key);
                     foreach (var key in uDocs)
-                        await _arango.Document.DeleteAsync<User>(_dbName, _cColName, key);
+                        await _arango.Document.DeleteAsync<User>(_dbName, _uColName, key);
                     foreach (var key in eDocs)
-                        await _arango.Document.DeleteAsync<Event>(_dbName, _cColName, key);
+                        await _arango.Document.DeleteAsync<Event>(_dbName, _eColName, key);
                     foreach (var key in wDocs)
-                        await _arango.Document.DeleteAsync<Warehouse>(_dbName, _cColName, key);
+                        await _arango.Document.DeleteAsync<Warehouse>(_dbName, _wColName, key);
 
 
                     await _arango.Document.CreateManyAsync<User>(_dbName, _uColName, data.users);
