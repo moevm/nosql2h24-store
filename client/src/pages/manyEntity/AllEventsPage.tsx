@@ -4,6 +4,7 @@ import { Event, eventFields } from "../../serviceFiles/types";
 import Table from "react-bootstrap/Table";
 import { Button, Tab } from "react-bootstrap";
 import {
+    eventDefaultFilter,
   eventsInit,
   GET_ALL_EVENTS_URL,
   POST_NEW_EVENT_URL,
@@ -17,9 +18,10 @@ export default function AllEventsPage() {
   let navigate = useNavigate();
 
   const [events, setEvent] = useState(eventsInit);
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState(eventDefaultFilter);
 
   useEffect(() => {
+    console.log("отправлен запрос на получение событий, с параметрами:", filters);
     axios
       .get(GET_ALL_EVENTS_URL, { params: filters })
       .then((response) => {
@@ -33,9 +35,11 @@ export default function AllEventsPage() {
         );
         setEvent(eventsInit);
       });
-  }, []);
-  function handleSendFilters(obj: Event) {
+  }, [filters]);
+  function handleSendFilters(obj: any) {
     console.log("Получен объект в AllEventsPage (filters)", obj);
+    obj.startdateAndTime = obj.startdateAndTime || eventDefaultFilter.startdateAndTime;
+    obj.enddateAndTime = obj.startdateAndTime || eventDefaultFilter.startdateAndTime;
     setFilters(obj);
   }
 
