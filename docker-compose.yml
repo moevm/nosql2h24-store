@@ -14,7 +14,7 @@ services:
       - DB_HOST=arangoDB
       - DB_PORT=8529
     depends_on:
-      - arangodb
+      - db
     networks:
       - app-network
 
@@ -31,7 +31,7 @@ services:
     networks:
       - app-network
 
-  arangodb:
+  db:
     image: arangodb:3.12.3 
     container_name: arangoDB
     hostname: arangoDB
