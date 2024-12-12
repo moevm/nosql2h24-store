@@ -37,3 +37,8 @@ docker compose up
 Логин: polina@mail
 Пароль: 123
 ```
+
+## Файл для проверки импорта находится по адресу:
+```
+server/test_data/import.json
+```
