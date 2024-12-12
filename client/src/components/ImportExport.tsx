@@ -59,13 +59,16 @@ export default function ImportExport() {
         axios
             .get(EXPORT_URL)
             .then((response) => {
+                console.log("response", response);
                 const blob = new Blob([JSON.stringify(response.data)], {
                     type: "application/json",
                 });
                 const link = document.createElement("a");
                 link.href = URL.createObjectURL(blob);
                 link.download = `dataStore.json`;
+                document.body.appendChild(link);
                 link.click();
+                document.body.removeChild(link);
                 URL.revokeObjectURL(link.href);
             })
             .catch((error) => {
