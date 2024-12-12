@@ -36,5 +36,18 @@ namespace Warehouse2.Controllers
             return Ok(new { message = "Данные успешно получены!", data });
         }
 
+
+        [HttpGet("export")]
+        public async Task<IActionResult> ExportData()
+        {
+            var data = await _initService.ExportData();
+
+            if (data == null || !data.users.Any() || !data.cells.Any() || !data.events.Any() || !data.warehouses.Any())
+            {
+                return NotFound("No data found");
+            }
+
+            return Ok(data); // Отправляем данные в формате JSON
+        }
     }
 }

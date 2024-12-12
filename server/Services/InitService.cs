@@ -114,5 +114,16 @@ namespace Warehouse2.Services
                 Console.WriteLine("Huston, we have some troubles!");
             }
         }
+
+        public async Task<Data> ExportData()
+        {   
+            Data data = new Data();
+            data.users = await _arango.Query.FindAsync<User>(_dbName, _uColName, $"x");
+            data.cells = await _arango.Query.FindAsync<Cell>(_dbName, _cColName, $"x");
+            data.events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"x");
+            data.warehouses = await _arango.Query.FindAsync<Warehouse>(_dbName, _wColName, $"x");
+
+            return data;
+        }
     }
 }
