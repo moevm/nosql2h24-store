@@ -84,6 +84,10 @@ export default function AllCellsPage() {
         setCells(cellsInit);
       });
   }, [filters]);
+
+  useEffect(()=>{
+    console.log("отправлен запрос на получение складов, с параметрами:");
+  }, [])
   return (
     <div className="allCellsPageContainer">
       <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>

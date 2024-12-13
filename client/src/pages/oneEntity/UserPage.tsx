@@ -9,8 +9,12 @@ export default function UserPage() {
       <div className="userPageBody">
         <h2>{state.nameSurnamePatronymic}</h2>
         <div>
-          <p>Пользователь Ячейка.ру: &nbsp; {state.regDate}</p>
+          <p>Пользователь Ячейка.ру с: &nbsp; {state.regDate}</p>
+          <p>Последнее изменение: &nbsp; {state.editDate}</p>
+          <p>_key: &nbsp; {state._key}</p>
+          <p>Логин: &nbsp; {state.login}</p>
           <p>Роль: &nbsp; {state.role}</p>
+          <p>День рождения: &nbsp; {state.birthday}</p>
           {/* {<p>Арендованные ячейки: &nbsp; {state.rentedCells.join(",")}</p>} */}
           <p>
             Задолженность: &nbsp;

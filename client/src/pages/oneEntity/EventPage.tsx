@@ -8,13 +8,13 @@ export default function EventPage() {
   return (
     <div className="eventPageContainer">
       <div className="eventPageBody">
-        <h2>Событие id &nbsp; {state._key}</h2>
+        <h2>Событие _key: &nbsp; {state._key}</h2>
         <div>
-          <p>Ячейка &nbsp; {state.cellKey}</p>
-          <p>Пользователь &nbsp; {state.userKey}</p>
-          <p>Действие &nbsp; {state.action}</p>
-          <p>Время &nbsp; {state.dateAndTime}</p>
-          <p>Описание &nbsp; {state.description}</p>
+          <p>Ячейка: &nbsp; {state.cellKey}</p>
+          <p>Пользователь: &nbsp; {state.userKey}</p>
+          <p>Действие: &nbsp; {state.action}</p>
+          <p>Время: &nbsp; {state.dateAndTime}</p>
+          <p>Описание: &nbsp; {state.description}</p>
         </div>
       </div>
     </div>
