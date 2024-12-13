@@ -18,7 +18,7 @@ export let cellFields = {
     needService: { name: "Нужно ТО", type: "b", noNeedAddition: true },
     size: { name: "Размер", type: "nf" },
     endOfRent: { name: "КонецАренды", type: "dt", noNeedAddition: true },
-    warehouseKey: { name: "key склада", type: "s" },
+    warehouseKey: { name: "key склада", type: "select_dynamic" },
     tariffPerDay: { name: "Тариф", type: "n" }
 };
 
@@ -52,7 +52,7 @@ export type User = {
 export let userFields = {
     _key: { name: "id", type: "s", noNeedAddition: true },
     nameSurnamePatronymic: { name: "ФИО", type: "s" },
-    role: { name: "Роль", type: "sel", options: ["Администратор", "Работник", "Директор", "Клиент"] },
+    role: { name: "Роль", type: "select_const", options: ["Администратор", "Работник", "Директор", "Клиент"] },
     login: { name: "Почта", type: "s" },
     birthday: { name: "Дата рождения", type: "d" },
     regDate: { name: "Дата регистрации", type: "dt", noNeedAddition: true },

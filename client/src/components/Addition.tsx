@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 
-export default function Addition(props: { handleSend: any, obj: any }) {
+export default function Addition(props: { handleSend: any, obj: any, listKeys: string[] }) {
     const [state, setState] = useState(props.obj);
     const [show, setShow] = useState(false);
 
@@ -61,7 +61,8 @@ export default function Addition(props: { handleSend: any, obj: any }) {
                             pattern="[0-9,]+"
                         />
                     )}
-                    {props.obj[key].type == "sel" && <Form.Select name={key}>{props.obj[key].options.map((role: string)=><option value={role}>{role}</option>)}</Form.Select>}
+                    {props.obj[key].type == "select_const" && <Form.Select name={key}>{props.obj[key].options.map((role: string)=><option value={role}>{role}</option>)}</Form.Select>}
+                    {props.obj[key].type == "select_dynamic" && <Form.Select name={key}>{props.listKeys.map((warehouseKey: string)=><option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>}
                 </InputGroup>
             );
         }

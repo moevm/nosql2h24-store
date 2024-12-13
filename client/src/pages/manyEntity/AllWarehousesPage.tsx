@@ -102,7 +102,7 @@ export default function AllWarehousesPage() {
   return (
     <div className="allWarehousesPageContainer">
       {/* <Filter handleSend={handleSendFilters} obj={warehouseFields}></Filter> */}
-      <Addition handleSend={handleSendNewData} obj={warehouseFields}></Addition>
+      <Addition handleSend={handleSendNewData} obj={warehouseFields} listKeys={[]}></Addition>
       <Table striped bordered hover>
         <thead>
           <tr>

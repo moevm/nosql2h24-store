@@ -113,7 +113,7 @@ export default function AllUsersPage() {
   return (
     <div className="allUsersPageContainer">
       {/* <Filter handleSend={handleSendFilters} obj={userFields}></Filter> */}
-      <Addition handleSend={handleSendNewData} obj={userFields}></Addition>
+      <Addition handleSend={handleSendNewData} obj={userFields} listKeys={[]}></Addition>
       <Table striped bordered hover>
         <thead>
           <tr>

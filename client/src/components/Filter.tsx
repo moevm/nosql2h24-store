@@ -17,7 +17,7 @@ export default function Filter(props: { handleSend: any, obj: any }) {
             <InputGroup className="mb-3">
                 <InputGroup.Text id="basic-addon1">{props.obj[key].name}</InputGroup.Text>
                 {props.obj[key].type == "b" && <InputGroup.Checkbox name={key} />}
-                {props.obj[key].type == "s" && <div><Form.Control
+                {["s", "select_dynamic"].includes(props.obj[key].type) && <div><Form.Control
                     placeholder={props.obj[key].name} name={key}
                 /></div>}
                 {
@@ -54,7 +54,7 @@ export default function Filter(props: { handleSend: any, obj: any }) {
                         placeholder={props.obj[key].name} name={key} pattern="[0-9,]+"
                     />
                 }
-
+                {props.obj[key].type == "select_const" && <Form.Select name={key}>{props.obj[key].options.map((role: string) => <option value={role}>{role}</option>)}</Form.Select>}
             </InputGroup>
         )
 
