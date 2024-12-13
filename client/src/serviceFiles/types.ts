@@ -52,7 +52,7 @@ export type User = {
 export let userFields = {
     _key: { name: "id", type: "s", noNeedAddition: true },
     nameSurnamePatronymic: { name: "ФИО", type: "s" },
-    role: { name: "Роль", type: "s" },
+    role: { name: "Роль", type: "sel", options: ["Администратор", "Работник", "Директор", "Клиент"] },
     login: { name: "Почта", type: "s" },
     birthday: { name: "Дата рождения", type: "d" },
     regDate: { name: "Дата регистрации", type: "dt", noNeedAddition: true },
