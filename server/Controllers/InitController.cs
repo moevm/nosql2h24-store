@@ -23,24 +23,21 @@ namespace Warehouse2.Controllers
         [HttpPost("import")]
         public async Task<IActionResult> Import([FromBody] Data data)
         {
-            
+
             if (data == null)
             {
                 return BadRequest("Данные не были предоставлены.");
             }
-
-            // Теперь вы можете использовать данные из объекта "data"
 
             await _initService.Import(data);
 
             return Ok(new { message = "Данные успешно получены!", data });
         }
 
-
         [HttpGet("export")]
         public async Task<IActionResult> ExportData()
         {
-            Data data = await _initService.ExportData();
+            var data = await _initService.ExportData();
 
             if (data == null)
             {

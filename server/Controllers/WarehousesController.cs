@@ -38,5 +38,11 @@ namespace Warehouse2.Controllers
 
             return CreatedAtAction(nameof(Get), new { key = newObj._key }, newObj);
         }
+
+        [HttpPost("all")]
+        public async Task<List<Warehouse>> FilterDocsIndices(WarehouseFilterBody body)
+        {
+            return await _warehousesService.FilterDocsAsync(body);
+        }
     }
 }

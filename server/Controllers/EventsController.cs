@@ -24,5 +24,11 @@ namespace Warehouse2.Controllers
         [HttpGet("{key}")]
         public async Task<Event> Get(string key) =>
             await _eventsService.GetOneAsync(key);
+
+        [HttpPost("all")]
+        public async Task<List<Event>> FilterDocsAsync(EventFilterBody body)
+        {
+            return await _eventsService.FilterDocsAsync(body); 
+        }
     }
 }

@@ -39,18 +39,10 @@ namespace Warehouse2.Controllers
         }
 
         [HttpPost("all")]
-        public async Task<List<Cell>> FilterDocsIndices(FilterBody body)
+        public async Task<List<Cell>> FilterDocsIndices(CellFilterBody body)
         {
             // на числовые параметры зададим верхнюю и нижнюю границы по умолчанию
             
-            //FilterBody tbody = new FilterBody();
-            //tbody._key = key;
-            //tbody.warehouseKey = WKey;
-            /*body.needService = false;
-            body.endcellNum = 21;
-            body.endtierNum = 6;
-            body.endsize = 2.1f;
-            body.endtariffPerDay = 5001;*/
             //body.startendOfRent = new DateTime();
             //body.endendOfRent = new DateTime(2100, 1, 1);
 

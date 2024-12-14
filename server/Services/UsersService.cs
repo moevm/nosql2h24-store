@@ -58,5 +58,13 @@ namespace Warehouse2.Services
 
             return usrs;
         }
+
+        public async Task<List<User>> FilterDocsAsync(UserFilterBody b)
+        {
+            FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.nameSurnamePatronymic, {b.nameSurnamePatronymic}, true)";
+            FormattableString filter1 = $"AND regex_test(x.role, {b.role}, true) AND regex_test(x.login, {b.login}, true) AND regex_test(x.password, {b.password}, true)";
+            FormattableString filter2 = $"AND x.indebtedness >= {b.startindebtedness} AND x.indebtedness <= {b.endindebtedness}";
+            return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2}");
+        }
     }
 }

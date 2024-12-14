@@ -42,5 +42,11 @@ namespace Warehouse2.Controllers
         {
             return await _usersService.AuthenticateAsync(log, psw);
         }
+
+        [HttpPost("all")]
+        public async Task<List<User>> FilterDocsIndices(UserFilterBody body)
+        {
+            return await _usersService.FilterDocsAsync(body);
+        }
     }
 }

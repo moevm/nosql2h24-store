@@ -24,4 +24,25 @@
 
         public List<string>? cellsKeys { get; set; }
     }
+
+    public class WarehouseFilterBody
+    {
+        public WarehouseFilterBody()
+        {
+            this._key = "";
+            this.chiefKey = "";
+            this.address = "";
+            this.startcapacity = 0;
+            this.endcapacity = 1000000;
+        }
+
+        public string? _key { get; set; }
+
+        public string? address { get; set; }
+
+        public int startcapacity { get; set; }
+        public int endcapacity { get; set; }
+
+        public string? chiefKey { get; set; }
+    }
 }

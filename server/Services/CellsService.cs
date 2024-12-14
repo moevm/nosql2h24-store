@@ -71,12 +71,12 @@ namespace Warehouse2.Services
 
         }
 
-        public async Task<List<Cell>> FilterDocsAsync(FilterBody b)
+        public async Task<List<Cell>> FilterDocsAsync(CellFilterBody b)
         {
             FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.warehouseKey, {b.warehouseKey}, true)";
-            FormattableString filter1 = $"AND x.cellNum > {b.startcellNum} AND x.cellNum < {b.endcellNum} AND x.tierNum > {b.starttierNum}";
-            FormattableString filter2 = $"AND x.tierNum < {b.endtierNum} AND x.size > {b.startsize} AND x.size < {b.endsize}";
-            FormattableString filter3 = $"AND x.tariffPerDay > {b.starttariffPerDay} AND x.tariffPerDay < {b.endtariffPerDay}";
+            FormattableString filter1 = $"AND x.cellNum >= {b.startcellNum} AND x.cellNum <= {b.endcellNum} AND x.tierNum >= {b.starttierNum}";
+            FormattableString filter2 = $"AND x.tierNum <= {b.endtierNum} AND x.size >= {b.startsize} AND x.size <= {b.endsize}";
+            FormattableString filter3 = $"AND x.tariffPerDay >= {b.starttariffPerDay} AND x.tariffPerDay <= {b.endtariffPerDay}";
             FormattableString filter4 = $" AND x.isFree == {b.isFree} AND x.needService == {b.needService}";
             
             return await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4}");

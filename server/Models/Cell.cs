@@ -41,9 +41,9 @@ namespace Warehouse2.Models
         public List<string>? listOfEventKeys { get; set; }
     }
 
-    public class FilterBody
+    public class CellFilterBody
     {
-        public FilterBody()
+        public CellFilterBody()
         {
             this._key = "";
             this.warehouseKey = "";

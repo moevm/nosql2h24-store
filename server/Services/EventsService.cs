@@ -42,14 +42,13 @@ namespace Warehouse2.Services
             return await _arango.Document.GetAsync<Event>(_dbName, _collectionName, key);
         }
 
-        /*public async Task EventAddAsync(string CKEY, string WKEY)
+        public async Task<List<Event>> FilterDocsAsync(EventFilterBody b)
         {
-            string dscr = "new cell has just been created";
-            string cellId = "CELL/" + CKEY;
-            string warehouseId = "WAREHOUSE/" + WKEY;
-            Event newEvent = new Event("CREATE", dscr, 0, warehouseId, cellId);
+            FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.cellKey, {b.cellKey}, true)";
+            FormattableString filter1 = $"AND regex_test(x.userKey, {b.userKey}, true) AND regex_test(x.action, {b.action}, true)";
+            FormattableString filter2 = $"AND regex_test(x.description, {b.description}, true)";
 
-            await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _collectionName, newEvent);
-        }*/
+            return await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2}");
+        }
     }
 }

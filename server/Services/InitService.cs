@@ -8,6 +8,7 @@ using Core.Arango.Protocol;
 using System.Xml.Linq;
 using Core.Arango.Serialization.Newtonsoft;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Warehouse2.Services
 {
@@ -87,14 +88,15 @@ namespace Warehouse2.Services
         public async Task Import(Data data)
         {
             try
-            {   
-                if (data != null){
+            {
+                if (data != null)
+                {
                     List<string> cDocs = await _arango.Query.FindAsync<string>(_dbName, _cColName, $"x", $"x._key");
                     List<string> uDocs = await _arango.Query.FindAsync<string>(_dbName, _uColName, $"x", $"x._key");
                     List<string> eDocs = await _arango.Query.FindAsync<string>(_dbName, _eColName, $"x", $"x._key");
                     List<string> wDocs = await _arango.Query.FindAsync<string>(_dbName, _wColName, $"x", $"x._key");
 
-                    foreach (var key in  cDocs)
+                    foreach (var key in cDocs)
                         await _arango.Document.DeleteAsync<Cell>(_dbName, _cColName, key);
                     foreach (var key in uDocs)
                         await _arango.Document.DeleteAsync<User>(_dbName, _uColName, key);
@@ -110,13 +112,15 @@ namespace Warehouse2.Services
                     await _arango.Document.CreateManyAsync<Event>(_dbName, _eColName, data.events);
                 }
             }
-            catch {
+            catch
+            {
                 Console.WriteLine("Huston, we have some troubles!");
             }
         }
 
+     
         public async Task<Data> ExportData()
-        {   
+        {
             Data data = new Data();
             data.users = await _arango.Query.FindAsync<User>(_dbName, _uColName, $"x");
             data.cells = await _arango.Query.FindAsync<Cell>(_dbName, _cColName, $"x");

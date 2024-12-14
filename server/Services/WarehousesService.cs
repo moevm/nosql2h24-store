@@ -45,5 +45,13 @@ namespace Warehouse2.Services
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
         }
 
+        public async Task<List<Warehouse>> FilterDocsAsync(WarehouseFilterBody b)
+        {
+            FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.address, {b.address}, true)";
+            FormattableString filter1 = $"AND regex_test(x.chiefKey, {b.chiefKey}, true) AND x.capacity >= {b.startcapacity}";
+            FormattableString filter2 = $"AND x.capacity <= {b.endcapacity}";
+
+            return await _arango.Query.FindAsync<Warehouse>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2}");
+        }
     }
 }
