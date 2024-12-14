@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowLocalhost",
         policy =>
         {
-            policy.WithOrigins("http://127.0.0.1:80", "http://127.0.0.1") 
+            policy.WithOrigins("http://127.0.0.1:8000", "http://127.0.0.1") 
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
@@ -35,7 +35,7 @@ var app = builder.Build();
 
 app.UseCors("AllowLocalhost");
 
-// app.UseCors(builder => builder.WithOrigins("http://localhost:80", "http://127.0.0.1:80").AllowAnyHeader().AllowAnyMethod());
+// app.UseCors(builder => builder.WithOrigins("http://localhost:8000", "http://127.0.0.1:80").AllowAnyHeader().AllowAnyMethod());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
