@@ -54,7 +54,7 @@ export default function Filter(props: { handleSend: any, obj: any }) {
                         placeholder={props.obj[key].name} name={key} pattern="[0-9,]+"
                     />
                 }
-                {props.obj[key].type == "select_const" && <Form.Select name={key}>{props.obj[key].options.map((role: string) => <option value={role}>{role}</option>)}</Form.Select>}
+                {props.obj[key].type == "select_const" && <Form.Select name={key}>{props.obj[key].options.map((role: string) => <option value={role[0]}>{role[1]}</option>)}</Form.Select>}
             </InputGroup>
         )
 
