@@ -1,24 +1,57 @@
 [
-  {
-    "_key": "029e65bb-bf7d-43ba-8efe-4d4a4478ffbf",
-    "nameSurnamePatronymic": "Goga Yelin Boo",
-    "role": "employee",
-    "login": "bogatyr@gmail.com",
-    "password": "glaz-uslada",
-    "birthday": "20.09.2003",
-    "regDate": "2024-11-12T05:12:09.2289011+03:00",
-    "editDate": null,
-    "indebtedness": 0
-  },
-  {
-    "_key": "0142f058-89ac-43b8-a28c-c6695bf751fa",
-    "nameSurnamePatronymic": "Anna Yelina Boo",
-    "role": "director",
-    "login": "coolwife@mail.ru",
-    "password": "devils_s_girl",
-    "birthday": "31.03.2000",
-    "regDate": "2024-11-12T05:12:38.4140347+03:00",
-    "editDate": null,
-    "indebtedness": 0
-  }
+    {
+        "_key": "029e65bb-bf7d-43ba-8efe-4d4a4478ffbf",
+        "nameSurnamePatronymic": "Иевлев Егор Алексеевич",
+        "role": "director",
+        "login": "bogatyr@gmail.com",
+        "password": "glaz-uslada",
+        "birthday": "2003-09-20",
+        "regDate": "2024-11-12T05:12:09.2289011+03:00",
+        "editDate": null,
+        "indebtedness": 0
+    },
+    {
+        "_key": "0142f058-89ac-43b8-a28c-c6695bf751fa",
+        "nameSurnamePatronymic": "Елина Анна Борисенко",
+        "role": "emploee",
+        "login": "coolwife@mail.ru",
+        "password": "devils_s_girl",
+        "birthday": "2000-03-31",
+        "regDate": "2024-11-12T05:12:38.4140347+03:00",
+        "editDate": null,
+        "indebtedness": 0
+    },
+    {
+        "_key": "85dea159-344b-4f2e-ad66-8cb96c09a6bf",
+        "nameSurnamePatronymic": "Заславский Марк Маркович ",
+        "role": "lord",
+        "login": "mark@mail.ru",
+        "password": "123mark",
+        "birthday": "1995-02-01",
+        "regDate": "2024-12-15T20:32:24.5279792+00:00",
+        "editDate": null,
+        "indebtedness": 0
+    },
+    {
+        "_key": "a16141d0-1397-44fa-b1ba-8b54b6d04778",
+        "nameSurnamePatronymic": "Королева Полина Андреевна",
+        "role": "director",
+        "login": "polina@mail",
+        "password": "8278",
+        "birthday": "2003-05-05",
+        "regDate": "2024-12-15T20:37:13.5224437+00:00",
+        "editDate": null,
+        "indebtedness": 0
+    },
+    {
+        "_key": "d2be406e-fbfc-4be7-a271-ab0665204f8b",
+        "nameSurnamePatronymic": "Новак Полина Игоревна",
+        "role": "client",
+        "login": "novak@mail.ru",
+        "password": "novak",
+        "birthday": "2003-12-01",
+        "regDate": "2024-12-15T20:42:36.0550207+00:00",
+        "editDate": null,
+        "indebtedness": 0
+    }
 ]

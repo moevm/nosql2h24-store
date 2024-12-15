@@ -43,6 +43,7 @@ export default function CellsTable(props: {
     <tr className="listCellsTable" key={cell._key}>
       <td>{cell._key}</td>
       <td>{cell.cellNum}</td>
+      <td>{cell.tierNum}</td>
       <td>{cell.isFree ? "Свободна" : "Занята"}</td>
       <td>{cell.endOfRent}</td>
       <td>{cell.warehouseKey}</td>
@@ -94,6 +95,9 @@ export default function CellsTable(props: {
             </th>
             <th className="cellName" scope="col">
               Номер
+            </th>
+            <th className="cellName" scope="col">
+              Ярус
             </th>
             <th className="cellName" scope="col">
               Статус
