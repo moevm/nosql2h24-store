@@ -23,7 +23,6 @@ namespace Warehouse2.Controllers
         [HttpPost("import")]
         public async Task<IActionResult> Import([FromBody] Data data)
         {
-
             if (data == null)
             {
                 return BadRequest("Данные не были предоставлены.");

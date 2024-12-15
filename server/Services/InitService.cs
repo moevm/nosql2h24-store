@@ -123,9 +123,14 @@ namespace Warehouse2.Services
         {
             Data data = new Data();
             data.users = await _arango.Query.FindAsync<User>(_dbName, _uColName, $"x");
-            data.cells = await _arango.Query.FindAsync<Cell>(_dbName, _cColName, $"x");
             data.events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"x");
             data.warehouses = await _arango.Query.FindAsync<Warehouse>(_dbName, _wColName, $"x");
+            data.cells = await _arango.Query.FindAsync<Cell>(_dbName, _cColName, $"x");
+
+            foreach (Cell cell in data.cells)
+            {
+                cell.warehouseAddress = await _arango.Query.SingleOrDefaultAsync<string>(_dbName, _wColName, $"x._key == {cell.warehouseKey}", $"x.address");
+            }
 
             return data;
         }
