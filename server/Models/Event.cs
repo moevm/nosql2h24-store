@@ -45,8 +45,8 @@ namespace Warehouse2.Models
             this.userKey = "";
             this.action = "";
             this.description = "";
-            //this.startdateAndTime = new DateTimeOffset(0, new TimeSpan(1, 0, 0));
-            //this.enddateAndTime = new DateTime(2100, 1, 1);
+            this.startdateAndTime = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.enddateAndTime = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
         }
 
         public string _key { get; set; }

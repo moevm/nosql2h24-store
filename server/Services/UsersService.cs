@@ -62,9 +62,14 @@ namespace Warehouse2.Services
         public async Task<List<User>> FilterDocsAsync(UserFilterBody b)
         {
             FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.nameSurnamePatronymic, {b.nameSurnamePatronymic}, true)";
-            FormattableString filter1 = $"AND regex_test(x.role, {b.role}, true) AND regex_test(x.login, {b.login}, true) AND regex_test(x.password, {b.password}, true)";
-            FormattableString filter2 = $"AND x.indebtedness >= {b.startindebtedness} AND x.indebtedness <= {b.endindebtedness}";
-            return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2}");
+            FormattableString filter1 = $" AND regex_test(x.role, {b.role}, true) AND regex_test(x.login, {b.login}, true) AND regex_test(x.password, {b.password}, true)";
+            FormattableString filter2 = $" AND x.indebtedness >= {b.startindebtedness} AND x.indebtedness <= {b.endindebtedness}";
+            FormattableString filter3 = $" AND DATE_DIFF(x.regDate, {b.endregDate}, 's', true) > 0 AND DATE_DIFF({b.startregDate}, x.regDate, 's', true) > 0";
+            FormattableString filter4 = $" AND DATE_DIFF(x.editDate, {b.endeditDate}, 's', true) > 0 AND DATE_DIFF({b.starteditDate}, x.editDate, 's', true) > 0";
+            FormattableString filter5 = $" AND DATE_DIFF(x.birthday, {b.endbirthday}, 'd', true) > 0 AND DATE_DIFF({b.startbirthday}, x.birthday, 'd', true) > 0";
+
+
+            return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
         }
 
         public async Task<List<string>> ListDirectorsKeysAsync()

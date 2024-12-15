@@ -45,10 +45,11 @@ namespace Warehouse2.Services
         public async Task<List<Event>> FilterDocsAsync(EventFilterBody b)
         {
             FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.cellKey, {b.cellKey}, true)";
-            FormattableString filter1 = $"AND regex_test(x.userKey, {b.userKey}, true) AND regex_test(x.action, {b.action}, true)";
-            FormattableString filter2 = $"AND regex_test(x.description, {b.description}, true)";
+            FormattableString filter1 = $" AND regex_test(x.userKey, {b.userKey}, true) AND regex_test(x.action, {b.action}, true)";
+            FormattableString filter2 = $" AND regex_test(x.description, {b.description}, true)";
+            FormattableString filter3 = $" AND DATE_DIFF(x.dateAndTime, {b.enddateAndTime}, 'f', true) > 0 AND DATE_DIFF({b.startdateAndTime}, x.dateAndTime, 'f', true) > 0";
 
-            return await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2}");
+            return await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3}");
         }
     }
 }

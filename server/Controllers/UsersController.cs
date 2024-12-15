@@ -30,7 +30,7 @@ namespace Warehouse2.Controllers
         {
             newObj._key = Guid.NewGuid().ToString();
             newObj.regDate = DateTime.Now;
-            newObj.editDate = null;
+            newObj.editDate = DateTime.Now;
             newObj.indebtedness = 0;
 
             await _usersService.UserAddAsync(newObj);

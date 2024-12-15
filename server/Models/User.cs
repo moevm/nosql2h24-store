@@ -15,9 +15,9 @@ namespace Warehouse2.Models
             this.role = role;
             this.login = login;
             this.password = psw;
-            this.birthday = bd;
+            this.birthday = DateTimeOffset.Parse(bd);
             this.regDate = DateTime.Now;
-            this.editDate = null;
+            this.editDate = DateTime.Now;
             this.indebtedness = 0;
         }
 
@@ -31,11 +31,11 @@ namespace Warehouse2.Models
 
         public string password { get; set; }
 
-        public string birthday { get; set; }
+        public DateTimeOffset birthday { get; set; }
 
         public DateTimeOffset regDate { get; set; }
 
-        public DateTimeOffset? editDate { get; set; }
+        public DateTimeOffset editDate { get; set; }
 
         public int indebtedness { get; set; }
     }
@@ -51,6 +51,15 @@ namespace Warehouse2.Models
             this.role = "";
             this.startindebtedness = 0;
             this.endindebtedness = 100000;
+
+            this.startbirthday = DateTimeOffset.Parse("1900-01-01");
+            this.endbirthday = DateTimeOffset.Parse("2050-12-12");
+
+            this.startregDate = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.endregDate = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
+
+            this.starteditDate = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.endeditDate = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
         }
 
         public string _key { get; set; }
@@ -63,8 +72,8 @@ namespace Warehouse2.Models
 
         public string password { get; set; }
 
-        public string startbirthday { get; set; }
-        public string endbirthday { get; set; }
+        public DateTimeOffset startbirthday { get; set; }
+        public DateTimeOffset endbirthday { get; set; }
 
         public DateTimeOffset startregDate { get; set; }
         public DateTimeOffset endregDate { get; set; }
