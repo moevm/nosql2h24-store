@@ -53,5 +53,10 @@ namespace Warehouse2.Services
 
             return await _arango.Query.FindAsync<Warehouse>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2}");
         }
+
+        public async Task<List<string>> ListKeysAsync()
+        {
+            return await _arango.Query.FindAsync<string>(_dbName, _collectionName, $"x", $"x._key");
+        }
     }
 }

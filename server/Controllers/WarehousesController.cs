@@ -44,5 +44,11 @@ namespace Warehouse2.Controllers
         {
             return await _warehousesService.FilterDocsAsync(body);
         }
+
+        [HttpGet("keys")]
+        public async Task<List<string>> GetAllKeys()
+        {
+            return await _warehousesService.ListKeysAsync();
+        }
     }
 }
