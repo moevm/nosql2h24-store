@@ -66,5 +66,10 @@ namespace Warehouse2.Services
             FormattableString filter2 = $"AND x.indebtedness >= {b.startindebtedness} AND x.indebtedness <= {b.endindebtedness}";
             return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2}");
         }
+
+        public async Task<List<string>> ListDirectorsKeysAsync()
+        {
+            return await _arango.Query.FindAsync<string>(_dbName, _collectionName, $"x.role == 'director'", $"x._key");
+        }
     }
 }

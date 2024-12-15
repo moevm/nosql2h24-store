@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using Warehouse2.Models;
 using Warehouse2.Services;
 
@@ -47,6 +48,12 @@ namespace Warehouse2.Controllers
         public async Task<List<User>> FilterDocsIndices(UserFilterBody body)
         {
             return await _usersService.FilterDocsAsync(body);
+        }
+
+        [HttpGet("directorsKeys")]
+        public async Task<List<string>> GetDirectorsKeys()
+        {
+            return await _usersService.ListDirectorsKeysAsync();
         }
     }
 }
