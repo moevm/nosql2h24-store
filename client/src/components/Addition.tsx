@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 
-export default function Addition(props: { handleSend: any, obj: any, listKeys: string[] }) {
+export default function Addition(props: { handleSend: any, obj: any, listKeys: string[], default: any }) {
     const [state, setState] = useState(props.obj);
     const [show, setShow] = useState(false);
 
@@ -44,6 +44,8 @@ export default function Addition(props: { handleSend: any, obj: any, listKeys: s
                             type="number"
                             placeholder={props.obj[key].name}
                             name={key}
+                            min={props.default['start'+key]}
+                            max={props.default['end'+key]}
                         />
                     )}
                     {props.obj[key].type == "nf" && (
@@ -52,6 +54,8 @@ export default function Addition(props: { handleSend: any, obj: any, listKeys: s
                             step={0.1}
                             placeholder={props.obj[key].name}
                             name={key}
+                            min={props.default['start'+key]}
+                            max={props.default['end'+key]}
                         />
                     )}
                     {props.obj[key].type == "l" && (

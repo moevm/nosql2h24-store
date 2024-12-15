@@ -6,11 +6,11 @@ namespace Warehouse2.Models
     {
         public Cell() {}
 
-        public Cell (int CNum, int TNum, float tariff, float size, string WKey = "", string WAddr = "")
+        public Cell (int CNum, int TNum, float tariff, float size, string WKey = "")
         {
             this._key = Guid.NewGuid().ToString();
             this.warehouseKey = WKey;
-            this.warehouseAddress = WAddr;
+            this.warehouseAddress = "";
             this.cellNum = CNum;
             this.tierNum = TNum;
             this.isFree = true;
