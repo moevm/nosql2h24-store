@@ -23,7 +23,7 @@ export default function AllEventsPage() {
   useEffect(() => {
     console.log("отправлен запрос на получение событий, с параметрами:", filters);
     axios
-      .get(GET_ALL_EVENTS_URL, { params: filters })
+      .post(GET_ALL_EVENTS_URL, filters)
       .then((response) => {
         console.log(response);
         setEvent(response.data);
@@ -69,7 +69,7 @@ export default function AllEventsPage() {
   ));
   return (
     <div className="allEventsPageContainer">
-      {/* <Filter handleSend={handleSendFilters} obj={eventFields}></Filter> */}
+      <Filter handleSend={handleSendFilters} obj={eventFields}></Filter>
       <Table striped bordered hover>
         <thead>
           <tr>

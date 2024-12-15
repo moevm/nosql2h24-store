@@ -21,7 +21,7 @@ export default function AllUsersPage() {
   useEffect(() => {
     console.log("отправлен запрос на получение пользователей, с параметрами:", filters);
     axios
-      .get(GET_ALL_USERS_URL, { params: filters })
+      .post(GET_ALL_USERS_URL, filters)
       .then((response) => {
         console.log(response);
         setUsers(response.data);
@@ -52,7 +52,7 @@ export default function AllUsersPage() {
       .post(POST_NEW_USER_URL, newObj)
       .then(() => {
         axios
-          .get(GET_ALL_USERS_URL, { params: filters })
+          .post(GET_ALL_USERS_URL, filters)
           .then((response) => {
             setUsers(response.data);
           })
@@ -66,7 +66,7 @@ export default function AllUsersPage() {
       })
       .catch((error) => {
         axios
-        .get(GET_ALL_USERS_URL, { params: filters })
+        .post(GET_ALL_USERS_URL, filters)
         .then((response) => {
           setUsers(response.data);
         })
@@ -112,7 +112,7 @@ export default function AllUsersPage() {
   ));
   return (
     <div className="allUsersPageContainer">
-      {/* <Filter handleSend={handleSendFilters} obj={userFields}></Filter> */}
+      <Filter handleSend={handleSendFilters} obj={userFields}></Filter>
       <Addition handleSend={handleSendNewData} obj={userFields} listKeys={[]}></Addition>
       <Table striped bordered hover>
         <thead>
