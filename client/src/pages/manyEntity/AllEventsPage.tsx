@@ -39,7 +39,7 @@ export default function AllEventsPage() {
   function handleSendFilters(obj: any) {
     console.log("Получен объект в AllEventsPage (filters)", obj);
     obj.startdateAndTime = obj.startdateAndTime || eventDefaultFilter.startdateAndTime;
-    obj.enddateAndTime = obj.startdateAndTime || eventDefaultFilter.startdateAndTime;
+    obj.enddateAndTime = obj.enddateAndTime || eventDefaultFilter.enddateAndTime;
     setFilters(obj);
   }
 

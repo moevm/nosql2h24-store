@@ -16,7 +16,7 @@ export default function Filter(props: { handleSend: any, obj: any }) {
         filters.push(
             <InputGroup className="mb-3">
                 <InputGroup.Text id="basic-addon1">{props.obj[key].name}</InputGroup.Text>
-                {props.obj[key].type == "b" && <InputGroup.Checkbox name={key} />}
+                {props.obj[key].type == "b" && <InputGroup.Checkbox defaultChecked={props.obj[key].default} name={key} />}
                 {["s", "select_dynamic"].includes(props.obj[key].type) && <div><Form.Control
                     placeholder={props.obj[key].name} name={key}
                 /></div>}

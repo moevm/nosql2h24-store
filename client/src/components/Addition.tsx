@@ -61,7 +61,7 @@ export default function Addition(props: { handleSend: any, obj: any, listKeys: s
                             pattern="[0-9,]+"
                         />
                     )}
-                    {props.obj[key].type == "select_const" && <Form.Select name={key}>{props.obj[key].options.map((role: string)=><option value={role[0]}>{role[1]}</option>)}</Form.Select>}
+                    {props.obj[key].type == "select_const" && <Form.Select name={key}>{props.obj[key].options.map((role: string)=>{if (role[0]) return <option value={role[0]}>{role[1]}</option>})}</Form.Select>}
                     {props.obj[key].type == "select_dynamic" && <Form.Select name={key}>{props.listKeys.map((warehouseKey: string)=><option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>}
                 </InputGroup>
             );

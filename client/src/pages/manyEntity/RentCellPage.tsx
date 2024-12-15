@@ -31,8 +31,8 @@ export default function RentCellPage() {
         obj.endcellNum = obj.endcellNum ? parseInt(obj.endcellNum) : cellDefaultFilter.endcellNum; // => < 20
         obj.starttierNum = obj.starttierNum ? parseInt(obj.starttierNum) : cellDefaultFilter.starttierNum;
         obj.endtierNum = obj.endtierNum ? parseInt(obj.endtierNum) : cellDefaultFilter.endtierNum;  // => < 6
-        obj.isFree = obj.isFree ? true : cellDefaultFilter.isFree;
-        obj.needService = obj.needService ? true : cellDefaultFilter.needService;
+        obj.isFree = obj.isFree ? true : false; //cellDefaultFilter.isFree;
+        obj.needService = obj.needService ? true : false; //cellDefaultFilter.needService;
         obj.startsize = obj.startsize ? parseFloat(obj.startsize) : cellDefaultFilter.startsize;
         obj.endsize = obj.endsize ? parseFloat(obj.endsize) : cellDefaultFilter.endsize;   // => < 2.1
         obj.starttariffPerDay = obj.starttariffPerDay ? parseInt(obj.starttariffPerDay) : cellDefaultFilter.starttariffPerDay;

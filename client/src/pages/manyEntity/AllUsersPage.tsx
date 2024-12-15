@@ -37,13 +37,13 @@ export default function AllUsersPage() {
   function handleSendFilters(obj: any) {
     console.log("Получен объект в AllUsersPage (filters)", obj);
     obj.startbirthday = obj.startbirthday || usersDefaultFilter.startbirthday;
-    obj.endbirthday = obj.startbirthday || usersDefaultFilter.startbirthday;
-    obj.starteditDate = obj.startbirthday || usersDefaultFilter.startbirthday; 
-    obj.endeditDate = obj.startbirthday || usersDefaultFilter.startbirthday; 
+    obj.endbirthday = obj.endbirthday || usersDefaultFilter.endbirthday;
+    obj.starteditDate = obj.starteditDate || usersDefaultFilter.starteditDate; 
+    obj.endeditDate = obj.endeditDate || usersDefaultFilter.endeditDate; 
     obj.startindebtedness = obj.startindebtedness ? parseFloat(obj.startindebtedness) : usersDefaultFilter.startindebtedness;
     obj.endindebtedness = obj.endindebtedness ? parseFloat(obj.endindebtedness) : usersDefaultFilter.endindebtedness;
-    obj.startregDate = obj.startbirthday || usersDefaultFilter.startbirthday;
-    obj.endregDate = obj.startbirthday || usersDefaultFilter.startbirthday;
+    obj.startregDate = obj.startregDate || usersDefaultFilter.startregDate;
+    obj.endregDate = obj.endregDate || usersDefaultFilter.endregDate;
     setFilters(obj);
   }
   function handleSendNewData(newObj: User) {
