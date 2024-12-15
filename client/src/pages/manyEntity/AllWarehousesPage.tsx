@@ -4,6 +4,7 @@ import { Warehouse, warehouseFields } from "../../serviceFiles/types";
 import { Button, Table } from "react-bootstrap";
 import {
   GET_ALL_WAREHOUSES_URL,
+  GET_UNIQUE_DIRECTORS_KEYS_URL,
   POST_NEW_WAREHOUSE_URL,
   warehouseDefaultFilter,
   warehousesInit,
@@ -18,6 +19,7 @@ export default function AllWarehousesPage() {
 
   const [warehouses, setWarehouses] = useState(warehousesInit);
   const [filters, setFilters] = useState(warehouseDefaultFilter);
+  const [directorsKeys, setListDirectorsKeys] = useState(['id1', 'id2']);
 
   useEffect(() => {
     console.log("отправлен запрос на получение складов, с параметрами:", filters);
@@ -35,6 +37,23 @@ export default function AllWarehousesPage() {
         setWarehouses(warehousesInit);
       });
   }, [filters]);
+
+  useEffect(() => {
+    console.log("отправлен запрос на получение ключей директоров");
+    axios
+        .get(GET_UNIQUE_DIRECTORS_KEYS_URL)
+        .then((response) => {
+            console.log(response);
+            setListDirectorsKeys(response.data);
+        })
+        .catch((error) => {
+            console.error(
+                "Ошибка при получении ключей складов. Взяты дефолтные значения",
+                error
+            );
+            setListDirectorsKeys(['id1', 'id2']);
+        });
+}, [])
 
   function handleSendFilters(obj: any) {
     console.log("Получен объект в AllWarehousesPage (filters)", obj);
@@ -103,7 +122,7 @@ export default function AllWarehousesPage() {
   return (
     <div className="allWarehousesPageContainer">
       <Filter handleSend={handleSendFilters} obj={warehouseFields}></Filter>
-      <Addition handleSend={handleSendNewData} obj={warehouseFields} listKeys={[]}></Addition>
+      <Addition handleSend={handleSendNewData} obj={warehouseFields} listKeys={directorsKeys}></Addition>
       <Table striped bordered hover>
         <thead>
           <tr>

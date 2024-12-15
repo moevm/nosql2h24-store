@@ -91,6 +91,6 @@ export let warehouseFields = {
     _key: { name: "id", type: "s", noNeedAddition: true },
     address: { name: "Адресс", type: "s" },
     capacity: { name: "Вместимость", type: "n" },
-    chiefKey: { name: "key Ответственного", type: "s" },
+    chiefKey: { name: "key Ответственного", type: "select_dynamic" },
     cells: { name: "Ячейки", type: "l", noNeedAddition: true },
 }
