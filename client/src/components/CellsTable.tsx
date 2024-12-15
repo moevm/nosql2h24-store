@@ -46,6 +46,7 @@ export default function CellsTable(props: {
       <td>{cell.isFree ? "Свободна" : "Занята"}</td>
       <td>{cell.endOfRent}</td>
       <td>{cell.warehouseKey}</td>
+      <td>{cell.warehouseAddress}</td>
       {props.isForRent && (
         <td className="listCellsTd">
           <button
@@ -102,6 +103,9 @@ export default function CellsTable(props: {
             </th>
             <th className="cellName" scope="col">
               _key склада
+            </th>
+            <th className="cellName" scope="col">
+              Адрес склада
             </th>
             {props.isForAdmin && (
               <th className="cellName" scope="col">

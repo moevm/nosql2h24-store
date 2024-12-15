@@ -8,6 +8,7 @@ export let cellsInit = [
         endOfRent: "2025-02-02",
         size: 0.1,
         warehouseKey: 'fgd1',
+        warehouseAddress: 'default addres',
         tariffPerDay: 12.00
     },
     {
@@ -19,6 +20,7 @@ export let cellsInit = [
         endOfRent: "2025-01-02",
         size: 0.3,
         warehouseKey: 'dfg2',
+        warehouseAddress: 'default addres',
         tariffPerDay: 12.00
     }]
 

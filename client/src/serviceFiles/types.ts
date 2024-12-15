@@ -7,6 +7,7 @@ export type Cell = {
     size: number,
     endOfRent: string,
     warehouseKey: string,
+    warehouseAddress: string,
     tariffPerDay: number
 }
 
