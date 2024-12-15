@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.AspNetCore.Http;
+
 namespace Warehouse2.Models
 {
     public class Cell
@@ -66,8 +68,8 @@ namespace Warehouse2.Models
             this.starttariffPerDay = 0;
             this.endtariffPerDay = 5001;     // => < 5001
 
-            //this.startendOfRent = new DateTimeOffset(0, new TimeSpan(1, 0, 0));
-            //this.endendOfRent = new DateTime(2100, 1, 1);
+            this.startendOfRent = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.endendOfRent = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
         }
 
         public string _key { get; set; }

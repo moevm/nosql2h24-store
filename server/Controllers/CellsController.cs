@@ -41,11 +41,6 @@ namespace Warehouse2.Controllers
         [HttpPost("all")]
         public async Task<List<Cell>> FilterDocsIndices(CellFilterBody body)
         {
-            // на числовые параметры зададим верхнюю и нижнюю границы по умолчанию
-            
-            //body.startendOfRent = new DateTime();
-            //body.endendOfRent = new DateTime(2100, 1, 1);
-
             return await _cellsService.FilterDocsAsync(body);
         }
     }
