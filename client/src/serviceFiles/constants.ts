@@ -69,7 +69,7 @@ export let eventDefaultFilter = {
 export let usersInit = [{
     _key: '1',
     nameSurnamePatronymic: "Крупская Ольга Дмитриевна",
-    role: "Client",
+    role: "lord",
     login: "LOGIN_1",
     password: "123pass",
     birthday: "1980-01-13",
@@ -80,7 +80,7 @@ export let usersInit = [{
 }, {
     _key: '2',
     nameSurnamePatronymic: "Королева Полина Андреевна",
-    role: "User",
+    role: "client",
     login: "LOGIN_2",
     password: "111",
     birthday: "2000-01-13",
@@ -103,6 +103,23 @@ export let usersDefaultFilter = {
     endindebtedness: 100000,
     startregDate: "1900-01-01T00:00",
     endregDate: "2050-12-12T00:00",
+}
+
+interface Role{
+    [key: string]: string,
+    administrator: string, 
+    employee: string,
+    director: string,
+    lord: string,
+    client: string
+}
+
+export let roles : Role = {
+    administrator: "Администратор", 
+    employee: "Работник",
+    director: "Директор",
+    lord: "Владелец бизнеса",
+    client: "Клиент"
 }
 
 export let warehousesInit = [

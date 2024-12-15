@@ -6,7 +6,7 @@ import {
   GET_ALL_USERS_URL,
   POST_NEW_USER_URL,
   usersDefaultFilter,
-  usersInit,
+  usersInit, roles
 } from "../../serviceFiles/constants";
 import Addition from "../../components/Addition";
 import axios from "axios";
@@ -83,7 +83,7 @@ export default function AllUsersPage() {
       <td>{user._key}</td>
       <td>{user.nameSurnamePatronymic}</td>
       <td>{user.login}</td>
-      <td>{user.role}</td>
+      <td>{roles[user.role]}</td>
       <td>{user.regDate}</td>
       <td>{user.birthday}</td>
       <td>{user.editDate}</td>
