@@ -36,12 +36,12 @@ export default function AllCellsPage() {
         console.log("Преобразовано (filters)", obj);
         setFilters(obj);
     }
-    function handleSendNewData(newObj: any) {
+    function handleSendNewData(newObj: Cell) {
         console.log("Получен объект в AllCellsPage", newObj);
-        newObj.cellNum = parseInt(newObj.cellNum);
-        newObj.tierNum = parseInt(newObj.tierNum);
-        newObj.size = parseFloat(newObj.size);
-        newObj.tariffPerDay = parseInt(newObj.tariffPerDay);
+        newObj.cellNum = Number(newObj.cellNum);
+        newObj.tierNum = Number(newObj.tierNum);
+        newObj.size = Number(newObj.size);
+        newObj.tariffPerDay = Number(newObj.tariffPerDay);
         console.log("После преобразования типов объект в AllCellsPage", newObj);
         axios
             .post(POST_NEW_CELL_URL, newObj)

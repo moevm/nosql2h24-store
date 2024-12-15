@@ -46,7 +46,7 @@ export default function AllUsersPage() {
     obj.endregDate = obj.endregDate || usersDefaultFilter.endregDate;
     setFilters(obj);
   }
-  function handleSendNewData(newObj: any) {
+  function handleSendNewData(newObj: User) {
     console.log("Получен объект в AllUsersPage", newObj);
     axios
       .post(POST_NEW_USER_URL, newObj)

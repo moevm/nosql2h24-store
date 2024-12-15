@@ -62,8 +62,8 @@ export default function AllWarehousesPage() {
     setFilters(obj);
   }
 
-  function handleSendNewData(newObj: any) {
-    newObj.capacity = parseInt(newObj.capacity);
+  function handleSendNewData(newObj: Warehouse) {
+    newObj.capacity = Number(newObj.capacity);
     console.log("Получен объект в AllUsersPage", newObj);
     axios
       .post(POST_NEW_WAREHOUSE_URL, newObj)
