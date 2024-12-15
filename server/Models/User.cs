@@ -21,7 +21,7 @@ namespace Warehouse2.Models
             this.indebtedness = 0;
         }
 
-        public string _key { get; set; }
+        public string? _key { get; set; }
 
         public string? nameSurnamePatronymic { get; set; }
 
