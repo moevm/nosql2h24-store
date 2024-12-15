@@ -79,7 +79,13 @@ namespace Warehouse2.Services
             FormattableString filter3 = $"AND x.tariffPerDay >= {b.starttariffPerDay} AND x.tariffPerDay <= {b.endtariffPerDay}";
             FormattableString filter4 = $" AND x.isFree == {b.isFree} AND x.needService == {b.needService}";
             
-            return await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4}");
+            List<Cell> cells = await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4}");
+            foreach (Cell cell in cells)
+            {
+                cell.warehouseAddress = await _arango.Query.SingleOrDefaultAsync<string>(_dbName, _wColName, $"x._key == {cell.warehouseKey}", $"x.address");
+            }
+
+            return cells;
         }
     }
 }
