@@ -89,6 +89,7 @@
     {
       "_key": "aa183db1-825d-415d-b314-4e914f7e6b8a",
       "warehouseKey": "94708a72-73b4-4d68-804b-ed55f6a8dea1",
+      "warehouseAddress": "st. Dzerzhinskogo 6",
       "cellNum": 1,
       "tierNum": 1,
       "isFree": true,
@@ -103,6 +104,7 @@
     {
       "_key": "61067a02-d840-4366-9783-368dcf7ecbae",
       "warehouseKey": "94708a72-73b4-4d68-804b-ed55f6a8dea1",
+      "warehouseAddress": "st. Dzerzhinskogo 6",
       "cellNum": 2,
       "tierNum": 1,
       "isFree": true,
@@ -117,6 +119,7 @@
     {
       "_key": "0fe43b01-3c26-4b93-bf2b-043f69b89301",
       "warehouseKey": "94708a72-73b4-4d68-804b-ed55f6a8dea1",
+      "warehouseAddress": "st. Dzerzhinskogo 6",
       "cellNum": 1,
       "tierNum": 2,
       "isFree": true,
@@ -131,6 +134,7 @@
     {
       "_key": "6bf72554-6199-4e61-b3cf-072d6048ef07",
       "warehouseKey": "7ae44ad8-9155-451c-ad97-53e9c52bc810",
+      "warehouseAddress": "st. Optikov 34 k2, lit. A",
       "cellNum": 1,
       "tierNum": 1,
       "isFree": true,
@@ -145,6 +149,7 @@
     {
       "_key": "c5db0291-238e-47c6-b909-143b279c66f1",
       "warehouseKey": "7ae44ad8-9155-451c-ad97-53e9c52bc810",
+      "warehouseAddress": "st. Optikov 34 k2, lit. A",
       "cellNum": 1,
       "tierNum": 2,
       "isFree": true,
@@ -159,6 +164,7 @@
     {
       "_key": "41600724-881d-4fa6-a901-33a46a847d9b",
       "warehouseKey": "7ae44ad8-9155-451c-ad97-53e9c52bc810",
+      "warehouseAddress": "st. Optikov 34 k2, lit. A",
       "cellNum": 2,
       "tierNum": 2,
       "isFree": true,
