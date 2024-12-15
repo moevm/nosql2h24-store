@@ -21,18 +21,16 @@ export default function AllCellsPage() {
     let navigate = useNavigate();
     function handleSendFilters(obj: any) {
         console.log("Получен объект в AllCellsPage (filters)", obj);
-        obj.startcellNum = obj.startcellNum ? parseInt(obj.startcellNum) : cellDefaultFilter.startcellNum;
-        obj.endcellNum = obj.endcellNum ? parseInt(obj.endcellNum) : cellDefaultFilter.endcellNum; // => < 20
-        obj.starttierNum = obj.starttierNum ? parseInt(obj.starttierNum) : cellDefaultFilter.starttierNum;
-        obj.endtierNum = obj.endtierNum ? parseInt(obj.endtierNum) : cellDefaultFilter.endtierNum;  // => < 6
+        obj.startcellNum = parseInt(obj.startcellNum);
+        obj.endcellNum = parseInt(obj.endcellNum); // => < 20
+        obj.starttierNum = parseInt(obj.starttierNum);
+        obj.endtierNum = parseInt(obj.endtierNum);  // => < 6
         obj.isFree = obj.isFree ? true : false; //cellDefaultFilter.isFree;
         obj.needService = obj.needService ? true : false; //cellDefaultFilter.needService;
-        obj.startsize = obj.startsize ? parseFloat(obj.startsize) : cellDefaultFilter.startsize;
-        obj.endsize = obj.endsize ? parseFloat(obj.endsize) : cellDefaultFilter.endsize;   // => < 2.1
-        obj.starttariffPerDay = obj.starttariffPerDay ? parseInt(obj.starttariffPerDay) : cellDefaultFilter.starttariffPerDay;
-        obj.endtariffPerDay = obj.endtariffPerDay ? parseInt(obj.endtariffPerDay) : cellDefaultFilter.endtariffPerDay;
-        obj.startendOfRent = obj.startendOfRent || cellDefaultFilter.startendOfRent;
-        obj.endendOfRent = obj.endendOfRent || cellDefaultFilter.endendOfRent;
+        obj.startsize = parseFloat(obj.startsize);
+        obj.endsize = parseFloat(obj.endsize);   // => < 2.1
+        obj.starttariffPerDay = parseInt(obj.starttariffPerDay);
+        obj.endtariffPerDay = parseInt(obj.endtariffPerDay);
         console.log("Преобразовано (filters)", obj);
         setFilters(obj);
     }
@@ -42,6 +40,7 @@ export default function AllCellsPage() {
         newObj.tierNum = Number(newObj.tierNum);
         newObj.size = Number(newObj.size);
         newObj.tariffPerDay = Number(newObj.tariffPerDay);
+        newObj.warehouseAddress = '';
         console.log("После преобразования типов объект в AllCellsPage", newObj);
         axios
             .post(POST_NEW_CELL_URL, newObj)
@@ -110,8 +109,8 @@ export default function AllCellsPage() {
     }, [])
     return (
         <div className="allCellsPageContainer">
-            <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>
-            <Addition handleSend={handleSendNewData} obj={cellFields} listKeys={listWareousesKeys}></Addition>
+            <Filter handleSend={handleSendFilters} obj={cellFields} default={cellDefaultFilter}></Filter>
+            <Addition handleSend={handleSendNewData} obj={cellFields} listKeys={listWareousesKeys} default={cellDefaultFilter}></Addition>
             <CellsTable
                 isForRent={false}
                 isForAdmin={true}

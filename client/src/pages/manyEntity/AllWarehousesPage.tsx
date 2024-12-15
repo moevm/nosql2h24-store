@@ -57,8 +57,8 @@ export default function AllWarehousesPage() {
 
   function handleSendFilters(obj: any) {
     console.log("Получен объект в AllWarehousesPage (filters)", obj);
-    obj.startcapacity = obj.startcapacity ? parseFloat(obj.startcapacity) : warehouseDefaultFilter.startcapacity;
-    obj.endcapacity = obj.endcapacity ? parseFloat(obj.endcapacity) : warehouseDefaultFilter.endcapacity;
+    obj.startcapacity = parseFloat(obj.startcapacity);
+    obj.endcapacity = parseFloat(obj.endcapacity);
     setFilters(obj);
   }
 
@@ -121,8 +121,8 @@ export default function AllWarehousesPage() {
   ));
   return (
     <div className="allWarehousesPageContainer">
-      <Filter handleSend={handleSendFilters} obj={warehouseFields}></Filter>
-      <Addition handleSend={handleSendNewData} obj={warehouseFields} listKeys={directorsKeys}></Addition>
+      <Filter handleSend={handleSendFilters} obj={warehouseFields} default={warehouseDefaultFilter}></Filter>
+      <Addition handleSend={handleSendNewData} obj={warehouseFields} listKeys={directorsKeys} default={warehouseDefaultFilter}></Addition>
       <Table striped bordered hover>
         <thead>
           <tr>

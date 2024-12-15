@@ -38,8 +38,6 @@ export default function AllEventsPage() {
   }, [filters]);
   function handleSendFilters(obj: any) {
     console.log("Получен объект в AllEventsPage (filters)", obj);
-    obj.startdateAndTime = obj.startdateAndTime || eventDefaultFilter.startdateAndTime;
-    obj.enddateAndTime = obj.enddateAndTime || eventDefaultFilter.enddateAndTime;
     setFilters(obj);
   }
 
@@ -69,7 +67,7 @@ export default function AllEventsPage() {
   ));
   return (
     <div className="allEventsPageContainer">
-      <Filter handleSend={handleSendFilters} obj={eventFields}></Filter>
+      <Filter handleSend={handleSendFilters} obj={eventFields} default={eventDefaultFilter}></Filter>
       <Table striped bordered hover>
         <thead>
           <tr>

@@ -26,17 +26,17 @@ export let cellsInit = [
 
 export let cellDefaultFilter = {
     startcellNum: 0,
-    endcellNum: 21, // => < 20
+    endcellNum: 10000, // => < 20
     starttierNum: 0,
-    endtierNum: 6,  // => < 6
+    endtierNum: 10,  // => < 6
     isFree: true,
     needService: false,
     startsize: 0,
-    endsize: 2.1,   // => < 2.1
+    endsize: 10.0,   // => < 2.1
     starttariffPerDay: 0,
-    endtariffPerDay: 5001,     // => < 5001});
-    startendOfRent: "2023-01-01T00:00:00.000Z",
-    endendOfRent: "2050-12-12T00:00:00.000Z",
+    endtariffPerDay: 10000,     // => < 5001});
+    startendOfRent: "1900-01-01T00:00",
+    endendOfRent: "2050-12-12T00:00",
 }
 export let eventsInit = [{
     _key: '1e4',
@@ -62,8 +62,8 @@ export let eventDefaultFilter = {
     userKey: '',
     description: "",
     action: "",
-    startdateAndTime: "2023-01-01T00:00:00.000Z",
-    enddateAndTime: "2050-12-12T00:00:00.000Z",
+    startdateAndTime: "1900-01-01T00:00",
+    enddateAndTime: "2050-12-12T00:00",
 }
 
 export let usersInit = [{
@@ -93,14 +93,14 @@ export let usersDefaultFilter = {
     nameSurnamePatronymic: "",
     role: "",
     login: "",
-    startbirthday: "2023-01-01T00:00:00.000Z",
-    endbirthday: "2050-12-12T00:00:00.000Z",
-    starteditDate: "2023-01-01T00:00:00.000Z",
-    endeditDate: "2050-12-12T00:00:00.000Z",
+    startbirthday: "1900-01-01",
+    endbirthday: "2050-12-12",
+    starteditDate: "1900-01-01T00:00",
+    endeditDate: "2050-12-12T00:00",
     startindebtedness: 0.0,
     endindebtedness: 100000,
-    startregDate: "2023-01-01T00:00:00.000Z",
-    endregDate: "2050-12-12T00:00:00.000Z",
+    startregDate: "1900-01-01T00:00",
+    endregDate: "2050-12-12T00:00",
 }
 
 export let warehousesInit = [
@@ -126,7 +126,7 @@ export let warehouseDefaultFilter = {
     cells: "",
     chiefKey: "",
     startcapacity: 0,
-    endcapacity: 1000000,
+    endcapacity: 100000,
 }
 export const SIGN_IN_URL = "http://127.0.0.1:8080/Users/auth"
 export const GET_ALL_CELLS_URL = "http://127.0.0.1:8080/Cells/all"

@@ -45,7 +45,7 @@ export default function RentCellPage() {
 
     return (
         <div className="rencCellPageContainer">
-            <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>
+            <Filter handleSend={handleSendFilters} obj={cellFields} default={cellDefaultFilter}></Filter>
             <CellsTable
                 isForRent={true}
                 isForAdmin={false}

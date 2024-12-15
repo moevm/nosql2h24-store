@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import "./Filter.css";
 
-export default function Filter(props: { handleSend: any, obj: any }) {
+export default function Filter(props: { handleSend: any, obj: any, default: any }) {
     const [state, setState] = useState(props.obj);
 
     function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
@@ -23,30 +23,38 @@ export default function Filter(props: { handleSend: any, obj: any }) {
                 {
                     props.obj[key].type == "d" && <div><Form.Control type="date"
                         placeholder={props.obj[key].name + ' от'} name={'start' + key}
+                        defaultValue={props.default['start' + key]}
                     /><Form.Control type="date"
                         placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                        defaultValue={props.default['end' + key]}
                         /></div>}
                 {
                     props.obj[key].type == "dt" && <div><Form.Control type="datetime-local"
                         placeholder={props.obj[key].name + ' от'} name={'start' + key}
+                        defaultValue={props.default['start' + key]}
                     /><Form.Control type="datetime-local"
                         placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                        defaultValue={props.default['end' + key]}
                         /></div>}
                 {
                     props.obj[key].type == "n" && <div><Form.Control type="number"
                         placeholder={props.obj[key].name + ' от'} name={'start' + key}
+                        defaultValue={props.default['start' + key]}
                     /><Form.Control type="number"
                         placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                        defaultValue={props.default['end' + key]}
                         /></div>}
                 {
                     props.obj[key].type == "nf" && <div><Form.Control
                         type="number"
                         step={0.1}
                         placeholder={props.obj[key].name + ' от'} name={'start' + key}
+                        defaultValue={props.default['start' + key]}
                     /><Form.Control
                             type="number"
                             step={0.1}
                             placeholder={props.obj[key].name + ' до'} name={'end' + key}
+                            defaultValue={props.default['end' + key]}
                         /></div>
                 }
                 {

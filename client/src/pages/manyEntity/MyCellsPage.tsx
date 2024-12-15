@@ -50,7 +50,7 @@ export default function MyCellsPage() {
         <div className="myCellsPageContainer">
             <h1 className="myCellsPageTitle">Мои ячейки</h1>
 
-            <Filter handleSend={handleSendFilters} obj={cellFields}></Filter>
+            <Filter handleSend={handleSendFilters} obj={cellFields} default={cellDefaultFilter}></Filter>
 
             <CellsTable
                 isForRent={false}

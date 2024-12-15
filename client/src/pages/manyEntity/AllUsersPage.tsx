@@ -36,14 +36,8 @@ export default function AllUsersPage() {
   }, [filters]);
   function handleSendFilters(obj: any) {
     console.log("Получен объект в AllUsersPage (filters)", obj);
-    obj.startbirthday = obj.startbirthday || usersDefaultFilter.startbirthday;
-    obj.endbirthday = obj.endbirthday || usersDefaultFilter.endbirthday;
-    obj.starteditDate = obj.starteditDate || usersDefaultFilter.starteditDate; 
-    obj.endeditDate = obj.endeditDate || usersDefaultFilter.endeditDate; 
-    obj.startindebtedness = obj.startindebtedness ? parseFloat(obj.startindebtedness) : usersDefaultFilter.startindebtedness;
-    obj.endindebtedness = obj.endindebtedness ? parseFloat(obj.endindebtedness) : usersDefaultFilter.endindebtedness;
-    obj.startregDate = obj.startregDate || usersDefaultFilter.startregDate;
-    obj.endregDate = obj.endregDate || usersDefaultFilter.endregDate;
+    obj.startindebtedness = parseFloat(obj.startindebtedness);
+    obj.endindebtedness = parseFloat(obj.endindebtedness);
     setFilters(obj);
   }
   function handleSendNewData(newObj: User) {
@@ -112,8 +106,8 @@ export default function AllUsersPage() {
   ));
   return (
     <div className="allUsersPageContainer">
-      <Filter handleSend={handleSendFilters} obj={userFields}></Filter>
-      <Addition handleSend={handleSendNewData} obj={userFields} listKeys={[]}></Addition>
+      <Filter handleSend={handleSendFilters} obj={userFields} default={usersDefaultFilter}></Filter>
+      <Addition handleSend={handleSendNewData} obj={userFields} listKeys={[]} default={usersDefaultFilter}></Addition>
       <Table striped bordered hover>
         <thead>
           <tr>
