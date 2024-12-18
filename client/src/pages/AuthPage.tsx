@@ -89,9 +89,9 @@ export default function AuthPage() {
                                 Вход
                             </button>
 
-                            <a className="authPageRegistration button" href="/register">
+                            {/* <a className="authPageRegistration button" href="/register">
                                 Зарегистрироваться
-                            </a>
+                            </a> */}
                         </div>
 
                         <div className="rememberCheckbox">
