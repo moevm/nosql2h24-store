@@ -66,7 +66,7 @@ export default function StatisticPage() {
             setType("Количество ячеек по складам");
             setScaleName(["Кол-во ячеек", "Склад"]);
             setData(res.data.map((item: any) => item.count))
-            setLabels(res.data.map((item: any) => [item.warehouseKey, item.warehouseAddress]))
+            setLabels(res.data.map((item: any) => [item._key, item.address]))
         }).catch((error) => {
             console.error(
                 "Ошибка при получении статистики",

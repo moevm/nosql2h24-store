@@ -165,7 +165,7 @@ export const IMPORT_URL = "http://127.0.0.1:8080/Init/import"
 export const POST_SERVICE_CELL_URL = ""
 export const POST_RENT_CELL_URL = ""
 
-export const STAT_COUNT_CELLS_WAREHOUSE = "stat.json"
+export const STAT_COUNT_CELLS_WAREHOUSE = "http://127.0.0.1:8080/Statistics/CountCellsWarehouse"
 export const STAT_EVENT_WAREHOUSE = "stat.json"
 export const STAT_EVENT_USER = "statUser.json"
 export const STAT_RENT_EVENT_CELL = "statEventCell.json"
