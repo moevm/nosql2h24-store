@@ -48,11 +48,11 @@
 
     public class WarehouseCellsCount
     {
-        public WarehouseCellsCount()
+        public WarehouseCellsCount(string key = "", string addr = "", int c = 0)
         {
-            this._key = "";
-            this.address = "";
-            this.count = 0;
+            this._key = key;
+            this.address = addr;
+            this.count = c;
         }
 
         public string? _key { get; set; }
