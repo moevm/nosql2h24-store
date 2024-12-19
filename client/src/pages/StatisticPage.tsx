@@ -4,7 +4,7 @@ import { Bar } from "react-chartjs-2"
 import { Accordion, Button, Form, InputGroup } from "react-bootstrap";
 import "../css/StatisticPage.css"
 import axios from "axios";
-import { STAT_BREAK_EVENT_CELL, STAT_COUNT_CELLS_WAREHOUSE, STAT_EVENT_USER, STAT_EVENT_WAREHOUSE, STAT_RENT_EVENT_CELL } from "../serviceFiles/constants";
+import { GET_UNIQUE_WAREHOUSES_KEYS_URL, STAT_BREAK_EVENT_CELL, STAT_COUNT_CELLS_WAREHOUSE, STAT_EVENT_USER, STAT_EVENT_WAREHOUSE, STAT_RENT_EVENT_CELL } from "../serviceFiles/constants";
 import { useEffect, useState } from "react";
 
 Chart.register(...registerables, Colors);
@@ -15,8 +15,8 @@ export default function StatisticPage() {
     const [dataServer, setData] = useState([])
     const [type, setType] = useState("")
     const [scaleName, setScaleName] = useState([""])
+    const [listWareousesKeys, setListWareousesKeys] = useState([""])
 
-    const listKeys = ["4358fdg", "456fdg"];
     const data = {
         labels: labelsServer,
         datasets: [{
@@ -35,10 +35,10 @@ export default function StatisticPage() {
                 title: {
                     display: true,
                     text: scaleName[1],
-                    color:"rgb(66, 56, 134)",
+                    color: "rgb(66, 56, 134)",
                     font: {
                         size: 20,
-                        
+
                     }
                 }
             },
@@ -46,18 +46,32 @@ export default function StatisticPage() {
                 title: {
                     display: true,
                     text: scaleName[0],
-                    color:"rgb(66, 56, 134)",
+                    color: "rgb(66, 56, 134)",
                     font: {
                         size: 20,
-                        
+
                     }
                 }
             }
         }
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         handleCountCellsWarehouse();
+        console.log("отправлен запрос на получение ключей складов");
+        axios
+            .get(GET_UNIQUE_WAREHOUSES_KEYS_URL)
+            .then((response) => {
+                console.log(response);
+                setListWareousesKeys(response.data);
+            })
+            .catch((error) => {
+                console.error(
+                    "Ошибка при получении ключей складов. Взяты дефолтные значения",
+                    error
+                );
+                setListWareousesKeys(['id1', 'id2']);
+            });
     }, [])
 
     function handleCountCellsWarehouse() {
@@ -164,8 +178,6 @@ export default function StatisticPage() {
                 <Accordion.Body>
                     <p>Количество событий "Аренда" суммарное по всем ячейкам для каждого склада за выбранный период</p>
                     <Form onSubmit={handleEventWarehouse}>
-                        <InputGroup.Text id="basic-addon1">Склад</InputGroup.Text>
-                        <Form.Select name="warehouse">{listKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
                         <InputGroup.Text id="basic-addon1">Начальная дата</InputGroup.Text>
                         <Form.Control type="datetime-local"
                             name="start"
@@ -201,7 +213,7 @@ export default function StatisticPage() {
                     <p>Количество событий "Аренда" для каждой ячейки выбранного склада за выбранный период</p>
                     <Form onSubmit={handleRentEventCell}>
                         <InputGroup.Text id="basic-addon1">Склад</InputGroup.Text>
-                        <Form.Select name="warehouse">{listKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
+                        <Form.Select name="warehouse">{listWareousesKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
                         <InputGroup.Text id="basic-addon1">Начальная дата</InputGroup.Text>
                         <Form.Control type="datetime-local"
                             name="start"
@@ -220,7 +232,7 @@ export default function StatisticPage() {
                     <p>Количество событий "Поломка" для каждой ячейки выбранного склада за выбранный период</p>
                     <Form onSubmit={handleBreakEventCell}>
                         <InputGroup.Text id="basic-addon1">Склад</InputGroup.Text>
-                        <Form.Select name="warehouse">{listKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
+                        <Form.Select name="warehouse">{listWareousesKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
                         <InputGroup.Text id="basic-addon1">Начальная дата</InputGroup.Text>
                         <Form.Control type="datetime-local"
                             name="start"
