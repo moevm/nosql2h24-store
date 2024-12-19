@@ -93,5 +93,23 @@ namespace Warehouse2.Services
 
             return cells;
         }
+
+        public async Task<Event> RentCell(CellRentBody body)
+        {
+            Cell cell = await _arango.Document.GetAsync<Cell>(_dbName, _collectionName, body.cellKey);
+            string dscr = "user has rented the cell";
+
+            cell.isFree = false;
+            cell.endOfRent = body.endOfRent;
+
+            Event newEvent = new Event("RENTED", dscr, cell.warehouseKey, body.cellKey, body.userKey);
+            cell.listOfEventKeys.Add(newEvent._key);
+
+            await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
+
+            await _arango.Document.UpdateAsync(_dbName, _collectionName, cell);
+            
+            return newEvent;
+        }
     }
 }
