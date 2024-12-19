@@ -53,5 +53,16 @@
     "regDate": "2024-12-15T20:42:36.0550207+00:00",
     "editDate": "2024-12-15T20:42:36.0550207+00:00",
     "indebtedness": 0
+  },
+  {
+    "_key": "7022874f-9321-4995-b37c-c334fbd4cedc",
+    "nameSurnamePatronymic": "Рябков Владимир Владимирович",
+    "role": "administrator",
+    "login": "rybkov@mail.ru",
+    "password": "1234",
+    "birthday": "1987-09-21",
+    "regDate": "2024-12-19T20:39:59.4225443+00:00",
+    "editDate": "2024-12-19T20:39:59.4225725+00:00",
+    "indebtedness": 0
   }
 ]

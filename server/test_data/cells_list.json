@@ -30,7 +30,7 @@
   {
     "_key": "0fe43b01-3c26-4b93-bf2b-043f69b89301",
     "warehouseKey": "94708a72-73b4-4d68-804b-ed55f6a8dea1",
-    "cellNum": 1,
+    "cellNum": 3,
     "tierNum": 2,
     "isFree": true,
     "needService": false,
@@ -43,8 +43,8 @@
   },
   {
     "_key": "6bf72554-6199-4e61-b3cf-072d6048ef07",
-    "warehouseKey": "7ae44ad8-9155-451c-ad97-53e9c52bc810",
-    "cellNum": 1,
+    "warehouseKey": "94708a72-73b4-4d68-804b-ed55f6a8dea1",
+    "cellNum": 4,
     "tierNum": 1,
     "isFree": true,
     "needService": false,
