@@ -59,7 +59,7 @@ namespace Warehouse2.Services
         public async Task<RentedCells> GetRentedCells(MyCellsBody body)
         {
             FormattableString filter = $"x.action == 'RENTED' AND regex_test(x.userKey, {body.userKey}, true)";
-            FormattableString filter1 = $" AND x.cellNum >= {body.startcellNum} AND x.cellNum <= {body.endcellNum} AND x.tierNum >= {body.starttierNum}";
+            FormattableString filter1 = $" x.cellNum >= {body.startcellNum} AND x.cellNum <= {body.endcellNum} AND x.tierNum >= {body.starttierNum}";
             FormattableString filter2 = $" AND x.tierNum <= {body.endtierNum} AND x.size >= {body.startsize} AND x.size <= {body.endsize}";
             FormattableString filter3 = $" AND x.tariffPerDay >= {body.starttariffPerDay} AND x.tariffPerDay <= {body.endtariffPerDay}";
             FormattableString filter4 = $" AND x.isFree == {body.isFree} AND x.needService == {body.needService}";
