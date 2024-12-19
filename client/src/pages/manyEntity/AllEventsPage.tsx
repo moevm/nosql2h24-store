@@ -7,7 +7,6 @@ import {
     eventDefaultFilter,
   eventsInit,
   GET_ALL_EVENTS_URL,
-  POST_NEW_EVENT_URL,
 } from "../../serviceFiles/constants";
 import Addition from "../../components/Addition";
 import axios from "axios";

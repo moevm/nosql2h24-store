@@ -33,6 +33,9 @@ export default function PersonalAccount() {
                         <ImportExport />
                     </li>
                     <li className="personalAccountItem">
+                        <a href="/statistic">Статистика</a>
+                    </li>
+                    <li className="personalAccountItem">
                         <a href="/auth">Выход</a>
                     </li>
                 </ul>

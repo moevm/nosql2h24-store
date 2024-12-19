@@ -21,6 +21,7 @@ import AllWarehousesPage from "./manyEntity/AllWarehousesPage";
 import WarehousePage from "./oneEntity/WarehousePage";
 import CellPage from "./oneEntity/CellPage";
 import Header from "./Header";
+import StatisticPage from "./StatisticPage";
 
 export default function MainComponentPage() {
   const [{ name, role }, setUser] = useState({ name: "", role: "" });
@@ -61,6 +62,7 @@ export default function MainComponentPage() {
               element={<AllWarehousesPage />}
             ></Route>
             <Route path="/warehouse" element={<WarehousePage />}></Route>
+            <Route path="/statistic" element={<StatisticPage />}></Route>
           </Routes>
         </div>
       </body>
