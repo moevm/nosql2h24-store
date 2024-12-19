@@ -19,6 +19,8 @@ namespace Warehouse2.Services
 
         private readonly string _graphName;
 
+        private readonly string _cColName;
+
         public EventsService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
         {
             _arango = new ArangoContext(WarehouseDatabaseSettings.Value.ConnectionString);
@@ -26,6 +28,8 @@ namespace Warehouse2.Services
             _dbName = WarehouseDatabaseSettings.Value.DatabaseName;
 
             _collectionName = WarehouseDatabaseSettings.Value.EventCollectionName;
+
+            _cColName = WarehouseDatabaseSettings.Value.CellsCollectionName;
 
             _graphName = WarehouseDatabaseSettings.Value.GraphCollectionName;
 
@@ -50,6 +54,31 @@ namespace Warehouse2.Services
             FormattableString filter3 = $" AND DATE_DIFF(x.dateAndTime, {b.enddateAndTime}, 'f', true) > 0 AND DATE_DIFF({b.startdateAndTime}, x.dateAndTime, 'f', true) > 0";
 
             return await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3}");
+        }
+
+        public async Task<RentedCells> GetRentedCells(MyCellsBody body)
+        {
+            FormattableString filter = $"x.action == 'RENTED' AND regex_test(x.userKey, {body.userKey}, true)";
+            FormattableString filter1 = $" AND x.cellNum >= {body.startcellNum} AND x.cellNum <= {body.endcellNum} AND x.tierNum >= {body.starttierNum}";
+            FormattableString filter2 = $" AND x.tierNum <= {body.endtierNum} AND x.size >= {body.startsize} AND x.size <= {body.endsize}";
+            FormattableString filter3 = $" AND x.tariffPerDay >= {body.starttariffPerDay} AND x.tariffPerDay <= {body.endtariffPerDay}";
+            FormattableString filter4 = $" AND x.isFree == {body.isFree} AND x.needService == {body.needService}";
+
+            List<Event> events = await _arango.Query.FindAsync<Event>(_dbName, _collectionName, $"{filter}");
+            List<Cell> cells = new List<Cell>();
+            RentedCells rentedCells = new RentedCells();
+
+            foreach (Event e in events)
+            {
+                Cell cell = await _arango.Query.SingleOrDefaultAsync<Cell>(_dbName, _cColName, $"{filter1} {filter2} {filter3} {filter4}");
+                if (cell.listOfEventKeys.Last() == e._key)
+                    cells.Add( cell ); 
+            }
+
+            rentedCells.cells = cells;
+            rentedCells.count = cells.Count;
+
+            return rentedCells;
         }
     }
 }

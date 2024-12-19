@@ -30,5 +30,11 @@ namespace Warehouse2.Controllers
         {
             return await _eventsService.FilterDocsAsync(body); 
         }
+
+        [HttpPost("RentedCells")]
+        public async Task<RentedCells> GetUserRentedCellsAsync(MyCellsBody body)
+        {
+            return await _eventsService.GetRentedCells(body);
+        }
     }
 }

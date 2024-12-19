@@ -130,4 +130,46 @@ namespace Warehouse2.Models
 
         public int count { get; set; }
     }
+
+    public class RentedCells
+    {
+        public RentedCells()
+        {
+            this.count = 0;
+            this.cells = new List<Cell>();
+        }
+
+        public List<Cell> cells { get; set; }
+
+        public int count { get; set; }
+    }
+
+    public class MyCellsBody
+    {
+        public MyCellsBody() { }
+        
+        public string userKey { get; set; }
+
+        public int page { get; set; }
+
+        public int startcellNum { get; set; }
+        public int endcellNum { get; set; }
+
+        public int starttierNum { get; set; }
+        public int endtierNum { get; set; }
+
+        public bool isFree { get; set; }
+
+        public bool needService { get; set; }
+
+        public DateTimeOffset? startendOfRent { get; set; }
+        public DateTimeOffset? endendOfRent { get; set; }
+
+        public float starttariffPerDay { get; set; }
+        public float endtariffPerDay { get; set; }
+
+        public float startsize { get; set; }
+        public float endsize { get; set; }
+
+    }
 }
