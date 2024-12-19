@@ -11,6 +11,10 @@ export default function Filter(props: { handleSend: any, obj: any, default: any 
         const formDataObj = Object.fromEntries(formData.entries());
         props.handleSend(formDataObj);
     }
+
+    function reset(){
+        props.handleSend(props.default);
+    }
     const filters = []
     for (let key in props.obj) {
         if (!props.obj[key].noNeedFiltration){
@@ -73,6 +77,7 @@ export default function Filter(props: { handleSend: any, obj: any, default: any 
         <Form onSubmit={handleSubmit}>
             {filters}
             <Button type="submit">Поиск</Button>
+            <Button type="reset" onClick={reset}>Очистить</Button>
         </Form>
 
     </>)
