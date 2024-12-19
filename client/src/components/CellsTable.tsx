@@ -44,6 +44,7 @@ export default function CellsTable(props: {
       {props.isForAdmin && <td>{cell._key}</td>}
       <td>{cell.cellNum}</td>
       <td>{cell.tierNum}</td>
+      <td>{cell.size}</td>
       <td>{cell.tariffPerDay}</td>
       {props.isForAdmin && <td>{cell.isFree ? "Свободна" : "Занята"}</td>}
       {needEndOfRent && <td>{cell.endOfRent}</td>}
@@ -99,6 +100,9 @@ export default function CellsTable(props: {
             </th>
             <th className="cellName" scope="col">
               Ряд
+            </th>
+            <th className="cellName" scope="col">
+              Размер
             </th>
             <th className="cellName" scope="col">
               Тариф

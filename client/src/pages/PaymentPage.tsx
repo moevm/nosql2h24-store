@@ -75,10 +75,7 @@ export default function PaymentPage() {
 
         <div className="paymentPageOptions">
           <button className="paymentOptionsItem" onClick={handlePayment}>
-            Оплата по карте
-          </button>
-          <button className="paymentOptionsItem" onClick={handlePayment}>
-            Оплата по СБП
+            Арендовать
           </button>
         </div>
       </div>
