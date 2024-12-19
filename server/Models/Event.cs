@@ -62,4 +62,17 @@ namespace Warehouse2.Models
 
         public string description { get; set; }
     }
+
+    public class Period
+    {
+        public Period()
+        {
+            this.start = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.end = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
+        }
+
+        public DateTimeOffset? start { get; set; }
+
+        public DateTimeOffset? end { get; set; }
+    }
 }

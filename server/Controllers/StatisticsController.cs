@@ -21,5 +21,11 @@ namespace Warehouse2.Controllers
         {
             return await _statisticsService.CountCellsWarehouses();
         }
+
+        [HttpPost("CountRentedCell")]
+        public async Task<List<WarehouseCellsCount>> CountRentedCellsAsync(Period period)
+        {
+            return await _statisticsService.CountRentCells(period);
+        }
     }
 }
