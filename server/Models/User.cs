@@ -100,4 +100,30 @@ namespace Warehouse2.Models
 
         public int count { get; set; }
     }
+
+    public class PassData
+    {
+        public PassData()
+        { }
+
+        public string email { get; set; }
+
+        public string password { get; set; }
+    }
+
+    public class AuthData
+    {
+        public AuthData(string _key, string NSP, string role) 
+        {
+            this._key = _key;
+            this.nameSurnamePatronymic = NSP;
+            this.role = role;
+        }
+
+        public string _key { get; set; }
+
+        public string nameSurnamePatronymic { get; set; }
+
+        public string role { get; set; }
+    }
 }

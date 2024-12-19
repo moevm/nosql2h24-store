@@ -51,12 +51,14 @@ namespace Warehouse2.Services
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
         }
 
-        public async Task<List<string>> AuthenticateAsync(string log, string psw)
+        public async Task<AuthData> AuthenticateAsync(PassData data)
         {
-            var usrs = await _arango.Query.FindAsync<string>(_dbName, _collectionName, 
-                $"x.login == {log} AND x.password == {psw}", "x._key");
+            FormattableString filter = $"x.login == {data.email} AND x.password == {data.password}";
+            FormattableString res = $"{{ _key: x._key, nameSurnamePatronymic : x.nameSurnamePatronymic, role : x.role }}";
 
-            return usrs;
+            AuthData user = await _arango.Query.SingleOrDefaultAsync<AuthData>(_dbName, _collectionName, $"{filter}", $"{res}");
+
+            return user;
         }
 
         public async Task<List<User>> FilterDocsAsync(UserFilterBody b)

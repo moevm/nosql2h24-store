@@ -39,9 +39,9 @@ namespace Warehouse2.Controllers
         }
 
         [HttpPost("auth/")]
-        public async Task<List<string>> Authenticate(string log, string psw)
+        public async Task<AuthData> Authenticate(PassData data)
         {
-            return await _usersService.AuthenticateAsync(log, psw);
+            return await _usersService.AuthenticateAsync(data);
         }
 
         [HttpPost("all")]
