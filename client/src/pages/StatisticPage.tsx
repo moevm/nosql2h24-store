@@ -213,7 +213,7 @@ export default function StatisticPage() {
                     <p>Количество событий "Аренда" для каждой ячейки выбранного склада за выбранный период</p>
                     <Form onSubmit={handleRentEventCell}>
                         <InputGroup.Text id="basic-addon1">Склад</InputGroup.Text>
-                        <Form.Select name="warehouse">{listWareousesKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
+                        <Form.Select name="warehouseKey">{listWareousesKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
                         <InputGroup.Text id="basic-addon1">Начальная дата</InputGroup.Text>
                         <Form.Control type="datetime-local"
                             name="start"
@@ -232,7 +232,7 @@ export default function StatisticPage() {
                     <p>Количество событий "Ремонт" для каждой ячейки выбранного склада за выбранный период</p>
                     <Form onSubmit={handleBreakEventCell}>
                         <InputGroup.Text id="basic-addon1">Склад</InputGroup.Text>
-                        <Form.Select name="warehouse">{listWareousesKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
+                        <Form.Select name="warehouseKey">{listWareousesKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
                         <InputGroup.Text id="basic-addon1">Начальная дата</InputGroup.Text>
                         <Form.Control type="datetime-local"
                             name="start"

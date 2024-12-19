@@ -39,7 +39,7 @@ export default function MyCellsPage() {
         obj.endcellNum = obj.endcellNum ? parseInt(obj.endcellNum) : cellDefaultFilter.endcellNum; // => < 20
         obj.starttierNum = obj.starttierNum ? parseInt(obj.starttierNum) : cellDefaultFilter.starttierNum;
         obj.endtierNum = obj.endtierNum ? parseInt(obj.endtierNum) : cellDefaultFilter.endtierNum;  // => < 6
-        obj.isFree = obj.isFree ? true : false; //cellDefaultFilter.isFree;
+        obj.isFree = false; //cellDefaultFilter.isFree;
         obj.needService = obj.needService ? true : false; //cellDefaultFilter.needService;
         obj.startsize = obj.startsize ? parseFloat(obj.startsize) : cellDefaultFilter.startsize;
         obj.endsize = obj.endsize ? parseFloat(obj.endsize) : cellDefaultFilter.endsize;   // => < 2.1
