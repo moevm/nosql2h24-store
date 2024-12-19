@@ -79,7 +79,7 @@ export default function StatisticPage() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
         console.log(formDataObj)
-        axios.get(STAT_EVENT_WAREHOUSE, formDataObj).then((res) => {
+        axios.post(STAT_EVENT_WAREHOUSE, formDataObj).then((res) => {
             console.log(res.data);
             setType("Используемость складов");
             setScaleName(["Кол-во аренд", "Склад"]);
@@ -98,7 +98,7 @@ export default function StatisticPage() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
         console.log(formDataObj)
-        axios.get(STAT_EVENT_USER, formDataObj).then((res) => {
+        axios.post(STAT_EVENT_USER, formDataObj).then((res) => {
             console.log(res.data);
             setType("Продуктивность рабочих");
             setScaleName(["Кол-во ремонтов", "Рабочий"]);
@@ -117,7 +117,7 @@ export default function StatisticPage() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
         console.log(formDataObj)
-        axios.get(STAT_RENT_EVENT_CELL, formDataObj).then((res) => {
+        axios.post(STAT_RENT_EVENT_CELL, formDataObj).then((res) => {
             console.log(res.data);
             setType("Используемость ячеек");
             setScaleName(["Кол-во аренд", "Ячейка"]);
@@ -136,7 +136,7 @@ export default function StatisticPage() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
         console.log(formDataObj)
-        axios.get(STAT_BREAK_EVENT_CELL, formDataObj).then((res) => {
+        axios.post(STAT_BREAK_EVENT_CELL, formDataObj).then((res) => {
             console.log(res.data);
             setType("Проблемность ячеек");
             setScaleName(["Кол-во поломок", "Ячейка"]);
