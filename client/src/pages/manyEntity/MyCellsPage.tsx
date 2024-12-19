@@ -5,16 +5,17 @@ import axios from "axios";
 import "../../css/MyCellsPage.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as CellIcon } from "../../css/cell-icon.svg";
-import { Cell, cellFields } from "../../serviceFiles/types";
+import { Cell, cellFields, cellMyFields } from "../../serviceFiles/types";
 import Filter from "../../components/Filter";
 
 export default function MyCellsPage() {
     const [cells, setCells] = useState(cellsInit);
     const [filters, setFilters] = useState(cellDefaultFilter);
     useEffect(() => {
+        let key = sessionStorage.getItem("key");
         console.log("отправлен запрос на получение ячеек, с параметрами:", filters);
         axios
-            .post(GET_MY_CELLS_URL, filters)
+            .post(GET_MY_CELLS_URL, {...filters, userKey: key})
             .then((response) => {
                 console.log(response);
                 setCells(response.data);
@@ -50,7 +51,7 @@ export default function MyCellsPage() {
         <div className="myCellsPageContainer">
             <h1 className="myCellsPageTitle">Мои ячейки</h1>
 
-            <Filter handleSend={handleSendFilters} obj={cellFields} default={cellDefaultFilter}></Filter>
+            <Filter handleSend={handleSendFilters} obj={cellMyFields} default={cellDefaultFilter}></Filter>
 
             <CellsTable
                 isForRent={false}
