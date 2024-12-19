@@ -43,6 +43,19 @@ namespace Warehouse2.Controllers
         {
             return await _cellsService.FilterDocsAsync(body);
         }
+
+        [HttpPost("rent")]
+        public async Task<IActionResult> Rent(CellRentBody body)
+        {
+            var data = await _cellsService.RentCell(body);
+
+            if (data == null)
+            {
+                return NotFound("No data found");
+            }
+
+            return Ok(data); // Отправляем данные в формате JSON
+        }
     }
 }
 

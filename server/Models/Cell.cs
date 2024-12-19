@@ -96,4 +96,22 @@ namespace Warehouse2.Models
         public float endsize { get; set; }
 
     }
+
+    public class CellRentBody
+    {
+        public CellRentBody()
+        {
+            this.cellKey = "";
+            this.userKey = "";
+
+            this.endOfRent = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
+        }
+
+        public string cellKey { get; set; }
+
+        public string userKey { get; set; }
+
+        public DateTimeOffset? endOfRent { get; set; }
+
+    }
 }

@@ -7,13 +7,13 @@ namespace Warehouse2.Models
 
         public Event() { }
 
-        public Event(string action, string dscr, string WKey, string CKey = "")
+        public Event(string action, string dscr, string WKey, string CKey = "", string UKey = "")
         {
             this._key = Guid.NewGuid().ToString();
             this._from = "WAREHOUSE/" + WKey;               // fix from-to according to the data model
             this._to = "CELL/" + CKey;
             this.cellKey = CKey;
-            this.userKey = "";
+            this.userKey = UKey;
             this.action = action;
             this.description = dscr;
             this.dateAndTime = DateTime.Now;
