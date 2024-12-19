@@ -23,11 +23,11 @@ export default function PaymentPage() {
     let key = sessionStorage.getItem("key");
     console.log("аренда ячейки с данными:", {
       userKey: key,
-      cell: state._key,
+      cellKey: state._key,
       endOfRent
     });
     axios
-      .post(POST_RENT_CELL_URL, { userKey: key, cell: state._key, endOfRent }).then(()=>{
+      .post(POST_RENT_CELL_URL, { userKey: key, cellKey: state._key, endOfRent }).then(()=>{
         alert("Вы арендовали ячейку №"+ state.cellNum + " на складе " + state.warehouseAddress)
         navigate("/rentCell");
       })
