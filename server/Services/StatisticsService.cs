@@ -18,6 +18,8 @@ namespace Warehouse2.Services
 
         private readonly string _uColName;
 
+        private readonly string _cColName;
+
         // private readonly ArangoNewtonsoftSerializer _serializer;
 
         public StatisticsService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
@@ -29,6 +31,10 @@ namespace Warehouse2.Services
             _wColName = WarehouseDatabaseSettings.Value.WarehousesCollectionName;
 
             _eColName = WarehouseDatabaseSettings.Value.EventCollectionName;
+
+            _uColName = WarehouseDatabaseSettings.Value.UsersCollectionName;
+
+            _cColName = WarehouseDatabaseSettings.Value.CellsCollectionName;
 
             //_serializer = new ArangoNewtonsoftSerializer(new ArangoNewtonsoftDefaultContractResolver());
         }
@@ -75,6 +81,26 @@ namespace Warehouse2.Services
 
                 res.Add(new EmployeeFixedCell(e._key, e.nameSurnamePatronymic, events.Count));
             }
+            return res;
+        }
+
+   
+        public async Task<List<EventCell>> CountCellEvents(ActionBody body)
+        {
+            List<Cell> cells = await _arango.Query.FindAsync<Cell>(_dbName, _cColName, $"x.warehouseKey == {body.warehouseKey}");
+            List<EventCell> res = new List<EventCell>();
+
+            foreach(Cell cell in cells)
+            {
+                string wID = "WAREHOUSE/" + body.warehouseKey;
+                FormattableString filter1 = $"DATE_DIFF(x.dateAndTime, {body.end}, 's', true) > 0 AND DATE_DIFF({body.start}, x.dateAndTime, 's', true) > 0";
+                FormattableString filter2 = $"AND x.action == {body.eventAction} AND x._from == {wID}";
+
+                List<Event> events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"{filter1} {filter2}");
+
+                res.Add(new EventCell(cell._key, cell.cellNum, events.Count));
+            }
+
             return res;
         }
     }
