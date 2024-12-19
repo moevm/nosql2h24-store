@@ -26,20 +26,20 @@ export default function RegistrationPage() {
             <div className="authPageEnter">
                 <span className="authPageEnterTitle">Регистрация</span>
                 <p className="authPageEnterInstruction">
-                    Для регистрации введите почтовый адрес, дату рождения и пароль.
+                    Для регистрации заполните поля ниже:
                 </p>
                 <form className="authPageForm" onSubmit={handleReg}>
                     <div className="authPageFormData">
 
-                        <label htmlFor="login">ФИО</label>
                         <br />
+                        <label htmlFor="login">ФИО</label>
                         <input
                             className="dataInput"
                             placeholder="Фамилия Имя Отчество"
                             name="nameSurnamePatronymic"
                         ></input>
-                        <label htmlFor="login">Почта</label>
                         <br />
+                        <label htmlFor="login">Почта</label>
                         <input
                             className="dataInput"
                             id="login"
@@ -47,8 +47,8 @@ export default function RegistrationPage() {
                             placeholder="Почта"
                             name="login"
                         ></input>
-                        <label htmlFor="date">День рождения</label>
                         <br />
+                        <label htmlFor="date">День рождения</label>
                         <input
                             className="dataInput"
                             id="date"
@@ -56,8 +56,8 @@ export default function RegistrationPage() {
                             placeholder="Пароль"
                             name="birthday"
                         ></input>
-                        <label htmlFor="password">Пароль</label>
                         <br />
+                        <label htmlFor="password">Пароль</label>
                         <input
                             className="dataInput"
                             id="password"

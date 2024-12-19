@@ -58,8 +58,8 @@ export default function AuthPage() {
                     </p>
                     <form className="authPageForm" onSubmit={handleEntry}>
                         <div className="authPageFormData">
-                            <label htmlFor="login">Логин</label>
                             <br />
+                            <label htmlFor="login">Логин</label>
                             <input
                                 className="dataInput"
                                 id="login"
@@ -68,8 +68,8 @@ export default function AuthPage() {
                                 onChange={handleEmailChange}
                             ></input>
 
-                            <label htmlFor="password">Пароль</label>
                             <br />
+                            <label htmlFor="password">Пароль</label>
                             <input
                                 className="dataInput"
                                 id="password"
