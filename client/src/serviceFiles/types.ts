@@ -23,6 +23,21 @@ export let cellFields = {
     tariffPerDay: { name: "Тариф", type: "n" }
 };
 
+export let cellRentFields = {
+    cellNum: { name: "Номер", type: "n" },
+    tierNum: { name: "Ряд", type: "n" },
+    size: { name: "Размер", type: "nf" },
+    tariffPerDay: { name: "Тариф", type: "n" }
+};
+
+export let cellMyFields = {
+    cellNum: { name: "Номер", type: "n" },
+    tierNum: { name: "Ряд", type: "n" },
+    size: { name: "Размер", type: "nf" },
+    endOfRent: { name: "КонецАренды", type: "dt", noNeedAddition: true },
+    tariffPerDay: { name: "Тариф", type: "n" }
+};
+
 export let cellFilters = {
     _key: "s",
     warehouseKey: "s",

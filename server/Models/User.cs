@@ -84,4 +84,20 @@ namespace Warehouse2.Models
         public int startindebtedness { get; set; }
         public int endindebtedness { get; set; }
     }
+
+    public class EmployeeFixedCell
+    {
+        public EmployeeFixedCell(string key = "", string NSP = "", int c = 0)
+        {
+            this._key = key;
+            this.nameSurnamePatronymic = NSP;
+            this.count = c;
+        }
+
+        public string? _key { get; set; }
+
+        public string? nameSurnamePatronymic { get; set; }
+
+        public int count { get; set; }
+    }
 }

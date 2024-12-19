@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CellsTable from "../../components/CellsTable";
 import { cellDefaultFilter, cellsInit, GET_FREE_CELLS_URL } from "../../serviceFiles/constants";
 import axios from "axios";
-import { Cell, cellFields } from "../../serviceFiles/types";
+import { Cell, cellFields, cellRentFields } from "../../serviceFiles/types";
 import Filter from "../../components/Filter";
 import "../../css/manyEntity/RentCellPage.css";
 
@@ -31,21 +31,21 @@ export default function RentCellPage() {
         obj.endcellNum = obj.endcellNum ? parseInt(obj.endcellNum) : cellDefaultFilter.endcellNum; // => < 20
         obj.starttierNum = obj.starttierNum ? parseInt(obj.starttierNum) : cellDefaultFilter.starttierNum;
         obj.endtierNum = obj.endtierNum ? parseInt(obj.endtierNum) : cellDefaultFilter.endtierNum;  // => < 6
-        obj.isFree = obj.isFree ? true : false; //cellDefaultFilter.isFree;
-        obj.needService = obj.needService ? true : false; //cellDefaultFilter.needService;
+        obj.isFree = true; //cellDefaultFilter.isFree;
+        obj.needService = false; //cellDefaultFilter.needService;
         obj.startsize = obj.startsize ? parseFloat(obj.startsize) : cellDefaultFilter.startsize;
         obj.endsize = obj.endsize ? parseFloat(obj.endsize) : cellDefaultFilter.endsize;   // => < 2.1
         obj.starttariffPerDay = obj.starttariffPerDay ? parseInt(obj.starttariffPerDay) : cellDefaultFilter.starttariffPerDay;
         obj.endtariffPerDay = obj.endtariffPerDay ? parseInt(obj.endtariffPerDay) : cellDefaultFilter.endtariffPerDay;
-        obj.startendOfRent = obj.startendOfRent || cellDefaultFilter.startendOfRent;
-        obj.endendOfRent = obj.endendOfRent || cellDefaultFilter.endendOfRent;
+        obj.startendOfRent = cellDefaultFilter.startendOfRent;
+        obj.endendOfRent = cellDefaultFilter.endendOfRent;
         console.log("Преобразовано (filters)", obj);
         setFilters(obj);
     }
 
     return (
         <div className="rencCellPageContainer">
-            <Filter handleSend={handleSendFilters} obj={cellFields} default={cellDefaultFilter}></Filter>
+            <Filter handleSend={handleSendFilters} obj={cellRentFields} default={cellDefaultFilter}></Filter>
             <CellsTable
                 isForRent={true}
                 isForAdmin={false}

@@ -15,6 +15,7 @@ builder.Services.AddSingleton<EventsService>();
 builder.Services.AddSingleton<CellsService>();
 builder.Services.AddSingleton<UsersService>();
 builder.Services.AddSingleton<WarehousesService>();
+builder.Services.AddSingleton<StatisticsService>();
 
 // CORS с настройкой для фронтенда
 builder.Services.AddCors(options =>

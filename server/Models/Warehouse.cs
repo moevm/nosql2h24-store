@@ -45,4 +45,20 @@
 
         public string? chiefKey { get; set; }
     }
+
+    public class WarehouseCellsCount
+    {
+        public WarehouseCellsCount(string key = "", string addr = "", int c = 0)
+        {
+            this._key = key;
+            this.address = addr;
+            this.count = c;
+        }
+
+        public string? _key { get; set; }
+
+        public string? address { get; set; }
+
+        public int count { get; set; }
+    }
 }
