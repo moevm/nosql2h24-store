@@ -114,4 +114,20 @@ namespace Warehouse2.Models
         public DateTimeOffset? endOfRent { get; set; }
 
     }
+
+    public class EventCell
+    {
+        public EventCell(string key = "", int CNum = 0, int c = 0)
+        {
+            this._key = key;
+            this.cellNum = CNum;
+            this.count = c;
+        }
+
+        public string? _key { get; set; }
+
+        public int? cellNum { get; set; }
+
+        public int count { get; set; }
+    }
 }

@@ -27,5 +27,19 @@ namespace Warehouse2.Controllers
         {
             return await _statisticsService.CountRentCells(period);
         }
+
+        
+        [HttpPost("EventUser")]
+        public async Task<List<EmployeeFixedCell>> CountFixedCellsAsync(Period period)
+        {
+            return await _statisticsService.CountProd(period);
+        }
+
+
+        [HttpPost("EventCell")]
+        public async Task<List<EventCell>> CellActionCountAsync(ActionBody body)
+        {
+            return await _statisticsService.CountCellEvents(body);
+        }
     }
 }

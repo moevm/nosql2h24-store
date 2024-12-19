@@ -75,4 +75,23 @@ namespace Warehouse2.Models
 
         public DateTimeOffset? end { get; set; }
     }
+
+    public class ActionBody
+    {
+        public ActionBody()
+        {
+            this.eventAction = "";
+            this.warehouseKey = "";
+            this.start = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.end = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
+        }
+
+        public string eventAction { get; set; }
+
+        public string warehouseKey { get; set; }
+
+        public DateTimeOffset? start { get; set; }
+
+        public DateTimeOffset? end { get; set; }
+    }
 }

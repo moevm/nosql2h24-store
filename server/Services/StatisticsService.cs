@@ -16,6 +16,10 @@ namespace Warehouse2.Services
 
         private readonly string _eColName;
 
+        private readonly string _uColName;
+
+        private readonly string _cColName;
+
         // private readonly ArangoNewtonsoftSerializer _serializer;
 
         public StatisticsService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
@@ -28,6 +32,10 @@ namespace Warehouse2.Services
 
             _eColName = WarehouseDatabaseSettings.Value.EventCollectionName;
 
+            _uColName = WarehouseDatabaseSettings.Value.UsersCollectionName;
+
+            _cColName = WarehouseDatabaseSettings.Value.CellsCollectionName;
+
             //_serializer = new ArangoNewtonsoftSerializer(new ArangoNewtonsoftDefaultContractResolver());
         }
 
@@ -39,11 +47,6 @@ namespace Warehouse2.Services
             return await _arango.Query.FindAsync<WarehouseCellsCount>(_dbName, _wColName, $"x", $"{res}");
         }
 
-        /*Используемость складов за период (количество событий rented суммарное по всем ячейкам, для каждого склада)
-        Statistics/EventWarehouse { start: date1, end: date2}
-            count,
-            _key
-            address*/
         public async Task<List<WarehouseCellsCount>> CountRentCells(Period period)
         {
             List<Warehouse> warehouses = await _arango.Query.FindAsync<Warehouse>(_dbName, _wColName, $"LENGTH(x.cellsKeys) != 0");
@@ -57,8 +60,45 @@ namespace Warehouse2.Services
 
                 List<Event> events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"{filter1} {filter2}");
 
-                if ( events.Count != 0) 
-                    res.Add(new WarehouseCellsCount(w._key, w.address, events.Count));
+                res.Add(new WarehouseCellsCount(w._key, w.address, events.Count));
+            }
+
+            return res;
+        }
+
+
+        public async Task<List<EmployeeFixedCell>> CountProd(Period period)
+        {
+            List<User> employees = await _arango.Query.FindAsync<User>(_dbName, _uColName, $"x.role == 'employee'");
+            List<EmployeeFixedCell> res = new List<EmployeeFixedCell>();
+
+            foreach (User e in employees)
+            {
+                FormattableString filter1 = $"DATE_DIFF(x.dateAndTime, {period.end}, 's', true) > 0 AND DATE_DIFF({period.start}, x.dateAndTime, 's', true) > 0";
+                FormattableString filter2 = $"AND x.action == 'FIXED' AND x.userKey == {e._key}";
+
+                List<Event> events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"{filter1} {filter2}");
+
+                res.Add(new EmployeeFixedCell(e._key, e.nameSurnamePatronymic, events.Count));
+            }
+            return res;
+        }
+
+   
+        public async Task<List<EventCell>> CountCellEvents(ActionBody body)
+        {
+            List<Cell> cells = await _arango.Query.FindAsync<Cell>(_dbName, _cColName, $"x.warehouseKey == {body.warehouseKey}");
+            List<EventCell> res = new List<EventCell>();
+
+            foreach(Cell cell in cells)
+            {
+                string wID = "WAREHOUSE/" + body.warehouseKey;
+                FormattableString filter1 = $"DATE_DIFF(x.dateAndTime, {body.end}, 's', true) > 0 AND DATE_DIFF({body.start}, x.dateAndTime, 's', true) > 0";
+                FormattableString filter2 = $"AND x.action == {body.eventAction} AND x._from == {wID}";
+
+                List<Event> events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"{filter1} {filter2}");
+
+                res.Add(new EventCell(cell._key, cell.cellNum, events.Count));
             }
 
             return res;
