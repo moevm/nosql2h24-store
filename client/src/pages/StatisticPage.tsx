@@ -131,7 +131,7 @@ export default function StatisticPage() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
         console.log(formDataObj)
-        axios.post(STAT_RENT_EVENT_CELL, formDataObj).then((res) => {
+        axios.post(STAT_RENT_EVENT_CELL, {...formDataObj, eventAction: "RENTED"}).then((res) => {
             console.log(res.data);
             setType("Используемость ячеек");
             setScaleName(["Кол-во аренд", "Ячейка"]);
@@ -150,7 +150,7 @@ export default function StatisticPage() {
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
         console.log(formDataObj)
-        axios.post(STAT_BREAK_EVENT_CELL, formDataObj).then((res) => {
+        axios.post(STAT_BREAK_EVENT_CELL, {...formDataObj, eventAction: "FIXED"}).then((res) => {
             console.log(res.data);
             setType("Проблемность ячеек");
             setScaleName(["Кол-во поломок", "Ячейка"]);
@@ -229,7 +229,7 @@ export default function StatisticPage() {
             <Accordion.Item eventKey="4">
                 <Accordion.Header className="accordion-fixSize">Проблемность ячеек</Accordion.Header>
                 <Accordion.Body>
-                    <p>Количество событий "Поломка" для каждой ячейки выбранного склада за выбранный период</p>
+                    <p>Количество событий "Ремонт" для каждой ячейки выбранного склада за выбранный период</p>
                     <Form onSubmit={handleBreakEventCell}>
                         <InputGroup.Text id="basic-addon1">Склад</InputGroup.Text>
                         <Form.Select name="warehouse">{listWareousesKeys.map((warehouseKey: string) => <option value={warehouseKey}>{warehouseKey}</option>)}</Form.Select>
