@@ -64,7 +64,7 @@ namespace Warehouse2.Services
                 }
             }
 
-            decimal d = page.events.Count / 7;
+            decimal d = allEvents.Count / 7;
             page.count = Math.Ceiling(d);
 
             return page;
