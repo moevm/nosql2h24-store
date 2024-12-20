@@ -40,7 +40,7 @@ namespace Warehouse2.Controllers
         }
 
         [HttpPost("all")]
-        public async Task<List<Warehouse>> FilterDocsIndices(WarehouseFilterBody body)
+        public async Task<WarehousePage> FilterDocsIndices(WarehouseFilterBody body)
         {
             return await _warehousesService.FilterDocsAsync(body);
         }

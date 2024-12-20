@@ -45,7 +45,7 @@ namespace Warehouse2.Controllers
         }
 
         [HttpPost("all")]
-        public async Task<List<User>> FilterDocsIndices(UserFilterBody body)
+        public async Task<UserPage> FilterDocsIndices(UserFilterBody body)
         {
             return await _usersService.FilterDocsAsync(body);
         }
