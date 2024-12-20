@@ -187,4 +187,13 @@ namespace Warehouse2.Models
 
         public decimal count { get; set; }
     }
+
+    public class FixCell
+    {
+        FixCell() { }
+        
+        public string userKey {  set; get; }
+
+        public Cell cell { get; set; }
+    }
 }

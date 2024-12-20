@@ -22,6 +22,8 @@ namespace Warehouse2.Services
 
         private readonly string _wColName;
 
+        private readonly string _uColName;
+
         private readonly ArangoNewtonsoftSerializer _serializer;
 
         public CellsService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
@@ -35,6 +37,8 @@ namespace Warehouse2.Services
             _eColName = WarehouseDatabaseSettings.Value.EventCollectionName;
 
             _wColName = WarehouseDatabaseSettings.Value.WarehousesCollectionName;
+
+            _uColName = WarehouseDatabaseSettings.Value.UsersCollectionName;
 
             _graphName = WarehouseDatabaseSettings.Value.GraphCollectionName;
 
@@ -102,8 +106,8 @@ namespace Warehouse2.Services
                 }
             }
 
-            decimal d = allCells.Count / 7;
-            page.count = Math.Ceiling(d);
+            double d = allCells.Count / 7.0f;
+            page.count = ((int)Math.Ceiling(d));
 
             return page;
         }
@@ -123,6 +127,29 @@ namespace Warehouse2.Services
 
             await _arango.Document.UpdateAsync(_dbName, _collectionName, cell);
             
+            return newEvent;
+        }
+    
+        public async Task<Event> FixTheCell(FixCell body)
+        {
+            User usr = await _arango.Document.GetAsync<User>(_dbName, _uColName, body.userKey);
+            Event newEvent = new Event("FIXED", "the cell has just been fixed", body.cell.warehouseKey, body.cell._key, body.userKey);
+
+            if (usr.role == "employee")
+            {
+                Cell cell = body.cell;
+                cell.needService = false;
+
+                cell.listOfEventKeys.Add(newEvent._key);
+
+                await _arango.Document.UpdateAsync<Cell>(_dbName, _collectionName, cell);
+                await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
+            }
+            else
+            {
+                newEvent = null;
+            }
+
             return newEvent;
         }
     }
