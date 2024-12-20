@@ -93,8 +93,9 @@ namespace Warehouse2.Services
             foreach(Cell cell in cells)
             {
                 string wID = "WAREHOUSE/" + body.warehouseKey;
+                string cID = "CELL/" + cell._key;
                 FormattableString filter1 = $"DATE_DIFF(x.dateAndTime, {body.end}, 's', true) > 0 AND DATE_DIFF({body.start}, x.dateAndTime, 's', true) > 0";
-                FormattableString filter2 = $"AND x.action == {body.eventAction} AND x._from == {wID}";
+                FormattableString filter2 = $"AND x.action == {body.eventAction} AND x._from == {wID} AND x._to == {cID}";
 
                 List<Event> events = await _arango.Query.FindAsync<Event>(_dbName, _eColName, $"{filter1} {filter2}");
 
