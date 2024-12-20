@@ -39,7 +39,7 @@ namespace Warehouse2.Controllers
         }
 
         [HttpPost("all")]
-        public async Task<List<Cell>> FilterDocsIndices(CellFilterBody body)
+        public async Task<CellPage> FilterDocsIndices(CellFilterBody body)
         {
             return await _cellsService.FilterDocsAsync(body);
         }

@@ -61,7 +61,7 @@ namespace Warehouse2.Services
             return user;
         }
 
-        public async Task<List<User>> FilterDocsAsync(UserFilterBody b)
+        public async Task<UserPage> FilterDocsAsync(UserFilterBody b)
         {
             FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.nameSurnamePatronymic, {b.nameSurnamePatronymic}, true)";
             FormattableString filter1 = $" AND regex_test(x.role, {b.role}, true) AND regex_test(x.login, {b.login}, true) AND regex_test(x.password, {b.password}, true)";
@@ -70,8 +70,22 @@ namespace Warehouse2.Services
             FormattableString filter4 = $" AND DATE_DIFF(x.editDate, {b.endeditDate}, 's', true) > 0 AND DATE_DIFF({b.starteditDate}, x.editDate, 's', true) > 0";
             FormattableString filter5 = $" AND DATE_DIFF(x.birthday, {b.endbirthday}, 'd', true) > 0 AND DATE_DIFF({b.startbirthday}, x.birthday, 'd', true) > 0";
 
+            List<User> allUsers = await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
 
-            return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
+            UserPage page = new UserPage();
+
+            for (int i = b.page * 7; i < (b.page + 1) * 7; i++)
+            {
+                if (i < allUsers.Count)
+                {
+                    page.users.Add(allUsers[i]);
+                }
+            }
+
+            decimal d = allUsers.Count / 7;
+            page.count = Math.Ceiling(d);
+
+            return page;
         }
 
         public async Task<List<string>> ListDirectorsKeysAsync()
