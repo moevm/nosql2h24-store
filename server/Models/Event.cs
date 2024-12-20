@@ -38,7 +38,7 @@ namespace Warehouse2.Models
 
     public class EventFilterBody
     {
-        public EventFilterBody() 
+        public EventFilterBody()
         {
             this._key = "";
             this.cellKey = "";
@@ -50,7 +50,9 @@ namespace Warehouse2.Models
         }
 
         public string _key { get; set; }
-        
+
+        public int page { get; set; }
+
         public string? cellKey { get; set; }
 
         public string? userKey { get; set; }
@@ -93,5 +95,18 @@ namespace Warehouse2.Models
         public DateTimeOffset? start { get; set; }
 
         public DateTimeOffset? end { get; set; }
+    }
+
+    public class EventPage
+    {
+        public EventPage()
+        {
+            this.count = 0;
+            this.events = new List<Event>();
+        }
+
+        public List<Event> events { get; set; }
+
+        public decimal count { get; set; }
     }
 }

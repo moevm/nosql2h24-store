@@ -141,7 +141,7 @@ namespace Warehouse2.Models
 
         public List<Cell> cells { get; set; }
 
-        public int count { get; set; }
+        public decimal count { get; set; }
     }
 
     public class MyCellsBody
