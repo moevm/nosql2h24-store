@@ -13,11 +13,14 @@ import Addition from "../../components/Addition";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../css/manyEntity/AllCellsPage.css";
+import { Pagination } from "react-bootstrap";
 
 export default function AllCellsPage() {
     const [cells, setCells] = useState(cellsInit);
     const [filters, setFilters] = useState(cellDefaultFilter);
     const [listWareousesKeys, setListWareousesKeys] = useState(['id1', 'id2']);
+    const [countPages, setCountPages] = useState(3);
+    const [curPage, setCurPage] = useState(0);
     let navigate = useNavigate();
     function handleSendFilters(obj: any) {
         console.log("Получен объект в AllCellsPage (filters)", obj);
@@ -46,9 +49,10 @@ export default function AllCellsPage() {
             .post(POST_NEW_CELL_URL, newObj)
             .then(() => {
                 axios
-                    .post(GET_ALL_CELLS_URL, filters)
+                    .post(GET_ALL_CELLS_URL, { ...filters, page: curPage })
                     .then((response) => {
-                        setCells(response.data);
+                        setCells(response.data.cells);
+                        setCountPages(response.data.count);
                     })
                     .catch((error) => {
                         console.error(
@@ -60,9 +64,10 @@ export default function AllCellsPage() {
             })
             .catch((error) => {
                 axios
-                    .post(GET_ALL_CELLS_URL, filters)
+                    .post(GET_ALL_CELLS_URL, { ...filters, page: curPage })
                     .then((response) => {
-                        setCells(response.data);
+                        setCells(response.data.cells);
+                        setCountPages(response.data.count);
                     })
                     .catch((error) => {
                         console.error(
@@ -77,10 +82,11 @@ export default function AllCellsPage() {
     useEffect(() => {
         console.log("отправлен запрос на получение ячеек, с параметрами:", filters);
         axios
-            .post(GET_ALL_CELLS_URL, filters)
+            .post(GET_ALL_CELLS_URL, { ...filters, page: curPage })
             .then((response) => {
                 console.log(response);
-                setCells(response.data);
+                setCells(response.data.cells);
+                setCountPages(response.data.count);
             })
             .catch((error) => {
                 console.error(
@@ -89,7 +95,7 @@ export default function AllCellsPage() {
                 );
                 setCells(cellsInit);
             });
-    }, [filters]);
+    }, [filters, curPage]);
 
     useEffect(() => {
         console.log("отправлен запрос на получение ключей складов");
@@ -107,6 +113,13 @@ export default function AllCellsPage() {
                 setListWareousesKeys(['id1', 'id2']);
             });
     }, [])
+    function handlePageChange(i: number) {
+        setCurPage(i)
+    }
+    const paginationList = []
+    for (let i = 0; i < countPages; i++) {
+        paginationList.push(<Pagination.Item key={i} active={i === curPage} onClick={() => handlePageChange(i)}>{i + 1}</Pagination.Item>)
+    }
     return (
         <div className="allCellsPageContainer">
             <Filter handleSend={handleSendFilters} obj={cellFields} default={cellDefaultFilter}></Filter>
@@ -116,6 +129,11 @@ export default function AllCellsPage() {
                 isForAdmin={true}
                 cells={cells}
             ></CellsTable>
+            <Pagination>
+                <Pagination.First onClick={() => { if (curPage > 0) setCurPage(curPage - 1) }} />
+                {paginationList}
+                <Pagination.Last onClick={() => { if (curPage < countPages - 1) setCurPage(curPage + 1) }} />
+            </Pagination>
         </div>
     );
 }
