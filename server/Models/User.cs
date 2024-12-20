@@ -66,6 +66,8 @@ namespace Warehouse2.Models
 
         public string? nameSurnamePatronymic { get; set; }
 
+        public int page { get; set; }
+
         public string role { get; set; }
 
         public string login { get; set; }
@@ -125,5 +127,18 @@ namespace Warehouse2.Models
         public string nameSurnamePatronymic { get; set; }
 
         public string role { get; set; }
+    }
+
+    public class UserPage
+    {
+        public UserPage()
+        {
+            this.count = 0;
+            this.users = new List<User>();
+        }
+
+        public List<User> users { get; set; }
+
+        public decimal count { get; set; }
     }
 }

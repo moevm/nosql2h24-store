@@ -71,7 +71,7 @@ namespace Warehouse2.Services
 
         }
 
-        public async Task<List<Cell>> FilterDocsAsync(CellFilterBody b)
+        public async Task<CellPage> FilterDocsAsync(CellFilterBody b)
         {
             FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.warehouseKey, {b.warehouseKey}, true)";
             FormattableString filter1 = $" AND x.cellNum >= {b.startcellNum} AND x.cellNum <= {b.endcellNum} AND x.tierNum >= {b.starttierNum}";
@@ -85,13 +85,27 @@ namespace Warehouse2.Services
             else      
                 filter5 = $" AND DATE_DIFF(x.endOfRent, {b.endendOfRent}, 's', true) > 0 AND DATE_DIFF({b.startendOfRent}, x.endOfRent, 's', true) > 0";
 
-            List<Cell> cells = await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
-            foreach (Cell cell in cells)
+            List<Cell> allCells = await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
+            foreach (Cell cell in allCells)
             {
                 cell.warehouseAddress = await _arango.Query.SingleOrDefaultAsync<string>(_dbName, _wColName, $"x._key == {cell.warehouseKey}", $"x.address");
             }
 
-            return cells;
+
+            CellPage page = new CellPage();
+
+            for (int i = b.page * 7; i < (b.page + 1) * 7; i++)
+            {
+                if (i < allCells.Count)
+                {
+                    page.cells.Add(allCells[i]);
+                }
+            }
+
+            decimal d = allCells.Count / 7;
+            page.count = Math.Ceiling(d);
+
+            return page;
         }
 
         public async Task<Event> RentCell(CellRentBody body)

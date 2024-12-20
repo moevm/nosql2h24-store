@@ -86,7 +86,7 @@ namespace Warehouse2.Services
             {
                 Cell cell = await _arango.Query.SingleOrDefaultAsync<Cell>(_dbName, _cColName, $"x._key == {e.cellKey} {filter1} {filter2} {filter3} {filter4}");
                 if (cell.listOfEventKeys.Last() == e._key)
-                    cells.Add( cell ); 
+                    cells.Add(cell);
             }
 
             for (int i = body.page * 7; i < (body.page + 1) * 7; i++)

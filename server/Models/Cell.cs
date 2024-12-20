@@ -74,6 +74,8 @@ namespace Warehouse2.Models
 
         public string _key { get; set; }
 
+        public int page { get; set; }
+
         public string warehouseKey { get; set; }
 
         public int startcellNum { get; set; }
@@ -171,5 +173,18 @@ namespace Warehouse2.Models
         public float startsize { get; set; }
         public float endsize { get; set; }
 
+    }
+
+    public class CellPage
+    {
+        public CellPage()
+        {
+            this.count = 0;
+            this.cells = new List<Cell>();
+        }
+
+        public List<Cell> cells { get; set; }
+
+        public decimal count { get; set; }
     }
 }
