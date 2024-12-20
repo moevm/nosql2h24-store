@@ -135,20 +135,14 @@ namespace Warehouse2.Services
             User usr = await _arango.Document.GetAsync<User>(_dbName, _uColName, body.userKey);
             Event newEvent = new Event("FIXED", "the cell has just been fixed", body.cell.warehouseKey, body.cell._key, body.userKey);
 
-            if (usr.role == "employee")
-            {
-                Cell cell = body.cell;
-                cell.needService = false;
+            Cell cell = body.cell;
+            cell.needService = false;
 
-                cell.listOfEventKeys.Add(newEvent._key);
+            cell.listOfEventKeys.Add(newEvent._key);
 
-                await _arango.Document.UpdateAsync<Cell>(_dbName, _collectionName, cell);
-                await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
-            }
-            else
-            {
-                newEvent = null;
-            }
+            await _arango.Document.UpdateAsync<Cell>(_dbName, _collectionName, cell);
+            await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
+        
 
             return newEvent;
         }
