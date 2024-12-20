@@ -27,7 +27,7 @@ export default function CellsTable(props: {
   function handleService(cell: Cell) {
     let key = sessionStorage.getItem("key");
     console.log("обслуживание ячейки с данными:", { userKey: key, cell });
-    axios.post(POST_SERVICE_CELL_URL, { userKey: key, cell }).catch((error) => {
+    axios.post(POST_SERVICE_CELL_URL, { userKey: key, cell }).then(()=>{alert("Ячейка №" + cell.cellNum + "обслужена!")}).catch((error) => {
       console.error("Ошибка при обслуживании Ячейки", error);
     });
   }

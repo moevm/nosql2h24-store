@@ -162,7 +162,7 @@ export const GET_UNIQUE_WAREHOUSES_KEYS_URL = "http://127.0.0.1:8080/Warehouses/
 export const AUTH_DB_URL = "http://127.0.0.1:8080/Init/create"
 export const EXPORT_URL = "http://127.0.0.1:8080/Init/export"
 export const IMPORT_URL = "http://127.0.0.1:8080/Init/import"
-export const POST_SERVICE_CELL_URL = ""
+export const POST_SERVICE_CELL_URL = "http://127.0.0.1:8080/Cells/fix"
 export const POST_RENT_CELL_URL = "http://127.0.0.1:8080/Cells/rent"
 
 export const STAT_COUNT_CELLS_WAREHOUSE = "http://127.0.0.1:8080/Statistics/CountCellsWarehouse"
