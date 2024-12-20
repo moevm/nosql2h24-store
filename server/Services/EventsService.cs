@@ -64,7 +64,7 @@ namespace Warehouse2.Services
                 }
             }
 
-            decimal d = allEvents.Count / 7;
+            decimal d = allEvents.Count / 7.0;
             page.count = Math.Ceiling(d);
 
             return page;
@@ -97,7 +97,7 @@ namespace Warehouse2.Services
                 }
             }
 
-            decimal d = cells.Count / 7;
+            decimal d = cells.Count / 7.0;
             rentedCells.count = Math.Ceiling(d);
 
             return rentedCells;

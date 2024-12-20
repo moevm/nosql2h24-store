@@ -63,7 +63,7 @@ namespace Warehouse2.Services
                 }
             }
 
-            decimal d = allWarehouses.Count / 7;
+            decimal d = allWarehouses.Count / 7.0;
             page.count = Math.Ceiling(d);
 
             return page;
