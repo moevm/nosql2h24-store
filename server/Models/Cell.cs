@@ -190,7 +190,10 @@ namespace Warehouse2.Models
 
     public class FixCell
     {
-        FixCell() { }
+        FixCell() {
+            this.userKey = "";
+            this.cell = new Cell();
+        }
         
         public string userKey {  set; get; }
 
