@@ -18,27 +18,27 @@ export default function PersonalAccount() {
                     <li className="personalAccountItem">
                         <a href="/help">Служба поддержки</a>
                     </li>
-                    {role !== "client" &&
+                    {["administrator", "employee"].includes(role!) &&
                     <li className="personalAccountItem">
                         <a href="/allCells">Все ячейки</a>
                     </li>}
-                    {role !== "client" &&
+                    {["administrator"].includes(role!) &&
                     <li className="personalAccountItem">
                         <a href="/allEvents">Все события</a>
                     </li>}
-                    {role !== "client" &&
+                    {["administrator"].includes(role!) &&
                     <li className="personalAccountItem">
                         <a href="/allUsers">Все пользователи</a>
                     </li>}
-                    {role !== "client" &&
+                    {["administrator"].includes(role!) &&
                     <li className="personalAccountItem">
                         <a href="/allWarehouses">Все склады</a>
                     </li>}
-                    {role !== "client" &&
+                    {["administrator"].includes(role!) &&
                     <li className="personalAccountItem">
                         <ImportExport />
                     </li>}
-                    {role !== "client" &&
+                    {["administrator", "director", "lord"].includes(role!) &&
                     <li className="personalAccountItem">
                         <a href="/statistic">Статистика</a>
                     </li>}

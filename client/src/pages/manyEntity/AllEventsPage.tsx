@@ -91,9 +91,9 @@ export default function AllEventsPage() {
                 <tbody>{listUsers}</tbody>
             </Table>
             <Pagination>
-                <Pagination.First />
+                <Pagination.First onClick={()=>{if (curPage>0) setCurPage(curPage-1)}}/>
                 {paginationList}
-                <Pagination.Last />
+                <Pagination.Last onClick={()=>{if (curPage < countPages-1) setCurPage(curPage+1)}}/>
             </Pagination>
         </div>
     );
