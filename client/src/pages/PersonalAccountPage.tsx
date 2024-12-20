@@ -3,6 +3,7 @@ import "../css/PersonalAccount.css";
 import ImportExport from "../components/ImportExport";
 
 export default function PersonalAccount() {
+    let role = sessionStorage.getItem("role");
     return (
         <div className="personalAccountContainer">
             <div className="personalAccountBody">
@@ -17,24 +18,30 @@ export default function PersonalAccount() {
                     <li className="personalAccountItem">
                         <a href="/help">Служба поддержки</a>
                     </li>
+                    {role !== "client" &&
                     <li className="personalAccountItem">
                         <a href="/allCells">Все ячейки</a>
-                    </li>
+                    </li>}
+                    {role !== "client" &&
                     <li className="personalAccountItem">
                         <a href="/allEvents">Все события</a>
-                    </li>
+                    </li>}
+                    {role !== "client" &&
                     <li className="personalAccountItem">
                         <a href="/allUsers">Все пользователи</a>
-                    </li>
+                    </li>}
+                    {role !== "client" &&
                     <li className="personalAccountItem">
                         <a href="/allWarehouses">Все склады</a>
-                    </li>
+                    </li>}
+                    {role !== "client" &&
                     <li className="personalAccountItem">
                         <ImportExport />
-                    </li>
+                    </li>}
+                    {role !== "client" &&
                     <li className="personalAccountItem">
                         <a href="/statistic">Статистика</a>
-                    </li>
+                    </li>}
                     <li className="personalAccountItem">
                         <a href="/auth">Выход</a>
                     </li>

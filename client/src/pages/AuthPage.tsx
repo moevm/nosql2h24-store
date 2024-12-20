@@ -32,9 +32,9 @@ export default function AuthPage() {
             navigate("/");
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                if (formData.email == "polina@mail") {
+                if (formData.email == "client@mail") {
                     sessionStorage.setItem("name", "Полина Королева");
-                    sessionStorage.setItem("role", "администратор");
+                    sessionStorage.setItem("role", "client");
                     sessionStorage.setItem("key", "6673fchd5d57c5dcd7");
                     navigate("/");
                     return;
