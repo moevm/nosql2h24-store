@@ -38,7 +38,7 @@ namespace Warehouse2.Models
 
     public class EventFilterBody
     {
-        public EventFilterBody() 
+        public EventFilterBody()
         {
             this._key = "";
             this.cellKey = "";
@@ -50,7 +50,9 @@ namespace Warehouse2.Models
         }
 
         public string _key { get; set; }
-        
+
+        public int page { get; set; }
+
         public string? cellKey { get; set; }
 
         public string? userKey { get; set; }
@@ -61,5 +63,50 @@ namespace Warehouse2.Models
         public DateTimeOffset? enddateAndTime { get; set; }
 
         public string description { get; set; }
+    }
+
+    public class Period
+    {
+        public Period()
+        {
+            this.start = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.end = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
+        }
+
+        public DateTimeOffset? start { get; set; }
+
+        public DateTimeOffset? end { get; set; }
+    }
+
+    public class ActionBody
+    {
+        public ActionBody()
+        {
+            this.eventAction = "";
+            this.warehouseKey = "";
+            this.start = DateTimeOffset.Parse("1900-01-01 00:00:00-03:00");
+            this.end = DateTimeOffset.Parse("2050-12-12 00:00:00-03:00");
+        }
+
+        public string eventAction { get; set; }
+
+        public string warehouseKey { get; set; }
+
+        public DateTimeOffset? start { get; set; }
+
+        public DateTimeOffset? end { get; set; }
+    }
+
+    public class EventPage
+    {
+        public EventPage()
+        {
+            this.count = 0;
+            this.events = new List<Event>();
+        }
+
+        public List<Event> events { get; set; }
+
+        public decimal count { get; set; }
     }
 }

@@ -74,6 +74,8 @@ namespace Warehouse2.Models
 
         public string _key { get; set; }
 
+        public int page { get; set; }
+
         public string warehouseKey { get; set; }
 
         public int startcellNum { get; set; }
@@ -113,5 +115,85 @@ namespace Warehouse2.Models
 
         public DateTimeOffset? endOfRent { get; set; }
 
+    }
+
+    public class EventCell
+    {
+        public EventCell(string key = "", int CNum = 0, int c = 0)
+        {
+            this._key = key;
+            this.cellNum = CNum;
+            this.count = c;
+        }
+
+        public string? _key { get; set; }
+
+        public int? cellNum { get; set; }
+
+        public int count { get; set; }
+    }
+
+    public class RentedCells
+    {
+        public RentedCells()
+        {
+            this.count = 0;
+            this.cells = new List<Cell>();
+        }
+
+        public List<Cell> cells { get; set; }
+
+        public decimal count { get; set; }
+    }
+
+    public class MyCellsBody
+    {
+        public MyCellsBody() { }
+        
+        public string userKey { get; set; }
+
+        public int page { get; set; }
+
+        public int startcellNum { get; set; }
+        public int endcellNum { get; set; }
+
+        public int starttierNum { get; set; }
+        public int endtierNum { get; set; }
+
+        public bool isFree { get; set; }
+
+        public bool needService { get; set; }
+
+        public DateTimeOffset? startendOfRent { get; set; }
+        public DateTimeOffset? endendOfRent { get; set; }
+
+        public float starttariffPerDay { get; set; }
+        public float endtariffPerDay { get; set; }
+
+        public float startsize { get; set; }
+        public float endsize { get; set; }
+
+    }
+
+    public class CellPage
+    {
+        public CellPage()
+        {
+            this.count = 0;
+            this.cells = new List<Cell>();
+        }
+
+        public List<Cell> cells { get; set; }
+
+        public decimal count { get; set; }
+    }
+
+    public class FixCell
+    {
+        FixCell() { }
+        
+        public string userKey {  set; get; }
+
+        public Cell cell { get; set; }
     }
 }

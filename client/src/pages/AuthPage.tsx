@@ -26,16 +26,15 @@ export default function AuthPage() {
         try {
             const response = await axios.post(SIGN_IN_URL, formData);
             console.log("Вход в систему выполнен успешно!", response.data);
-            const userName = `${response.data.name} ${response.data.surname}`;
-            sessionStorage.setItem("name", userName);
+            sessionStorage.setItem("name", response.data.nameSurnamePatronymic);
             sessionStorage.setItem("role", response.data.role);
             sessionStorage.setItem("key", response.data._key);
             navigate("/");
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                if (formData.email == "polina@mail") {
+                if (formData.email == "client@mail") {
                     sessionStorage.setItem("name", "Полина Королева");
-                    sessionStorage.setItem("role", "администратор");
+                    sessionStorage.setItem("role", "client");
                     sessionStorage.setItem("key", "6673fchd5d57c5dcd7");
                     navigate("/");
                     return;
@@ -59,8 +58,8 @@ export default function AuthPage() {
                     </p>
                     <form className="authPageForm" onSubmit={handleEntry}>
                         <div className="authPageFormData">
-                            <label htmlFor="login">Логин</label>
                             <br />
+                            <label htmlFor="login">Логин</label>
                             <input
                                 className="dataInput"
                                 id="login"
@@ -69,8 +68,8 @@ export default function AuthPage() {
                                 onChange={handleEmailChange}
                             ></input>
 
-                            <label htmlFor="password">Пароль</label>
                             <br />
+                            <label htmlFor="password">Пароль</label>
                             <input
                                 className="dataInput"
                                 id="password"
@@ -89,9 +88,9 @@ export default function AuthPage() {
                                 Вход
                             </button>
 
-                            {/* <a className="authPageRegistration button" href="/register">
+                            <a className="authPageRegistration button" href="/registration">
                                 Зарегистрироваться
-                            </a> */}
+                            </a>
                         </div>
 
                         <div className="rememberCheckbox">

@@ -39,7 +39,7 @@ namespace Warehouse2.Controllers
         }
 
         [HttpPost("all")]
-        public async Task<List<Cell>> FilterDocsIndices(CellFilterBody body)
+        public async Task<CellPage> FilterDocsIndices(CellFilterBody body)
         {
             return await _cellsService.FilterDocsAsync(body);
         }
@@ -48,6 +48,19 @@ namespace Warehouse2.Controllers
         public async Task<IActionResult> Rent(CellRentBody body)
         {
             var data = await _cellsService.RentCell(body);
+
+            if (data == null)
+            {
+                return NotFound("No data found");
+            }
+
+            return Ok(data); // Отправляем данные в формате JSON
+        }
+
+        [HttpPost("fix")]
+        public async Task<IActionResult> Fix(FixCell body)
+        {
+            var data = await _cellsService.FixTheCell(body);
 
             if (data == null)
             {

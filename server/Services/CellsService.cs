@@ -22,6 +22,8 @@ namespace Warehouse2.Services
 
         private readonly string _wColName;
 
+        private readonly string _uColName;
+
         private readonly ArangoNewtonsoftSerializer _serializer;
 
         public CellsService(IOptions<WarehouseDatabaseSettings> WarehouseDatabaseSettings)
@@ -35,6 +37,8 @@ namespace Warehouse2.Services
             _eColName = WarehouseDatabaseSettings.Value.EventCollectionName;
 
             _wColName = WarehouseDatabaseSettings.Value.WarehousesCollectionName;
+
+            _uColName = WarehouseDatabaseSettings.Value.UsersCollectionName;
 
             _graphName = WarehouseDatabaseSettings.Value.GraphCollectionName;
 
@@ -71,7 +75,7 @@ namespace Warehouse2.Services
 
         }
 
-        public async Task<List<Cell>> FilterDocsAsync(CellFilterBody b)
+        public async Task<CellPage> FilterDocsAsync(CellFilterBody b)
         {
             FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.warehouseKey, {b.warehouseKey}, true)";
             FormattableString filter1 = $" AND x.cellNum >= {b.startcellNum} AND x.cellNum <= {b.endcellNum} AND x.tierNum >= {b.starttierNum}";
@@ -85,13 +89,27 @@ namespace Warehouse2.Services
             else      
                 filter5 = $" AND DATE_DIFF(x.endOfRent, {b.endendOfRent}, 's', true) > 0 AND DATE_DIFF({b.startendOfRent}, x.endOfRent, 's', true) > 0";
 
-            List<Cell> cells = await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
-            foreach (Cell cell in cells)
+            List<Cell> allCells = await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
+            foreach (Cell cell in allCells)
             {
                 cell.warehouseAddress = await _arango.Query.SingleOrDefaultAsync<string>(_dbName, _wColName, $"x._key == {cell.warehouseKey}", $"x.address");
             }
 
-            return cells;
+
+            CellPage page = new CellPage();
+
+            for (int i = b.page * 7; i < (b.page + 1) * 7; i++)
+            {
+                if (i < allCells.Count)
+                {
+                    page.cells.Add(allCells[i]);
+                }
+            }
+
+            double d = allCells.Count / 7.0f;
+            page.count = ((int)Math.Ceiling(d));
+
+            return page;
         }
 
         public async Task<Event> RentCell(CellRentBody body)
@@ -109,6 +127,29 @@ namespace Warehouse2.Services
 
             await _arango.Document.UpdateAsync(_dbName, _collectionName, cell);
             
+            return newEvent;
+        }
+    
+        public async Task<Event> FixTheCell(FixCell body)
+        {
+            User usr = await _arango.Document.GetAsync<User>(_dbName, _uColName, body.userKey);
+            Event newEvent = new Event("FIXED", "the cell has just been fixed", body.cell.warehouseKey, body.cell._key, body.userKey);
+
+            if (usr.role == "employee")
+            {
+                Cell cell = body.cell;
+                cell.needService = false;
+
+                cell.listOfEventKeys.Add(newEvent._key);
+
+                await _arango.Document.UpdateAsync<Cell>(_dbName, _collectionName, cell);
+                await _arango.Graph.Edge.CreateAsync(_dbName, _graphName, _eColName, newEvent);
+            }
+            else
+            {
+                newEvent = null;
+            }
+
             return newEvent;
         }
     }

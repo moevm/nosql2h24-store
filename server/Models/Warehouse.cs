@@ -40,9 +40,40 @@
 
         public string? address { get; set; }
 
+        public int page { get; set; }
+
         public int startcapacity { get; set; }
         public int endcapacity { get; set; }
 
         public string? chiefKey { get; set; }
+    }
+
+    public class WarehouseCellsCount
+    {
+        public WarehouseCellsCount(string key = "", string addr = "", int c = 0)
+        {
+            this._key = key;
+            this.address = addr;
+            this.count = c;
+        }
+
+        public string? _key { get; set; }
+
+        public string? address { get; set; }
+
+        public int count { get; set; }
+    }
+
+    public class WarehousePage
+    {
+        public WarehousePage()
+        {
+            this.count = 0;
+            this.warehouses = new List<Warehouse>();
+        }
+
+        public List<Warehouse> warehouses { get; set; }
+
+        public decimal count { get; set; }
     }
 }

@@ -5,19 +5,24 @@ import axios from "axios";
 import "../../css/MyCellsPage.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as CellIcon } from "../../css/cell-icon.svg";
-import { Cell, cellFields } from "../../serviceFiles/types";
+import { Cell, cellFields, cellMyFields } from "../../serviceFiles/types";
 import Filter from "../../components/Filter";
+import { Pagination } from "react-bootstrap";
 
 export default function MyCellsPage() {
     const [cells, setCells] = useState(cellsInit);
     const [filters, setFilters] = useState(cellDefaultFilter);
+    const [countPages, setCountPages] =  useState(3);
+    const [curPage, setCurPage] =  useState(0);
     useEffect(() => {
+        let key = sessionStorage.getItem("key");
         console.log("отправлен запрос на получение ячеек, с параметрами:", filters);
         axios
-            .post(GET_MY_CELLS_URL, filters)
+            .post(GET_MY_CELLS_URL, {...filters, userKey: key, page: curPage})
             .then((response) => {
                 console.log(response);
-                setCells(response.data);
+                setCells(response.data.cells);
+                setCountPages(response.data.count);
             })
             .catch((error) => {
                 console.error(
@@ -26,7 +31,7 @@ export default function MyCellsPage() {
                 );
                 setCells(cellsInit);
             });
-    }, [filters]);
+    }, [filters, curPage]);
 
     function handleSendFilters(obj: any) {
         console.log("Получен объект в MyCellsPage (filters)", obj);
@@ -34,7 +39,7 @@ export default function MyCellsPage() {
         obj.endcellNum = obj.endcellNum ? parseInt(obj.endcellNum) : cellDefaultFilter.endcellNum; // => < 20
         obj.starttierNum = obj.starttierNum ? parseInt(obj.starttierNum) : cellDefaultFilter.starttierNum;
         obj.endtierNum = obj.endtierNum ? parseInt(obj.endtierNum) : cellDefaultFilter.endtierNum;  // => < 6
-        obj.isFree = obj.isFree ? true : false; //cellDefaultFilter.isFree;
+        obj.isFree = false; //cellDefaultFilter.isFree;
         obj.needService = obj.needService ? true : false; //cellDefaultFilter.needService;
         obj.startsize = obj.startsize ? parseFloat(obj.startsize) : cellDefaultFilter.startsize;
         obj.endsize = obj.endsize ? parseFloat(obj.endsize) : cellDefaultFilter.endsize;   // => < 2.1
@@ -46,11 +51,18 @@ export default function MyCellsPage() {
         setFilters(obj);
     }
 
+    function handlePageChange(i: number){
+        setCurPage(i)
+    }
+    const paginationList = []
+    for(let i = 0; i<countPages; i++){
+        paginationList.push(<Pagination.Item key={i} active={i===curPage} onClick={()=>handlePageChange(i)}>{i+1}</Pagination.Item>)
+    }
     return (
         <div className="myCellsPageContainer">
             <h1 className="myCellsPageTitle">Мои ячейки</h1>
 
-            <Filter handleSend={handleSendFilters} obj={cellFields} default={cellDefaultFilter}></Filter>
+            <Filter handleSend={handleSendFilters} obj={cellMyFields} default={cellDefaultFilter}></Filter>
 
             <CellsTable
                 isForRent={false}
@@ -58,13 +70,11 @@ export default function MyCellsPage() {
                 cells={cells}
             ></CellsTable>
 
-            <div className="myCellsPagePagination">
-                <button className="paginationButton">Назад</button>
-                <button className="paginationButton">1</button>
-                <button className="paginationButton">2</button>
-                <button className="paginationButton">3</button>
-                <button className="paginationButton">Вперед</button>
-            </div>
+            <Pagination>
+                <Pagination.First/>
+                {paginationList}
+                <Pagination.Last/>
+            </Pagination>
         </div>
     );
 }

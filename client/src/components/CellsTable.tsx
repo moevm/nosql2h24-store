@@ -27,7 +27,7 @@ export default function CellsTable(props: {
   function handleService(cell: Cell) {
     let key = sessionStorage.getItem("key");
     console.log("обслуживание ячейки с данными:", { userKey: key, cell });
-    axios.post(POST_SERVICE_CELL_URL, { userKey: key, cell }).catch((error) => {
+    axios.post(POST_SERVICE_CELL_URL, { userKey: key, cell }).then(()=>{alert("Ячейка №" + cell.cellNum + "обслужена!")}).catch((error) => {
       console.error("Ошибка при обслуживании Ячейки", error);
     });
   }
@@ -38,15 +38,17 @@ export default function CellsTable(props: {
   function handleCellClick(cell: Cell) {
     navigate("/cell", { state: cell });
   }
-
+  let needEndOfRent = props.isForAdmin || !props.isForRent;
   const listCells = props.cells.map((cell: Cell, index) => (
     <tr className="listCellsTable" key={cell._key}>
-      <td>{cell._key}</td>
+      {props.isForAdmin && <td>{cell._key}</td>}
       <td>{cell.cellNum}</td>
       <td>{cell.tierNum}</td>
-      <td>{cell.isFree ? "Свободна" : "Занята"}</td>
-      <td>{cell.endOfRent}</td>
-      <td>{cell.warehouseKey}</td>
+      <td>{cell.size}</td>
+      <td>{cell.tariffPerDay}</td>
+      {props.isForAdmin && <td>{cell.isFree ? "Свободна" : "Занята"}</td>}
+      {needEndOfRent && <td>{cell.endOfRent}</td>}
+      {props.isForAdmin && <td>{cell.warehouseKey}</td>}
       <td>{cell.warehouseAddress}</td>
       {props.isForRent && (
         <td className="listCellsTd">
@@ -90,24 +92,30 @@ export default function CellsTable(props: {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th className="cellName" scope="col">
+          {props.isForAdmin && <th className="cellName" scope="col">
               _key ячейки
-            </th>
+            </th>}
             <th className="cellName" scope="col">
               Номер
             </th>
             <th className="cellName" scope="col">
-              Ярус
+              Ряд
             </th>
             <th className="cellName" scope="col">
+              Размер
+            </th>
+            <th className="cellName" scope="col">
+              Тариф
+            </th>
+            {props.isForAdmin && <th className="cellName" scope="col">
               Статус
-            </th>
-            <th className="cellName" scope="col">
+            </th>}
+            {needEndOfRent && <th className="cellName" scope="col">
               Дата окончания аренды
-            </th>
-            <th className="cellName" scope="col">
+            </th>}
+            {props.isForAdmin && <th className="cellName" scope="col">
               _key склада
-            </th>
+            </th>}
             <th className="cellName" scope="col">
               Адрес склада
             </th>

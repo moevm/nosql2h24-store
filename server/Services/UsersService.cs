@@ -51,15 +51,17 @@ namespace Warehouse2.Services
             await _arango.Document.CreateAsync(_dbName, _collectionName, newObj);
         }
 
-        public async Task<List<string>> AuthenticateAsync(string log, string psw)
+        public async Task<AuthData> AuthenticateAsync(PassData data)
         {
-            var usrs = await _arango.Query.FindAsync<string>(_dbName, _collectionName, 
-                $"x.login == {log} AND x.password == {psw}", "x._key");
+            FormattableString filter = $"x.login == {data.email} AND x.password == {data.password}";
+            FormattableString res = $"{{ _key: x._key, nameSurnamePatronymic : x.nameSurnamePatronymic, role : x.role }}";
 
-            return usrs;
+            AuthData user = await _arango.Query.SingleOrDefaultAsync<AuthData>(_dbName, _collectionName, $"{filter}", $"{res}");
+
+            return user;
         }
 
-        public async Task<List<User>> FilterDocsAsync(UserFilterBody b)
+        public async Task<UserPage> FilterDocsAsync(UserFilterBody b)
         {
             FormattableString regFilter = $"regex_test(x._key, {b._key}, true) AND regex_test(x.nameSurnamePatronymic, {b.nameSurnamePatronymic}, true)";
             FormattableString filter1 = $" AND regex_test(x.role, {b.role}, true) AND regex_test(x.login, {b.login}, true) AND regex_test(x.password, {b.password}, true)";
@@ -68,8 +70,22 @@ namespace Warehouse2.Services
             FormattableString filter4 = $" AND DATE_DIFF(x.editDate, {b.endeditDate}, 's', true) > 0 AND DATE_DIFF({b.starteditDate}, x.editDate, 's', true) > 0";
             FormattableString filter5 = $" AND DATE_DIFF(x.birthday, {b.endbirthday}, 'd', true) > 0 AND DATE_DIFF({b.startbirthday}, x.birthday, 'd', true) > 0";
 
+            List<User> allUsers = await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
 
-            return await _arango.Query.FindAsync<User>(_dbName, _collectionName, $"{regFilter} {filter1} {filter2} {filter3} {filter4} {filter5}");
+            UserPage page = new UserPage();
+
+            for (int i = b.page * 7; i < (b.page + 1) * 7; i++)
+            {
+                if (i < allUsers.Count)
+                {
+                    page.users.Add(allUsers[i]);
+                }
+            }
+
+            double d = allUsers.Count / 7.0f;
+            page.count = ((int)Math.Ceiling(d));
+
+            return page;
         }
 
         public async Task<List<string>> ListDirectorsKeysAsync()

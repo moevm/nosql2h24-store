@@ -26,9 +26,15 @@ namespace Warehouse2.Controllers
             await _eventsService.GetOneAsync(key);
 
         [HttpPost("all")]
-        public async Task<List<Event>> FilterDocsAsync(EventFilterBody body)
+        public async Task<EventPage> FilterDocsAsync(EventFilterBody body)
         {
             return await _eventsService.FilterDocsAsync(body); 
+        }
+
+        [HttpPost("RentedCells")]
+        public async Task<RentedCells> GetUserRentedCellsAsync(MyCellsBody body)
+        {
+            return await _eventsService.GetRentedCells(body);
         }
     }
 }
