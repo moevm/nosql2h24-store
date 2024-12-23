@@ -170,3 +170,5 @@ export const STAT_EVENT_WAREHOUSE = "http://127.0.0.1:8080/Statistics/EventWareh
 export const STAT_EVENT_USER = "http://127.0.0.1:8080/Statistics/EventUser"
 export const STAT_RENT_EVENT_CELL = "http://127.0.0.1:8080/Statistics/EventCell"
 export const STAT_BREAK_EVENT_CELL = "http://127.0.0.1:8080/Statistics/EventCell"
+
+export const GET_FREE_CELLS_FOR_WAREHOUSE = "http://127.0.0.1:8080/Cells/countFreeForWarehouse"

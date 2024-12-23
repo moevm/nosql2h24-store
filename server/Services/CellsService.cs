@@ -152,5 +152,16 @@ namespace Warehouse2.Services
 
             return newEvent;
         }
+
+        public async Task<int> GetCountFreeCellsAsync(string warehouseKey)
+        {
+            Console.WriteLine($"x.isFree == true AND x.warehouseKey == {warehouseKey}");
+            List<Cell> FreeCells = await _arango.Query.FindAsync<Cell>(_dbName, _collectionName, $"x.isFree == true AND x.warehouseKey == {warehouseKey}");
+            Console.WriteLine(FreeCells);
+            int countFreeCells = FreeCells.Count;
+            Console.WriteLine(countFreeCells);
+
+            return countFreeCells;
+        }
     }
 }
