@@ -198,5 +198,45 @@
       "action": "RENTED",
       "dateAndTime": "2024-12-19T21:06:49.7187898+00:00",
       "description": "user has rented the cell"
-    }
+    },
+    {
+        "_key": "7478hdsjk-4tfr-74ff-56d9-gfh5563g6fr",
+        "_from": "WAREHOUSE/32cc7b3d-7f1c-4757-813c-182182e67753",
+        "_to": "CELL/4196faf0-20ad-4b90-a329-98b237ad5900",
+        "cellKey": "4196faf0-20ad-4b90-a329-98b237ad5900",
+        "userKey": "e5ba8cfb-159d-4163-a212-2e2fcf5172c2",
+        "action": "FIXED",
+        "dateAndTime": "2024-12-19T21:06:49.7187898+00:00",
+        "description": "the cell has been serviced"
+      },
+      {
+        "_key": "456ergs-456g-65ds-96d9-dtrh677hthj7r",
+        "_from": "WAREHOUSE/32cc7b3d-7f1c-4757-813c-182182e67753",
+        "_to": "CELL/014c9ead-c108-416f-94e4-9a35cf4d82a6",
+        "cellKey": "014c9ead-c108-416f-94e4-9a35cf4d82a6",
+        "userKey": "e5ba8cfb-159d-4163-a212-2e2fcf5172c2",
+        "action": "FIXED",
+        "dateAndTime": "2024-10-19T21:06:49.7187898+00:00",
+        "description": "the cell has been serviced"
+      },
+      {
+        "_key": "rt5tfggd-bdj0-74ff-96d9-dfhd8476rt56",
+        "_from": "WAREHOUSE/32cc7b3d-7f1c-4757-813c-182182e67753",
+        "_to": "CELL/4196faf0-20ad-4b90-a329-98b237ad5900",
+        "cellKey": "85537633-8ffc-45b0-a897-87146a086f05",
+        "userKey": "c1f66414-51bb-433f-8c78-5f236b217251",
+        "action": "FIXED",
+        "dateAndTime": "2024-12-19T21:06:49.7187898+00:00",
+        "description": "the cell has been serviced"
+      },
+      {
+        "_key": "0953jgf51-bdj0-74ff-96d9-7jfdstrh5p9",
+        "_from": "WAREHOUSE/32cc7b3d-7f1c-4757-813c-182182e67753",
+        "_to": "CELL/4196faf0-20ad-4b90-a329-98b237ad5900",
+        "cellKey": "85537633-8ffc-45b0-a897-87146a086f05",
+        "userKey": "fec80ae6-d7b4-4020-8ec0-55765dac0c3d",
+        "action": "FIXED",
+        "dateAndTime": "2024-12-19T21:06:49.7187898+00:00",
+        "description": "the cell has been serviced"
+      }
   ]
