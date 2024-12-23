@@ -69,6 +69,12 @@ namespace Warehouse2.Controllers
 
             return Ok(data); // Отправляем данные в формате JSON
         }
+
+        [HttpGet("countFreeForWarehouse")]
+        public async Task<int> GetCountFreeCells(string warehouseKey)
+        {
+            return await _cellsService.GetCountFreeCellsAsync(warehouseKey);
+        }
     }
 }
 

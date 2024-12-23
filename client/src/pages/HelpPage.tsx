@@ -35,7 +35,7 @@ export default function HelpPage() {
           </data>
         </div>
 
-        <div className="helpPageRequest">
+        {/* <div className="helpPageRequest">
           <p className="helpPageFormRequest">
             Оставьте свое сообщение, и оператор ответит вам в ближайшее время.
           </p>
@@ -45,7 +45,7 @@ export default function HelpPage() {
           ></textarea>
 
           <button className="requestButton button">Отправить сообщение</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
